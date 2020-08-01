@@ -1,0 +1,9 @@
+tox
+pytest
+pytest-cov
+mypy
+flake8 >= 3.3.0
+pep8-naming >= 0.4.1
+black
+isort
+Sphinx
