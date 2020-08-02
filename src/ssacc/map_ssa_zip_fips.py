@@ -1,6 +1,10 @@
 from contextlib import suppress
 import os
+from pathlib import Path
+
 import pandas as pd
+
+print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
 class MapSsaZipFips:
@@ -36,8 +40,6 @@ class MapSsaZipFips:
         df = df.sort_values(by=["zip"])
         # Sanitize - drop rows with no ZIP. The point is to map ZIP to SSA CNTY CD.
         df = df.dropna(subset=["zip"])
-        # Sanitize - drop rows with no ssacnty. The point is to map ZIP to SSA CNTY CD.
-        # df = df.dropna(subset=['ssacnty'])
         df.to_csv(path_or_buf=output_file_path, index=0)
         return df
 
@@ -57,5 +59,4 @@ class MapSsaZipFips:
         # Sanitize - drop rows with no ssacnty. The point is to map ZIP to SSA CNTY CD.
         df = df.dropna(subset=["ssacnty"])
         print(df.head())
-        #df = df[["zip", "ssacnty", "ssastco", "county", "st"]]
         df.to_csv(path_or_buf=output_file_path, index=0)

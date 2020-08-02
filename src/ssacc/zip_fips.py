@@ -8,6 +8,8 @@ import re
 import pandas as pd
 from pandas.io.parsers import ParserError
 
+print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
+
 
 class ZipFips:
     @staticmethod
@@ -25,8 +27,8 @@ class ZipFips:
             print(file_path)
             zfile = open(file_path)
             zfile.readline()  # skip first line
-            for l in zfile:
-                m = re.match(r"(?P<zip>.{5}).{18}(?P<state>..)(?P<fips>...)(?P<county>[\w. ]+)", l)
+            for z in zfile:
+                m = re.match(r"(?P<zip>.{5}).{18}(?P<state>..)(?P<fips>...)(?P<county>[\w. ]+)", z)
                 if m:
                     r = m.groupdict()
                     test = str(r["zip"]).zfill(5) + str(r["fips"]).zfill(3)
@@ -37,9 +39,7 @@ class ZipFips:
                         try:
                             fips_st_ct = str(statecodes[r["state"]]).zfill(2)
                         except KeyError:
-                            print(
-                                f"!!! KeyError on adding state code to {fips} in {r['state']}. Zeroing"
-                            )
+                            print(f"KeyError adding state code to {fips} in {r['state']}. Zeroing")
                             fips_st_ct = "00"
                             # There is at least one record with missing state code. Carry on
                         fips_st_ct += fips

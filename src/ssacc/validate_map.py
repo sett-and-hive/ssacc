@@ -1,10 +1,13 @@
 """Validate the combined CSV file. Some data engineering"""
-
 from contextlib import suppress
 import os
 from pathlib import Path
+
+import numpy as np
 import pandas as pd
 from pandas.io.parsers import ParserError
+
+print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
 class ValidateMap:
@@ -89,7 +92,7 @@ class ValidateMap:
             try:
                 zip = dft.loc[i, "Zipcode"]
                 try:
-                    rows = dfm.loc[dfm["zip"] == zip]
+                    dfm.loc[dfm["zip"] == zip]
                     # print(row)
                     total += 1
                 except KeyError:
@@ -122,7 +125,7 @@ class ValidateMap:
                 else:
                     missing += 1
                     total += 1
-            except:
+            except IndexError:
                 print("bad county data [{countytest}] [{county}]")
                 missing += 1
                 total += 1
@@ -137,8 +140,7 @@ class ValidateMap:
         for i in range(count):
             fips = dfm.loc[i, "fipsstco"]
             try:
-                rows = dfm.loc[dfm["fipsstct"] == fips]
-                # print(row)
+                dfm.loc[dfm["fipsstct"] == fips]
                 total += 1
             except KeyError:
                 print(f"Count not find SSA fips {fips} in SSA map")
@@ -151,22 +153,20 @@ class ValidateMap:
 
     @staticmethod
     def validate_all_state_codes(dfm):
-        missing = 0
-        total = 0
-        count = len(dfm)
-        for i in range(count):
-            state = dfm.loc[i, "stabbr"]
-            try:
-                rows = dfm.loc[dfm["statecd"] == state]
-                # print(row)
-                total += 1
-            except KeyError:
-                print(f"Count not find statecd {stabbr} in SSA map")
-                missing += 1
-                total += 1
-            except FileNotFoundError:
-                pass
-        print(f"Missing state code count {missing}. Total count {total}")
+        # There are two sources of state code and we want
+        # to test to see that they match when all the
+        # required data is present
+        state_compare = np.where(dfm['stabbr'] == dfm['statecd'], True, False)
+        dfm['st_compare'] = state_compare
+        dfm['FullCnty'] = True
+        dfm.loc[dfm['ssacnty'].isnull(), 'FullCnty'] = False
+        dfm['Test'] = dfm['st_compare'] == dfm['FullCnty']
+        print(dfm)
+        missing_state_country = np.where(~dfm['Test'], True, False)
+        missing_list = missing_state_country.tolist()
+        missing = missing_list.count(True)
+        total = len(missing_list)
+        print(f"Missing state code+cnty count {missing}. Total count {total}")
         return True if 0 == missing else False
 
     @staticmethod
@@ -179,7 +179,7 @@ class ValidateMap:
             try:
                 zip = dfm.loc[i, "zip"]
                 try:
-                    rows = dfm.loc[i, "ssacnty"]
+                    dfm.loc[i, "ssacnty"]
                     total += 1
                 except KeyError:
                     print(f"Count not find SSA County code for {zip} in SSA map")
