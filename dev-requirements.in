@@ -7,3 +7,4 @@ pep8-naming >= 0.4.1
 black
 isort
 Sphinx
+pre-commit

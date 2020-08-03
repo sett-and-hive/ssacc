@@ -25,7 +25,7 @@ class SsaFips:
         # (in the same directory that your python process is based)
         # Control delimiters, rows, column names with read_csv (see later)
         try:
-            df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str,)
+            df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
             # clean out
             df.drop("partsab5bonus2018rate", axis=1, inplace=True)
             df.drop("partsab35bonus2018rate", axis=1, inplace=True)

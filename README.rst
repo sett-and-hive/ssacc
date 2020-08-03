@@ -19,7 +19,7 @@ To Do: Add ``fetch_batch.sh`` analog to the batch script.
 
 The first time you run the cli.py, run with the ``-r 1`` option to generate ``data/source/zipcodes.csv``
 intermediate file. The goal is to create ``data/ssa_cnty_zip.csv`` which maps ZIP-5 to SSA Country Code, including the
-3-digit county-only value and the 5-digit value that includes the state code. If you want to iterate over the data 
+3-digit county-only value and the 5-digit value that includes the state code. If you want to iterate over the data
 without regenerating ``data/sources/zipcodes.csv`` run with the ``-r 0`` or no ``-r`` command line argument.
 
 The column headers are:
@@ -146,5 +146,5 @@ Licensing for the project is defined in:
 
 This project uses a common permissive license, the MIT license.
 
-Thanks to Brian Gruber for the head start from https://github.com/bgruber/zip2fips, from 
+Thanks to Brian Gruber for the head start from https://github.com/bgruber/zip2fips, from
 which I shamelessly borrowed.

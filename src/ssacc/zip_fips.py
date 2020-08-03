@@ -57,7 +57,7 @@ class ZipFips:
     @staticmethod
     def read_csv(input_file_path):
         try:
-            df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str,)
+            df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
             return df
         except FileNotFoundError:
             print(f"File {input_file_path} not found")
