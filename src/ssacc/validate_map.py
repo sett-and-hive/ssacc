@@ -156,13 +156,13 @@ class ValidateMap:
         # There are two sources of state code and we want
         # to test to see that they match when all the
         # required data is present
-        state_compare = np.where(dfm['stabbr'] == dfm['statecd'], True, False)
-        dfm['st_compare'] = state_compare
-        dfm['FullCnty'] = True
-        dfm.loc[dfm['ssacnty'].isnull(), 'FullCnty'] = False
-        dfm['Test'] = dfm['st_compare'] == dfm['FullCnty']
+        state_compare = np.where(dfm["stabbr"] == dfm["statecd"], True, False)
+        dfm["st_compare"] = state_compare
+        dfm["FullCnty"] = True
+        dfm.loc[dfm["ssacnty"].isnull(), "FullCnty"] = False
+        dfm["Test"] = dfm["st_compare"] == dfm["FullCnty"]
         print(dfm)
-        missing_state_country = np.where(~dfm['Test'], True, False)
+        missing_state_country = np.where(~dfm["Test"], True, False)
         missing_list = missing_state_country.tolist()
         missing = missing_list.count(True)
         total = len(missing_list)

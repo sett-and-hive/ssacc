@@ -14,17 +14,18 @@ matrix:
           env: TOXENV=py38
         - python: 3.8
           env: TOXENV=pep8
-        - python: 3.8
-          env: TOXENV=fmt-check
-        - python: 3.8
-          env: TOXENV=mypy
-        - python: 3.8
-          env: TOXENV=docs
+#        - python: 3.8
+#          env: TOXENV=fmt-check
+#        - python: 3.8
+#          env: TOXENV=mypy
+#        - python: 3.8
+#          env: TOXENV=docs
 
 install:
   # Ensure virtualenv is up to date to avoid DeprecationWarning in bundled site.py.
   - pip install --upgrade virtualenv
   - pip install tox
+  - pip install codecov
 
 script:
   tox
