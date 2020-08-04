@@ -11,8 +11,8 @@ setuptools.setup(
     version="0.1.0",
     description="Map ZIPs to SSA County Code",
     extras_require=dict(tests=["pytest"]),
-    packages=setuptools.find_packages(where="src/ssacc"),
-    package_dir={"": "src/ssacc"},
+    packages=setuptools.find_packages(where="ssacc"),
+    package_dir={"": "ssacc"},
     license="MIT",
     license_files=["LICENSE.txt"],
 )
