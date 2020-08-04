@@ -58,3 +58,8 @@ data/temp
 #project configuration
 .git/
 .idea/
+
+# sphinx build folder
+_build
+_static
+_templates
