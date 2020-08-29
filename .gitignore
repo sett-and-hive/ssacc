@@ -63,3 +63,6 @@ data/temp
 _build
 _static
 _templates
+
+# copies
+*Copy.csv
