@@ -25,7 +25,7 @@ If running from \*nix, you will need to curl the two files by hand and unzip the
 
 To Do: Add ``fetch_batch.sh`` analog to the batch script.
 
-The first time you run the cli.py, run with the ``-r 1`` option to generate ``data/source/zipcodes.csv``
+The first time you run the ``cli.py``, run with the ``-r 1`` option to generate ``data/source/zipcodes.csv``
 intermediate file. The goal is to create ``data/ssa_cnty_zip.csv`` which maps ZIP-5 to SSA Country Code, including the
 3-digit county-only value and the 5-digit value that includes the state code. If you want to iterate over the data
 without regenerating ``data/sources/zipcodes.csv`` run with the ``-r 0`` or no ``-r`` command line argument.
@@ -76,6 +76,13 @@ Testing
 Automated testing is performed using `tox <https://tox.readthedocs.io/en/latest/index.html>`_.
 tox will automatically create virtual environments based on ``tox.ini`` for unit testing,
 PEP8 style guide checking, and documentation generation.
+
+To run all the tests:
+
+.. code-block:: console
+
+    (venv) $ tox
+
 To Do: Make more tests run by tox pass.
 
 Unit Testing
@@ -129,11 +136,10 @@ The project directory structure is like:
 .. code-block::
 
     ssacnt
-    ├── src
-    │   └── ssacnt
-    │       ├── __init__.py
-    │       ├── cli.py
-    │       └── <lib>.py
+    ├── ssacnt
+    │   ├── __init__.py
+    │   ├── cli.py
+    │   └── <lib>.py
     ├── tests
     │   ├── __init__.py
     │   └── test_<lib>.py
