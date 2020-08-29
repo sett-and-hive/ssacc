@@ -17,7 +17,6 @@ class ZipFips:
         project_root = Path(input_folder_path)
         state_file = project_root.joinpath("state_fips.json")
         statecodes = json.load(open(state_file))
-        # zipmap = {}
         zip_seen = {}
         df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
 
@@ -34,7 +33,7 @@ class ZipFips:
                     test = str(r["zip"]).zfill(5) + str(r["fips"]).zfill(3)
                     if test not in zip_seen:
                         df_len = len(df)
-                        zip = str(r["zip"]).zfill(5)
+                        zip_code = str(r["zip"]).zfill(5)
                         fips = str(r["fips"]).zfill(3)
                         try:
                             fips_st_ct = str(statecodes[r["state"]]).zfill(2)
@@ -45,7 +44,7 @@ class ZipFips:
                         fips_st_ct += fips
                         state = str(r["state"])
                         county = str(r["county"]).rstrip()
-                        to_append = [zip, fips, fips_st_ct, state, county]
+                        to_append = [zip_code, fips, fips_st_ct, state, county]
                         zip_seen[test] = to_append
                         df.loc[df_len] = to_append
         output_file_path = project_root.parent.joinpath("temp", "zipcounty.csv")
@@ -65,4 +64,3 @@ class ZipFips:
             print(f"Parser error {input_file_path} ")
         except Exception:
             print(f"Any other error reading {input_file_path}")
-        return

@@ -6,18 +6,6 @@ from pandas.io.parsers import ParserError
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
-# class StringConverter:
-#     class StringConverter(dict):
-#         def __contains__(self, item):
-#             return True
-#
-#         def __getitem__(self, item):
-#             return str
-#
-#         def get(self, default=None):
-#             return str
-
-
 class SsaFips:
     @staticmethod
     def csv_read(input_file_path):
@@ -44,4 +32,3 @@ class SsaFips:
             print(f"Parser error {input_file_path} ")
         except Exception:
             print(f"Any other error reading {input_file_path}")
-        return
