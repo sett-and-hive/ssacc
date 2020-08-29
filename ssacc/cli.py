@@ -44,7 +44,7 @@ def main():
     Build refined SSA CC (3 and 5 digit) to ZIP CSV.
     """
 
-    project_root = Path(__file__).parents[1]
+    project_root = Path(__file__).resolve().parents[1]
     args = parse_args()
     """
     Build CSV of SSA and FIPS codes
@@ -86,7 +86,7 @@ def main():
         print("Writing refined ZIP to SSA County Code CSV")
         refined_file_path = project_root.joinpath("data", "ssa_cnty_zip.csv")
         m.write_refined_csv(dfr, refined_file_path)
-    return
+    return None
 
 
 # Allow the script to be run standalone (useful during development in PyCharm).
