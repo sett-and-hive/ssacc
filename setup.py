@@ -1,7 +1,5 @@
 from pathlib import Path
 
-
-# from setuptools import find_packages, setup
 import setuptools
 
 project_dir = Path(__file__).parent

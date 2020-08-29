@@ -78,8 +78,6 @@ class ValidateMap:
             # continue
         except Exception:
             print(f"Any other error reading {input_file_path}")
-            # continue
-        return
 
     @staticmethod
     def validate_all_zips(dfm, dft):
@@ -90,20 +88,19 @@ class ValidateMap:
         count = len(dft)
         for i in range(count):
             try:
-                zip = dft.loc[i, "Zipcode"]
+                zip_code = dft.loc[i, "Zipcode"]
                 try:
-                    dfm.loc[dfm["zip"] == zip]
-                    # print(row)
+                    dfm.loc[dfm["zip"] == zip_code]
                     total += 1
                 except KeyError:
-                    print(f"Count not find zip {zip} in SSA map")
+                    print(f"Count not find ZIP code{zip_code} in SSA map")
                     missing += 1
                     total += 1
                     continue
                 except FileNotFoundError:
                     pass
             except KeyError:
-                print(f"Error looking for zip in test file at position{i}")
+                print(f"Error looking for ZIP code in test file at position{i}")
         print(f"Missing zip count {missing}. Total count {total}")
         return True if 0 == missing else False
 
@@ -177,21 +174,21 @@ class ValidateMap:
         count = len(dfm)
         for i in range(count):
             try:
-                zip = dfm.loc[i, "zip"]
+                zip_code = dfm.loc[i, "zip"]
                 try:
                     dfm.loc[i, "ssacnty"]
                     total += 1
                 except KeyError:
-                    print(f"Count not find SSA County code for {zip} in SSA map")
+                    print(f"Count not find SSA County code for {zip_code} in SSA map")
                     missing += 1
                     total += 1
                     continue
                 except ValueError:
-                    print(f"Count not find SSA County code value for {zip} in SSA map")
+                    print(f"Count not find SSA County code value for {zip_code} in SSA map")
                     missing += 1
                     total += 1
                     continue
             except KeyError:
-                print(f"Error looking for zip in main file at position{i}")
+                print(f"Error looking for ZIP in main file at position{i}")
         print(f"Missing SSA count {missing}. Total count {total}")
         return True if 0 == missing else False

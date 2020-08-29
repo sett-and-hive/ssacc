@@ -45,7 +45,6 @@ def main():
     """
 
     project_root = Path(__file__).resolve().parents[1]
-    print(project_root)
     args = parse_args()
     """
     Build CSV of SSA and FIPS codes
