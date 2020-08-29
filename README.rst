@@ -4,6 +4,12 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
 .. image:: https://travis-ci.com/tomwillis608/ssacc.svg?branch=main
     :target: https://travis-ci.com/tomwillis608/ssacc
 
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/psf/black
+
+.. image:: https://sonarcloud.io/api/project_badges/measure?project=tomwillis608_ssacc&metric=alert_status
+    :target: https://sonarcloud.io/dashboard?id=tomwillis608_ssacc
+
 Sloppy Python project that can grab source tables from the internet, extract relationships between
 SSA Country Codes and ZIPs through intermediary relationship to FIPS county codes.
 
@@ -13,8 +19,10 @@ attempt to create tables that show a mapping of USPS ZIP-5 codes to SSA County C
 This project was entirely developed in the PyCharm IDE, with some faint plans to properly project-ify
 it for pip, but that remains to-do.
 
-Before running the python, you need to download some input files from the internet.  Run the ``fetch_batch.bat`` file
-if running from Windows.  If running from *nix, you will need to curl the two files by hand and unzip the one.
+Before running the Python, you need to download some input files from the internet.
+Run the ``fetch_batch.bat`` file if running from Windows.
+If running from \*nix, you will need to curl the two files by hand and unzip the one.
+
 To Do: Add ``fetch_batch.sh`` analog to the batch script.
 
 The first time you run the cli.py, run with the ``-r 1`` option to generate ``data/source/zipcodes.csv``
@@ -75,7 +83,7 @@ Unit Testing
 
 To Do: Add meaningful unit tests and refactor into more testable code.
 
-Unit testing is performed with `pytest <https://pytest.org/>`_. pytest has become the defacto
+Unit testing is performed with `pytest <https://pytest.org/>`_. pytest has become the de facto
 Python unit testing framework.
 
 pytest will automatically discover and run tests by recursively searching for folders and ``.py``
@@ -103,13 +111,13 @@ These tools are configured by:
 
 To automatically format code, run:
 
-.. code-block:: terminal
+.. code-block:: console
 
     (venv) $ tox -e fmt
 
 To verify code has been formatted, such as in a CI job:
 
-.. code-block:: terminal
+.. code-block:: console
 
     (venv) $ tox -e fmt-check
 
@@ -131,7 +139,7 @@ The project directory structure is like:
     │   └── test_<lib>.py
     │── data
     │   ├── ssa_cnty_zip.csv <<-- This is the final output generated
-    │   └── <emphemeral folders>
+    │   └── <ephemeral folders>
     ├── tox.ini
     └── setup.py
 
