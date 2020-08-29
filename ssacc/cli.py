@@ -44,7 +44,7 @@ def main():
     Build refined SSA CC (3 and 5 digit) to ZIP CSV.
     """
 
-    project_root = Path(__file__).parents[2]
+    project_root = Path(__file__).parents[1]
     args = parse_args()
     """
     Build CSV of SSA and FIPS codes
