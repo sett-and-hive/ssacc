@@ -17,6 +17,14 @@ class MapSsaZipFips:
         return dfm
 
     @staticmethod
+    def map_city(dfs, dfz):
+        # dfs - dataframe with ZIP, SSA and FIPS county codes
+        # dfz - dataframe with ZIP and city name
+        dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
+        print(dfm)
+        return dfm
+
+    @staticmethod
     def write_csv(df, output_file_path):
         with suppress(FileNotFoundError):
             os.remove(output_file_path)
@@ -35,6 +43,7 @@ class MapSsaZipFips:
                 "stabbr",
                 "statecd",
                 "state",
+                "city",
             ]
         ]
         df = df.sort_values(by=["zip"])
@@ -58,5 +67,9 @@ class MapSsaZipFips:
         df = df.dropna(subset=["zip"])
         # Sanitize - drop rows with no ssacnty. The point is to map ZIP to SSA CNTY CD.
         df = df.dropna(subset=["ssacnty"])
+        # Sanatize - drop rows were city is None
+        # Why not to worry about 00401 anymore
+        # https://www.quora.com/What-is-the-lowest-ZIP-code-and-what-is-the-highest-ZIP-code-in-America
+        df = df.dropna(subset=["city"])
         print(df.head())
         df.to_csv(path_or_buf=output_file_path, index=0)
