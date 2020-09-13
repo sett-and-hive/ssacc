@@ -41,9 +41,9 @@ class MapSsaZipFips:
                 "countyname",
                 "county",
                 "stabbr",
+                "city",
                 "statecd",
                 "state",
-                "city",
             ]
         ]
         df = df.sort_values(by=["zip"])
@@ -62,7 +62,6 @@ class MapSsaZipFips:
         df.drop("fipsstct", axis=1, inplace=True)
         df.drop("county", axis=1, inplace=True)
         df.drop("statecd", axis=1, inplace=True)
-        df.drop("state", axis=1, inplace=True)
         # Sanitize - drop rows with no ZIP. The point is to map ZIP to SSA CNTY CD.
         df = df.dropna(subset=["zip"])
         # Sanitize - drop rows with no ssacnty. The point is to map ZIP to SSA CNTY CD.
