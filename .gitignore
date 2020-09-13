@@ -56,7 +56,6 @@ data/.ignore
 data/temp
 
 #project configuration
-.git/
 .idea/
 
 # sphinx build folder
