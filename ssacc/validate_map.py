@@ -62,6 +62,7 @@ class ValidateMap:
                 "stabbr",
                 "statecd",
                 "state",
+                "city",
             ]
         ]
         df.to_csv(path_or_buf=output_file_path, index=0)

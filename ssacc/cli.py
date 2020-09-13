@@ -2,6 +2,7 @@
 
 get zip and fips from one file
 get fips and ssa from another file
+get zips and cities from another file
 map them together
 
 assumes you ran fetch script to populate the data folders
@@ -71,11 +72,23 @@ def main():
     dfz = z.read_csv(file_path)
     print(file_path)
     print(dfz.head())
-    """ Merge DF to create ZIP SSA table"""
+    """ Read the ZIP and city name """
+    file_path = project_root.joinpath("data", "source", "zipcodes.csv")
+    dfc = z.read_csv(file_path)
+    print(file_path)
+    print(dfc.head())
+    """ Merge DFs to create ZIP SSA table"""
     m = MapSsaZipFips()
-    dfm = m.map_it(dfs, dfz)
+    dfm1 = m.map_it(dfs, dfz)
+    dfm2 = m.map_city(dfm1, dfc)
+    # title case all cities
+    # ToDo: move to utility method
+    dfm2["City"] = dfm2["City"].map(lambda x: x.title() if isinstance(x, str) else x)
+    dfm2.rename(columns={"City": "city"}, inplace=True)
+    print("dfm2 head")
+    print(dfm2.head())
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
-    dfr = m.write_csv(dfm, file_path)
+    dfr = m.write_csv(dfm2, file_path)
     """ Validate the ZIP SSA table"""
     v = ValidateMap()
     b = v.validate(file_path)
