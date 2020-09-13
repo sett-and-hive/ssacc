@@ -40,8 +40,8 @@ class MapSsaZipFips:
                 "fipsstct",
                 "countyname",
                 "county",
-                "stabbr",
                 "city",
+                "stabbr",
                 "statecd",
                 "state",
             ]
