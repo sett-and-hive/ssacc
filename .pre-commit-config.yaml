@@ -29,3 +29,8 @@ repos:
 #    rev: ''  # Use the sha / tag you want to point at
 #    hooks:
 #    -   id: pylint
+-   repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.6.0  # Use the ref you want to point at
+    hooks:
+    -   id: rst-backticks
+    -   id: rst-inline-touching-normal
