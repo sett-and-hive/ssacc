@@ -8,4 +8,6 @@ numpy==1.19.1             # via -r requirements.in, pandas
 pandas==1.1.0             # via -r requirements.in
 python-dateutil==2.8.1    # via pandas
 pytz==2020.1              # via pandas
+regex==2020.7.14          # via titlecase
 six==1.15.0               # via python-dateutil
+titlecase==1.1.1          # via -r requirements.in
