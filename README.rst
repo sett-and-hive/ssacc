@@ -16,7 +16,7 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
 .. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
     :target: https://github.com/pre-commit/pre-commit
     :alt: pre-commit
-       
+
 Sloppy Python project that can grab source tables from the internet, extract relationships between
 SSA Country Codes and ZIPs through intermediary relationship to FIPS county codes.
 
@@ -28,22 +28,26 @@ it for pip, but that remains to-do.
 
 Before running the Python, you need to download some input files from the internet.
 Run the ``fetch_batch.bat`` file if running from Windows.
-If running from \*nix, you will need to curl the two files by hand and unzip the one.
+If running from \*nix, you will need to curl the three files by hand and unzip the one.
 
 To Do: Add ``fetch_batch.sh`` analog to the batch script.
 
-The first time you run the ``cli.py``, run with the ``-r 1`` option to generate ``data/source/zipcodes.csv``
-intermediate file. The goal is to create ``data/ssa_cnty_zip.csv`` which maps ZIP-5 to SSA Country Code, including the
-3-digit county-only value and the 5-digit value that includes the state code. If you want to iterate over the data
-without regenerating ``data/sources/zipcodes.csv`` run with the ``-r 0`` or no ``-r`` command line argument.
+The first time you run the ``cli.py``, run with the ``-r 1`` option to generate
+``data/source/zipcodes.csv`` intermediate file. The goal is to create
+``data/ssa_cnty_zip.csv`` which maps ZIP-5 to SSA Country Code, including the
+3-digit county-only value and the 5-digit value that includes the state code.
+If you want to iterate over the data without regenerating ``data/sources/zipcodes.csv``
+run with the ``-r 0`` or no ``-r`` command line argument.
 
 The column headers are:
 
 - zip - 5-digit ZIP code
 - ssacnty - SSA 3-digit country code
 - ssastco - SSA 5-digit county code, with 2-digit state code prepended
-- countyname - Text name of the county
+- countyname - Text name of the county, title case
+- city - Text name of city, title case
 - stabbr - Postal 2-character state code
+- state - Text name of state, title case
 
 Requirements
 ------------
