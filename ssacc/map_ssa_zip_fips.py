@@ -21,6 +21,7 @@ class MapSsaZipFips:
         # dfs - dataframe with ZIP, SSA and FIPS county codes
         # dfz - dataframe with ZIP and city name
         dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
+        dfm.rename(columns={"City": "city"}, inplace=True)
         print(dfm)
         return dfm
 
