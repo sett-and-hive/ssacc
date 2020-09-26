@@ -12,8 +12,7 @@ import argparse
 from pathlib import Path
 import sys
 
-from titlecase import titlecase
-
+from clean_df import CleanDF
 from map_ssa_zip_fips import MapSsaZipFips
 from ssa_fips import SsaFips
 from validate_map import ValidateMap
@@ -84,9 +83,10 @@ def main():
     dfm1 = m.map_it(dfs, dfz)
     dfm2 = m.map_city(dfm1, dfc)
     # title case all cities, counties, states
-    titlecase_column(dfm2, "city")
-    titlecase_column(dfm2, "countyname")
-    titlecase_column(dfm2, "state")
+    cd = CleanDF()
+    dfm2 = cd.titlecase_column(dfm2, "city")
+    dfm2 = cd.titlecase_column(dfm2, "countyname")
+    dfm2 = cd.titlecase_column(dfm2, "state")
     print("dfm2 head")
     print(dfm2.head())
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
@@ -102,10 +102,6 @@ def main():
         refined_file_path = project_root.joinpath("data", "ssa_cnty_zip.csv")
         m.write_refined_csv(dfr, refined_file_path)
     return None
-
-
-def titlecase_column(df, column_name):
-    df[column_name] = df[column_name].map(lambda x: titlecase(x) if isinstance(x, str) else x)
 
 
 # Allow the script to be run standalone (useful during development in PyCharm).
