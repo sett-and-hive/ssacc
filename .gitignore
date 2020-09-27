@@ -65,3 +65,6 @@ _templates
 
 # copies
 *Copy.csv
+
+# backups
+*.bak

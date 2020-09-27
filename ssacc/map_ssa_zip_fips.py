@@ -4,24 +4,30 @@ from pathlib import Path
 
 import pandas as pd
 
+from ssacc.clean_df import CleanDF
+
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
 class MapSsaZipFips:
     @staticmethod
     def map_it(dfs, dfz):
-        # dfs - dataframe with SSA and FIPS county codes
-        # dfz - dataframe with ZIP and FIPS county codes
+        """
+        dfs - dataframe with SSA and FIPS county codes
+        dfz - dataframe with ZIP and FIPS county codes
+        """
         dfm = pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
         print(dfm)
         return dfm
 
     @staticmethod
     def map_city(dfs, dfz):
-        # dfs - dataframe with ZIP, SSA and FIPS county codes
-        # dfz - dataframe with ZIP and city name
+        """
+        dfs - dataframe with ZIP, SSA and FIPS county codes
+        dfz - dataframe with ZIP and city name
+        """
         dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
-        dfm.rename(columns={"City": "city"}, inplace=True)
+        dfm = CleanDF.rename_columns(dfm, ["City"], ["city"])
         print(dfm)
         return dfm
 

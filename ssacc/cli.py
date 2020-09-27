@@ -24,7 +24,7 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 def parse_args() -> argparse.Namespace:
     """Parse user command line arguments."""
     parser = argparse.ArgumentParser(
-        description="Map SSA County Codes to ZIP codes.",
+        description="Map SSA County Codes to ZIP Codes.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
@@ -32,7 +32,7 @@ def parse_args() -> argparse.Namespace:
         type=int,
         required=False,
         default=0,
-        help="Regenerate the ZIP to FIPS county code CSV.",
+        help="Regenerate the ZIP to FIPS county code CSV, if -r 1.",
     )
     return parser.parse_args()
 
@@ -65,8 +65,9 @@ def main():
     Build a new ZIP and FIPS CSV if asked
     """
     if args.r:
-        project_root = Path(__file__).parents[2]
+        project_root = Path(__file__).parents[1]  # was 2
         file_path = project_root.joinpath("data", "source")
+        print(f"root file path {file_path}")
         z.read_files(file_path)
     """ Read the ZIP and FIPS """
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
@@ -84,9 +85,9 @@ def main():
     dfm2 = m.map_city(dfm1, dfc)
     # title case all cities, counties, states
     cd = CleanDF()
-    dfm2 = cd.titlecase_column(dfm2, "city")
-    dfm2 = cd.titlecase_column(dfm2, "countyname")
-    dfm2 = cd.titlecase_column(dfm2, "state")
+    dfm2 = cd.titlecase_columns(dfm2, ["city"])
+    dfm2 = cd.titlecase_columns(dfm2, ["countyname"])
+    dfm2 = cd.titlecase_columns(dfm2, ["state"])
     print("dfm2 head")
     print(dfm2.head())
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
