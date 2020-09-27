@@ -123,10 +123,12 @@ def test_drop_columns():
     df1 = CleanDF.drop_columns(df, drop_list)
     assert "Price" not in df1.columns
     drop_list = ["Price", "Year"]
+    df = pd.DataFrame(cars, columns=["Brand", "Price", "Year"])
     df1 = CleanDF.drop_columns(df, drop_list)
     assert "Price" not in df1.columns
     assert "Year" not in df1.columns
     drop_list = ["Price", "Year", "Oranges"]
+    df = pd.DataFrame(cars, columns=["Brand", "Price", "Year"])
     df1 = CleanDF.drop_columns(df, drop_list)
     assert "Price" not in df1.columns
     assert "Year" not in df1.columns
