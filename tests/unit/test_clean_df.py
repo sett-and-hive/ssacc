@@ -111,6 +111,39 @@ def test_titlecase_columns():
         assert df["authors"][i] == df_fixture["authors"][i]
 
 
+def test_titlecase_columns_bad_column_name():
+    """
+    The specific values in the fixture have
+    no specific meaning to the domain use of this project.
+    """
+    best_sellers = {
+        "titles": [
+            "MAID IN WAITING",
+            "MISTER AND MISSUS PENNINGTON",
+        ],
+        "authors": [
+            "JOHN MCGALSWORTHY",
+            "FRANCIS BRETT YOUNG",
+        ],
+    }
+    best_sellers_fixture = {
+        "titles": [
+            "Maid in Waiting",
+            "Mister and Missus Pennington",
+        ],
+        "authors": [
+            "John McGalsworthy",
+            "Francis Brett Young",
+        ],
+    }
+    df = pd.DataFrame(best_sellers, columns=["titles", "authors"])
+    df_fixture = pd.DataFrame(best_sellers_fixture, columns=["titles", "authors"])
+    df = CleanDF.titlecase_columns(df, ["titles", "authors", "fake_column"])
+    for i in range(len(df)):
+        assert df["titles"][i] == df_fixture["titles"][i]
+        assert df["authors"][i] == df_fixture["authors"][i]
+
+
 def test_drop_columns():
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
@@ -132,6 +165,19 @@ def test_drop_columns():
     df1 = CleanDF.drop_columns(df, drop_list)
     assert "Price" not in df1.columns
     assert "Year" not in df1.columns
+
+
+def test_drop_columns_bad_column_name():
+    cars = {
+        "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
+        "Price": [22000, 25000, 27000, 35000],
+        "Year": [2015, 2013, 2018, 2018],
+    }
+
+    df = pd.DataFrame(cars, columns=["Brand", "Price", "Year"])
+    drop_list = ["Price", "fake_column"]
+    df1 = CleanDF.drop_columns(df, drop_list)
+    assert "Price" not in df1.columns
 
 
 def test_reorder_columns():
@@ -169,6 +215,28 @@ def test_dropna_rows():
     assert "Aston Martin DBS V-12" in df1.Brand.values
 
 
+def test_dropna_rows_bad_column_name():
+    cars = {
+        "Brand": [
+            "Chitty Chitty Bang Bang",
+            "Chevrolet Bel Air",
+            None,
+            "Citroën 2CV",
+            "Aston Martin DBS V-12",
+        ],
+        "Price": [None, 49995, 59950, 18650, 114000],
+        "Year": [1964, None, 1977, 1981, 2008],
+    }
+    df = pd.DataFrame(cars, columns=["Brand", "Price", "Year"])
+    df1 = CleanDF.dropna_rows(df, ["Brand", "Price", "Year", "fake_column"])
+    assert "Chitty Chitty Bang Bang" not in df1.Brand.values
+    assert "Chevrolet Bel Air" not in df1.Brand.values
+    assert 1977 not in df1.Year.values
+    assert 1981 in df1.Year.values
+    assert 114000 in df.Price.values
+    assert "Aston Martin DBS V-12" in df1.Brand.values
+
+
 def test_rename_columns():
     cars = {
         "Brand": ["Chevrolet Bel Air", "Lotus Esprit", "Citroën 2CV", "Aston Martin DBS V-12"],
@@ -183,3 +251,20 @@ def test_rename_columns():
     for i in range(len(df1.columns)):
         if i < len(original_list):
             assert df1.columns[i] is renamed_list[i]
+
+
+def test_rename_columns_bad_column_name():
+    cars = {
+        "Brand": ["Chevrolet Bel Air", "Lotus Esprit"],
+        "Price": [49995, 59950],
+        "Year": [1957, 1977],
+        "Sign": ["Rooster", "Snake"],
+    }
+    original_list = ["Brand", "Price", "Year", "fake_column"]
+    df = pd.DataFrame(cars, columns=["Brand", "Price", "Year", "Sign"])
+    renamed_list = ["Marque", "Cost", "Zodiac", "bogus_column"]
+    df1 = CleanDF.rename_columns(df, original_list, renamed_list)
+    assert df1.columns[0] is renamed_list[0]
+    assert df1.columns[1] is renamed_list[1]
+    assert df1.columns[2] is renamed_list[2]
+    assert df1.columns[3] is not renamed_list[3]
