@@ -81,13 +81,10 @@ def main():
     print(dfc.head())
     """ Merge DFs to create ZIP SSA table"""
     m = MapSsaZipFips()
-    dfm1 = m.map_it(dfs, dfz)
+    dfm1 = m.map_ssa_zip(dfs, dfz)
     dfm2 = m.map_city(dfm1, dfc)
     # title case all cities, counties, states
-    cd = CleanDF()
-    dfm2 = cd.titlecase_columns(dfm2, ["city"])
-    dfm2 = cd.titlecase_columns(dfm2, ["countyname"])
-    dfm2 = cd.titlecase_columns(dfm2, ["state"])
+    dfm2 = CleanDF.titlecase_columns(dfm2, ["city", "countyname", "state"])
     print("dfm2 head")
     print(dfm2.head())
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
