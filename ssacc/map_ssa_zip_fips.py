@@ -1,3 +1,4 @@
+"""Map SSA and FIPS county codes with ZIP Codes."""
 from contextlib import suppress
 import os
 from pathlib import Path
@@ -13,6 +14,7 @@ class MapSsaZipFips:
     @staticmethod
     def map_ssa_zip(dfs, dfz):
         """
+        Merge date frame to join SSA anf FIPS county codes with ZIP codes
         dfs - dataframe with SSA and FIPS county codes
         dfz - dataframe with ZIP and FIPS county codes
         """
@@ -23,6 +25,8 @@ class MapSsaZipFips:
     @staticmethod
     def map_city(dfs, dfz):
         """
+        Merge data frames to add city names.
+
         dfs - dataframe with ZIP, SSA and FIPS county codes
         dfz - dataframe with ZIP and city name
         """
@@ -33,10 +37,11 @@ class MapSsaZipFips:
 
     @staticmethod
     def write_csv(df, output_file_path):
+        """Write data out to a file after a little cleanup."""
         with suppress(FileNotFoundError):
             os.remove(output_file_path)
         df = MapSsaZipFips.reorder_and_sort_data(df)
-        df.to_csv(path_or_buf=output_file_path, index=0)
+        df.to_csv(path_or_buf=output_file_path, index=False)
         return df
 
     @staticmethod
@@ -67,6 +72,7 @@ class MapSsaZipFips:
 
     @staticmethod
     def write_refined_csv(df, output_file_path):
+        """Write data file after more cleaning."""
         with suppress(FileNotFoundError):
             os.remove(output_file_path)
         # clean out columns we don't need
@@ -75,6 +81,7 @@ class MapSsaZipFips:
 
     @staticmethod
     def clean_refined_data(df):
+        """Clean up that data."""
         df = CleanDF.drop_columns(df, ["fipscc", "fipsstco", "fipsstct", "county", "statecd"])
         # Sanitize - drop rows with no ZIP. The point is to map ZIP to SSA CNTY CD.
         # Sanitize - drop rows with no ssacnty. The point is to map ZIP to SSA CNTY CD.

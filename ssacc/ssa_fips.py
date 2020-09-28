@@ -1,3 +1,4 @@
+"""Read and clean SSA and FIPS county codes."""
 from pathlib import Path
 
 import pandas as pd
@@ -11,6 +12,7 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 class SsaFips:
     @staticmethod
     def read_ssa_fips(input_file_path):
+        """Read data then clean it up."""
         df = SsaFips.read_csv(input_file_path)
         df1 = SsaFips.clean_ssa_fips_data(df)
         print(df1.head())
@@ -18,10 +20,7 @@ class SsaFips:
 
     @staticmethod
     def read_csv(input_file_path):
-        print(f"ssa fips path {input_file_path}")
-        # Read data from file 'filename.csv'
-        # (in the same directory that your python process is based)
-        # Control delimiters, rows, column names with read_ssa_fips (see later)
+        """Read data from CSV file."""
         try:
             df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
             return df
@@ -35,7 +34,7 @@ class SsaFips:
 
     @staticmethod
     def clean_ssa_fips_data(df):
-        # clean out
+        """ Clean up SSA FIPS county code data."""
         df = CleanDF.drop_columns(
             df,
             [

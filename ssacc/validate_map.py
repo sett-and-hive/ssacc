@@ -1,4 +1,4 @@
-"""Validate the combined CSV file. Some data engineering"""
+"""Validate the combined CSV file. Some data engineering."""
 from contextlib import suppress
 import os
 from pathlib import Path
@@ -11,35 +11,36 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 
 
 class ValidateMap:
-    def validate(self, input_file_name):
-        dfm = self.read_csv(input_file_name)
+    @staticmethod
+    def validate(input_file_name):
+        dfm = ValidateMap.read_csv(input_file_name)
         project_root = Path(input_file_name).parents[1]
         test_file_name = project_root.joinpath("source", "zipcodes.csv")
-        dft = self.read_csv(test_file_name)
+        dft = ValidateMap.read_csv(test_file_name)
         print(dft.head())
         #
         print("validate all zips")
-        b1 = self.validate_all_zips(dfm, dft)
+        b1 = ValidateMap.validate_all_zips(dfm, dft)
         if not b1:
             print("Failed ZIP test")
         #
         print("validate all fips")
-        b2 = self.validate_all_fips_state_county_codes(dfm)
+        b2 = ValidateMap.validate_all_fips_state_county_codes(dfm)
         if not b2:
             print("Failed FIPS test")
         #
         print("validate all county names")
-        b3 = self.validate_all_county_names(dfm)
+        b3 = ValidateMap.validate_all_county_names(dfm)
         if not b3:
             print("Failed county name test")
         #
         print("validate all state codes")
-        b4 = self.validate_all_state_codes(dfm)
+        b4 = ValidateMap.validate_all_state_codes(dfm)
         if not b4:
             print("Failed state code test")
         #
         print("validate all ZIPs have SSA County Codes")
-        b5 = self.validate_all_zips_have_ssacnty(dfm)
+        b5 = ValidateMap.validate_all_zips_have_ssacnty(dfm)
         if not b5:
             print("Failed ssa for ZIP test")
         return b1 and b2 and b4 and b5

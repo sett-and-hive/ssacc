@@ -1,3 +1,4 @@
+"""Data cleaning methods."""
 from titlecase import titlecase
 
 
