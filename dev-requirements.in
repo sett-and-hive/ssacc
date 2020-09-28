@@ -8,3 +8,4 @@ black
 isort
 Sphinx
 pre-commit
+pygments

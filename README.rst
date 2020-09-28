@@ -20,8 +20,9 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
 Sloppy Python project that can grab source tables from the internet, extract relationships between
 SSA Country Codes and ZIPs through intermediary relationship to FIPS county codes.
 
-SSA County Codes are used in some CMS databases, rather than FIPS county codes. This is an
-attempt to create tables that show a mapping of USPS ZIP-5 codes to SSA County Codes.
+SSA County Codes are used in some CMS databases, like NCH Part A, rather than FIPS county codes. This is an
+attempt to create tables that show a mapping of USPS ZIP-5 Codes to SSA County Codes, along with other location
+information associated with ZIP Codes.
 
 This project was entirely developed in the PyCharm IDE, with some faint plans to properly project-ify
 it for pip, but that remains to-do.
@@ -81,6 +82,18 @@ It is best practice during development to create an isolated
 ``venv`` standard library module. This will keep dependant Python packages from interfering
 with other Python projects on your system. I let PyCharm magically take care of this.
 
+To setup the virtual environment locally, as in the ``travis.yml``:
+
+.. code-block:: console
+
+    (venv) $ pip install --upgrade virtualenv
+
+    (venv) $ pip install tox
+
+    (venv) $ pip install codecov
+
+    (venv) $ pip install pytest
+
 Testing
 -------
 
@@ -93,8 +106,6 @@ To run all the tests:
 .. code-block:: console
 
     (venv) $ tox
-
-To Do: Make more tests run by tox pass.
 
 Unit Testing
 ^^^^^^^^^^^^
@@ -153,7 +164,9 @@ The project directory structure is like:
     │   └── <lib>.py
     ├── tests
     │   ├── __init__.py
-    │   └── test_<lib>.py
+    |   |── unit
+    │       ├── __init__.py
+    │       └── test_<lib>.py
     │── data
     │   ├── ssa_cnty_zip.csv <<-- This is the final output generated
     │   └── <ephemeral folders>
