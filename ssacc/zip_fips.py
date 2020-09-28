@@ -64,3 +64,4 @@ class ZipFips:
             print(f"Parser error {input_file_path} ")
         except Exception:
             print(f"Any other error reading {input_file_path}")
+        return None

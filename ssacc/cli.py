@@ -52,15 +52,14 @@ def main():
     Build CSV of SSA and FIPS codes
     """
     file_path = project_root.joinpath("data", "source", "countyrate.csv")
-    s = SsaFips()
-    dfs = s.csv_read(file_path)
+    dfs = SsaFips.read_ssa_fips(file_path)
     print(dfs.columns.values)
     print(file_path)
     print(dfs.head())
     """
     ZIPs and FIPS
     """
-    z = ZipFips()
+
     """
     Build a new ZIP and FIPS CSV if asked
     """
@@ -68,37 +67,35 @@ def main():
         project_root = Path(__file__).parents[1]  # was 2
         file_path = project_root.joinpath("data", "source")
         print(f"root file path {file_path}")
-        z.read_files(file_path)
+        ZipFips.read_files(file_path)
     """ Read the ZIP and FIPS """
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
-    dfz = z.read_csv(file_path)
+    dfz = ZipFips.read_csv(file_path)
     print(file_path)
     print(dfz.head())
     """ Read the ZIP and city name """
     file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    dfc = z.read_csv(file_path)
+    dfc = ZipFips.read_csv(file_path)
     print(file_path)
     print(dfc.head())
     """ Merge DFs to create ZIP SSA table"""
-    m = MapSsaZipFips()
-    dfm1 = m.map_ssa_zip(dfs, dfz)
-    dfm2 = m.map_city(dfm1, dfc)
+    dfm1 = MapSsaZipFips.map_ssa_zip(dfs, dfz)
+    dfm2 = MapSsaZipFips.map_city(dfm1, dfc)
     # title case all cities, counties, states
     dfm2 = CleanDF.titlecase_columns(dfm2, ["city", "countyname", "state"])
     print("dfm2 head")
     print(dfm2.head())
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
-    dfr = m.write_csv(dfm2, file_path)
+    dfr = MapSsaZipFips.write_csv(dfm2, file_path)
     """ Validate the ZIP SSA table"""
-    v = ValidateMap()
-    b = v.validate(file_path)
+    b = ValidateMap.validate(file_path)
     if not b:
         print("Failed data validation test")
     else:
         print("Data quality tests pass")
         print("Writing refined ZIP to SSA County Code CSV")
         refined_file_path = project_root.joinpath("data", "ssa_cnty_zip.csv")
-        m.write_refined_csv(dfr, refined_file_path)
+        MapSsaZipFips.write_refined_csv(dfr, refined_file_path)
     return None
 
 

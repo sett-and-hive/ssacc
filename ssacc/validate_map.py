@@ -79,6 +79,7 @@ class ValidateMap:
             # continue
         except Exception:
             print(f"Any other error reading {input_file_path}")
+        return None
 
     @staticmethod
     def validate_all_zips(dfm, dft):

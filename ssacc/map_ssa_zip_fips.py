@@ -43,22 +43,23 @@ class MapSsaZipFips:
     def reorder_and_sort_data(df):
         # ssacounty	stabbr	countyname	fipsstco	state	year	zip	fipscc	fipsstct	statecd	county
         # change order to group
-        df = CleanDF.reorder_columns(df,
-                                     [
-                                         "zip",
-                                         "ssacnty",
-                                         "ssastco",
-                                         "fipscc",
-                                         "fipsstco",
-                                         "fipsstct",
-                                         "countyname",
-                                         "county",
-                                         "city",
-                                         "stabbr",
-                                         "statecd",
-                                         "state",
-                                     ]
-                                     )
+        df = CleanDF.reorder_columns(
+            df,
+            [
+                "zip",
+                "ssacnty",
+                "ssastco",
+                "fipscc",
+                "fipsstco",
+                "fipsstct",
+                "countyname",
+                "county",
+                "city",
+                "stabbr",
+                "statecd",
+                "state",
+            ],
+        )
         df = df.sort_values(by=["zip"])
         # Sanitize - drop rows with no ZIP. The point is to map ZIP to SSA CNTY CD.
         df = df.dropna(subset=["zip"])

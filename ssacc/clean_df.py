@@ -34,7 +34,6 @@ class CleanDF:
         for i in range(len(df.columns)):
             if i < len(original_list):
                 if original_list[i] in df.columns:
-                    print(f"Renaming {original_list[i]} as {renamed_list[i]}")
                     df.rename(columns={original_list[i]: renamed_list[i]}, inplace=True)
                 else:
                     print(f"Unexpected column name {original_list[i]} found in rename_columns().")
