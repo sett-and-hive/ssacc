@@ -10,7 +10,7 @@ Please check if your PR fulfills the following requirements:
 
 ## Pull request type
 
-<!-- Please try to limit your pull request to one type, submit multiple pull requests if needed. --> 
+<!-- Please try to limit your pull request to one type, submit multiple pull requests if needed. -->
 
 Please check the type of change your PR introduces:
 - [ ] Bugfix
@@ -19,7 +19,7 @@ Please check the type of change your PR introduces:
 - [ ] Refactoring (no functional changes, no api changes)
 - [ ] Build related changes
 - [ ] Documentation content changes
-- [ ] Other (please describe): 
+- [ ] Other (please describe):
 
 
 ## What is the current behavior?
@@ -63,5 +63,3 @@ Issue Number: N/A
 <!--- Provide a general summary of your changes in the Title above -->
 
 ## Screenshots (if appropriate):
-
-
