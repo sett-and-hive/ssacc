@@ -117,24 +117,12 @@ def test_titlecase_columns_bad_column_name():
     no specific meaning to the domain use of this project.
     """
     best_sellers = {
-        "titles": [
-            "MAID IN WAITING",
-            "MISTER AND MISSUS PENNINGTON",
-        ],
-        "authors": [
-            "JOHN MCGALSWORTHY",
-            "FRANCIS BRETT YOUNG",
-        ],
+        "titles": ["MAID IN WAITING", "MISTER AND MISSUS PENNINGTON"],
+        "authors": ["JOHN MCGALSWORTHY", "FRANCIS BRETT YOUNG"],
     }
     best_sellers_fixture = {
-        "titles": [
-            "Maid in Waiting",
-            "Mister and Missus Pennington",
-        ],
-        "authors": [
-            "John McGalsworthy",
-            "Francis Brett Young",
-        ],
+        "titles": ["Maid in Waiting", "Mister and Missus Pennington"],
+        "authors": ["John McGalsworthy", "Francis Brett Young"],
     }
     df = pd.DataFrame(best_sellers, columns=["titles", "authors"])
     df_fixture = pd.DataFrame(best_sellers_fixture, columns=["titles", "authors"])

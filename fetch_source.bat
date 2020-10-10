@@ -18,6 +18,3 @@ powershell Expand-Archive data\source\compressed\msabea.zip -DestinationPath %CD
 
 rem Get a list of all ZIP codes to test our mapping file for completeness
 curl --create-dirs "http://federalgovernmentzipcodes.us/free-zipcode-database-Primary.csv" -o "data/source/zipcodes.csv"
-
-
-
