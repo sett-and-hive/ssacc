@@ -40,6 +40,6 @@ jobs:
       run: "python -m tox"
 
     - name: "Post to codecov.io"
-      uses: codecov/codecod-action@v1
+      uses: codecov/codecov-action@v1
       with:
         verbose: true
