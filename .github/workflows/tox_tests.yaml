@@ -41,8 +41,6 @@ jobs:
 
     - name: "Run tox targets for ${{ matrix.python-version }}"
       run: "python -m tox"
-      with:
-        verbose: true
 
     - name: "Post to codecov.io"
       uses: codecov/codecov-action@v1
