@@ -22,11 +22,14 @@ jobs:
     steps:
     - name: "Checkout"
       uses: actions/checkout@v2
+      with:
+        verbose: true
 
     - name: "Set up Python"
       uses: actions/setup-python@v2
       with:
         python-version: "${{ matrix.python-version }}"
+        verbose: true
 
     - name: "Install dependencies"
       run: |
@@ -35,9 +38,12 @@ jobs:
         python -m site
         python -m pip install --upgrade pip setuptools wheel
         python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions codecov randomly
-
+      with:
+        verbose: true
     - name: "Run tox targets for ${{ matrix.python-version }}"
       run: "python -m tox"
+      with:
+        verbose: true
 
     - name: "Post to codecov.io"
       uses: codecov/codecov-action@v1
