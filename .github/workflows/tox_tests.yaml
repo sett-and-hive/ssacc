@@ -23,13 +23,12 @@ jobs:
     - name: "Checkout"
       uses: actions/checkout@v2
       with:
-        verbose: true
+        clean: true
 
     - name: "Set up Python"
       uses: actions/setup-python@v2
       with:
         python-version: "${{ matrix.python-version }}"
-        verbose: true
 
     - name: "Install dependencies"
       run: |
