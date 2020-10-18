@@ -2,7 +2,7 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
 ==================================================
 
 .. image:: https://github.com/tomwillis608/ssacc/workflows/CI/badge.svg
-    :target: https://github.com/tomwillis608/ssaccactions?workflow=CI
+    :target: https://github.com/tomwillis608/ssacc/actions?workflow=CI
     :alt: GitHub Actions CI Status
 
 .. image:: https://travis-ci.com/tomwillis608/ssacc.svg?branch=main
