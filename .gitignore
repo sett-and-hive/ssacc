@@ -5,6 +5,7 @@
 .venv
 venv/
 ENV/
+env/
 
 # Installer logs
 pip-log.txt
@@ -68,3 +69,4 @@ _templates
 
 # backups
 *.bak
+

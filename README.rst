@@ -94,6 +94,9 @@ To setup the virtual environment locally, as in the ``travis.yml``:
 
     (venv) $ pip install pytest
 
+python3 -m venv env
+
+source env/bin/activate
 Testing
 -------
 
