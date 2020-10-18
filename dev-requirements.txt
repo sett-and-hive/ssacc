@@ -14,6 +14,7 @@ cffi==1.14.3              # via multicoretsne
 cfgv==3.2.0               # via pre-commit
 chardet==3.0.4            # via requests
 click==7.1.2              # via black
+cmake==3.18.2.post1       # via -r dev-requirements.in
 coverage==5.3             # via pytest-cov
 cycler==0.10.0            # via matplotlib
 distlib==0.3.1            # via virtualenv

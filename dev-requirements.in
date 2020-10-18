@@ -10,3 +10,4 @@ Sphinx
 pre-commit
 pygments
 randomly
+cmake
