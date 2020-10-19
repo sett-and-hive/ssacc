@@ -1,3 +1,12 @@
+---
+name: Pull request template
+about: Start a dialog about a code change
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 **Pull request checklist**
 
 Please check if your PR fulfills the following requirements:
