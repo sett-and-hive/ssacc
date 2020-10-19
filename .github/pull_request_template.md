@@ -1,3 +1,13 @@
+---
+name: Pull request template
+about: Start a dialog about a code change
+title: ''
+labels: ''
+assignees: ''
+
+---
+# Pull Request
+
 **Pull request checklist**
 
 Please check if your PR fulfills the following requirements:
@@ -29,7 +39,7 @@ Please check the type of change your PR introduces:
 <!--- If fixing a bug, there should be an issue describing it with steps to reproduce -->
 <!--- Please link to the issue here: -->
 
-**Issue Number:**
+**GitHub Issue Number**
 
 **What is the new behavior?**
 <!-- Please describe the behavior or changes that are being added by this PR. -->
