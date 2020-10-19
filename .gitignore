@@ -69,3 +69,7 @@ _templates
 
 # backups
 *.bak
+
+# Node.s
+node_modules/*
+package-lock.json

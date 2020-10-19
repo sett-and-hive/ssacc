@@ -16,7 +16,7 @@ def test_read_csv():
     print(file_path)
     required_columns = {"ssacounty", "rating", "year", "runtime"}
     df = ZipFips.read_csv(file_path)
-    assert len(df)
+    assert not df.empty
     for column_name in required_columns:
         assert column_name in df.columns
 
