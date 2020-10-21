@@ -85,6 +85,8 @@ def main():
     dfm2 = CleanDF.titlecase_columns(dfm2, ["city", "countyname", "state"])
     print("dfm2 head")
     print(dfm2.head())
+    # sort by zip then county code
+    dfm2 = dfm2.sort_values(by=["zip", "ssacnty"])
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
     dfr = MapSsaZipFips.write_csv(dfm2, file_path)
     """ Validate the ZIP SSA table"""

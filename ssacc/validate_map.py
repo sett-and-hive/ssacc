@@ -104,7 +104,7 @@ class ValidateMap:
                     pass
             except KeyError:
                 print(f"Error looking for ZIP code in test file at position{i}")
-        print(f"Missing zip count {missing}. Total count {total}")
+        print(f"Missing zip count {missing}. Total count {total}. Expect 42522.")
         return True if 0 == missing else False
 
     @staticmethod
@@ -129,7 +129,9 @@ class ValidateMap:
                 print("bad county data [{countytest}] [{county}]")
                 missing += 1
                 total += 1
-        print(f"Missing county names count {missing}. Total count {total}")
+        print(
+            f"Missing county names count {missing}. Expect 739. Total count {total}. Expect 53881."
+        )
         return True if 0 == missing else False
 
     @staticmethod
@@ -148,7 +150,7 @@ class ValidateMap:
                 total += 1
             except FileNotFoundError:
                 pass
-        print(f"Missing fips count {missing}. Total count {total}")
+        print(f"Missing fips count {missing}. Total count {total}. Expect 53881.")
         return True if 0 == missing else False
 
     @staticmethod
@@ -166,7 +168,7 @@ class ValidateMap:
         missing_list = missing_state_country.tolist()
         missing = missing_list.count(True)
         total = len(missing_list)
-        print(f"Missing state code+cnty count {missing}. Total count {total}")
+        print(f"Missing state code+cnty count {missing}. Total count {total}. Expect 53881.")
         return True if 0 == missing else False
 
     @staticmethod
@@ -193,5 +195,5 @@ class ValidateMap:
                     continue
             except KeyError:
                 print(f"Error looking for ZIP in main file at position{i}")
-        print(f"Missing SSA count {missing}. Total count {total}")
+        print(f"Missing SSA count {missing}. Total count {total}. Expect 53881.")
         return True if 0 == missing else False
