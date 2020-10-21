@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "ssacc"
-copyright = "2020, Tom Willis"
+copyright = "© 2020 Tom Willis"
 author = "Tom Willis"
 
 
