@@ -73,3 +73,7 @@ _templates
 # Node.s
 node_modules/*
 package-lock.json
+
+# rope for refactoring Python
+.vscode/.ropeproject/config.py
+.vscode/.ropeproject/objectdb

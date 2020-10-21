@@ -29,16 +29,12 @@ class ZipFips:
         df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
 
         print(project_root)
-        for i in range(1, 11):
-            file_path = project_root.joinpath(f"zipcty{i}")
-            print(file_path)
-            df0 = ZipFips.read_zip_fips_text_file(file_path, statecodes)
-            print(df0)
-            # df1 = pd.concat([df, df0])
-            # df = df1
-            df = df.append(df0)
-        # frames = [ process_your_file(f) for f in files ]
-        # result = pd.concat(frames)
+        frames = [
+            ZipFips.read_zip_fips_text_file(project_root.joinpath(filename), statecodes)
+            for filename in os.listdir(project_root)
+            if filename.startswith("zipcty")
+        ]
+        df = df.append(frames)
         if df is not None:
             print("Head of zip county df")
             print(df.head())
