@@ -89,6 +89,8 @@ def main():
     dfm2 = CleanDF.titlecase_columns(dfm2, ["city", "countyname", "state"])
     print("dfm2 head")
     print(dfm2.head())
+    # drop duplicate rows
+    dfm2 = dfm2.drop_duplicates()
     # sort by zip then county code
     dfm2 = dfm2.sort_values(by=["zip", "ssacnty"])
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
