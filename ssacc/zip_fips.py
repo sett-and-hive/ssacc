@@ -19,7 +19,7 @@ class ZipFips:
     """Build intermediate ZIP and FIPS county code data frame."""
 
     @staticmethod
-    def read_files(input_folder_path):
+    def files_to_csv(input_folder_path):
         """Read some files, build a data frame."""
         project_root = Path(input_folder_path)
         state_file = project_root.joinpath("state_fips.json")
