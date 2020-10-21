@@ -1,6 +1,8 @@
 """Test SsaFips"""
 from pathlib import Path
 
+import pandas as pd
+
 from ssacc.ssa_fips import SsaFips
 
 
@@ -37,3 +39,59 @@ def test_read_csv_exception():
     print(file_path)
     df = SsaFips.read_csv(None)
     assert df is None
+
+
+def test_clean_csv():
+    cars = {
+        "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
+        "Price": [22000, 25000, 27000, 35000],
+        "ssacounty": ["12015", "22013", "32018", "42018"],
+        "partsab5bonus2018rate": [2200, 2500, 2700, 3500],
+        "partsab35bonus2018rate": [220, 250, 270, 350],
+        "partsab0bonus2018rate": [22, 25, 27, 35],
+        "partsabesrd2018rate": [2, 3, 4, 5],
+    }
+    df = pd.DataFrame(
+        cars,
+        columns=[
+            "Brand",
+            "Price",
+            "ssacounty",
+            "partsab5bonus2018rate",
+            "partsab35bonus2018rate",
+            "partsab0bonus2018rate",
+            "partsabesrd2018rate",
+        ],
+    )
+    df1 = SsaFips.clean_ssa_fips_data(df)
+    assert df1 is not None
+    assert "partsab5bonus2018rate" not in df1.columns
+    assert "ssacounty" not in df1.columns
+    assert "ssacnty" in df1.columns
+
+
+def test_clean_csv_wrong_column():
+    cars = {
+        "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
+        "Price": [22000, 25000, 27000, 35000],
+        "ssacounty": ["12015", "22013", "32018", "42018"],
+        "partsab5bonus2018rate": [2200, 2500, 2700, 3500],
+        "partsab35bonus2018rate": [220, 250, 270, 350],
+        "xxpartsab0bonus2018rate": [22, 25, 27, 35],
+    }
+    df = pd.DataFrame(
+        cars,
+        columns=[
+            "Brand",
+            "Price",
+            "ssacounty",
+            "partsab5bonus2018rate",
+            "partsab35bonus2018rate",
+            "xxpartsab0bonus2018rate",
+        ],
+    )
+    df1 = SsaFips.clean_ssa_fips_data(df)
+    assert df1 is not None
+    assert "partsab5bonus2018rate" not in df1.columns
+    assert "ssacounty" not in df1.columns
+    assert "ssacnty" in df1.columns
