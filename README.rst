@@ -39,8 +39,6 @@ Before running the Python, you need to download some input files from the intern
 Run the ``fetch_batch.bat`` file if running from Windows.
 If running from \*nix, you will need to curl the three files by hand and unzip the one.
 
-To Do: Add ``fetch_batch.sh`` analog to the batch script.
-
 The first time you run the ``cli.py``, run with the ``-r 1`` option to generate
 ``data/source/zipcodes.csv`` intermediate file. The goal is to create
 ``data/ssa_cnty_zip.csv`` which maps ZIP-5 to SSA Country Code, including the
