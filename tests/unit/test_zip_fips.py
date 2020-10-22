@@ -94,3 +94,12 @@ def test_read_zip_fips_text_file_repeat_zip_code():
     df = ZipFips.read_zip_fips_text_file(test_file, statecodes)
     assert not df.empty
     assert "TX" in df.statecd.values
+
+
+def test_files_to_csv():
+    """Test files_to_csv with test files"""
+    project_root = Path(__file__).resolve().parents[2]
+    test_file_path = project_root.joinpath("tests", "data")
+    df = ZipFips.files_to_csv(test_file_path)
+    assert not df.empty
+    assert "TX" in df.statecd.values
