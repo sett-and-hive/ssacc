@@ -1,14 +1,21 @@
+""" Test CleanDF."""
 import pandas as pd
 
 from ssacc.clean_df import CleanDF
 
+# pylint: disable=duplicate-code
+# pylint: disable=R0801
+# Tests do not need to be DRY
+
 
 def test_construction():
+    """Test construction of CleanDF. Trivial."""
     assert CleanDF()
 
 
 def test_titlecase_one_column():
-    """
+    """Test titlecase for one column.
+
     The specific values in the fixture have
     meaning to the domain use of this project.
     This is a regression test for the behavior
@@ -57,7 +64,8 @@ def test_titlecase_one_column():
 
 
 def test_titlecase_columns():
-    """
+    """Test titlecase for columns.
+
     The specific values in the fixture have
     no specific meaning to the domain use of this project.
     """
@@ -112,7 +120,8 @@ def test_titlecase_columns():
 
 
 def test_titlecase_columns_bad_column_name():
-    """
+    """Test titlecase with bad column name.
+
     The specific values in the fixture have
     no specific meaning to the domain use of this project.
     """
@@ -133,6 +142,7 @@ def test_titlecase_columns_bad_column_name():
 
 
 def test_drop_columns():
+    """ Test column dropping."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -156,6 +166,7 @@ def test_drop_columns():
 
 
 def test_drop_columns_bad_column_name():
+    """ Test column droppin with bad name."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -169,6 +180,7 @@ def test_drop_columns_bad_column_name():
 
 
 def test_reorder_columns():
+    """ Test column reordering."""
     cars = {
         "Brand": ["Chevrolet Bel Air", "Lotus Esprit", "Citroën 2CV", "Aston Martin DBS V-12"],
         "Price": [49995, 59950, 18650, 114000],
@@ -182,6 +194,7 @@ def test_reorder_columns():
 
 
 def test_dropna_rows():
+    """ Test empty row dropping."""
     cars = {
         "Brand": [
             "Chitty Chitty Bang Bang",
@@ -204,6 +217,7 @@ def test_dropna_rows():
 
 
 def test_dropna_rows_bad_column_name():
+    """ Test empty row droppin with bad column name."""
     cars = {
         "Brand": [
             "Chitty Chitty Bang Bang",
@@ -226,6 +240,7 @@ def test_dropna_rows_bad_column_name():
 
 
 def test_rename_columns():
+    """ Test column renaming."""
     cars = {
         "Brand": ["Chevrolet Bel Air", "Lotus Esprit", "Citroën 2CV", "Aston Martin DBS V-12"],
         "Price": [49995, 59950, 18650, 114000],
@@ -242,6 +257,7 @@ def test_rename_columns():
 
 
 def test_rename_columns_bad_column_name():
+    """ Test column renamin with bad column name."""
     cars = {
         "Brand": ["Chevrolet Bel Air", "Lotus Esprit"],
         "Price": [49995, 59950],

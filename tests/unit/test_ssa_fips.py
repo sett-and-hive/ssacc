@@ -5,6 +5,10 @@ import pandas as pd
 
 from ssacc.ssa_fips import SsaFips
 
+# pylint: disable=duplicate-code
+# pylint: disable=R0801
+# Tests do not need to be DRY
+
 
 def test_construction():
     """Test the construction of SsaFips. Trivial."""
@@ -42,6 +46,7 @@ def test_read_csv_exception():
 
 
 def test_clean_csv():
+    """ Test CSV cleaning."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -71,6 +76,7 @@ def test_clean_csv():
 
 
 def test_clean_csv_wrong_column():
+    """ Test CSV cleaning with bad column."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],

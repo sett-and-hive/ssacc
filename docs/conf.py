@@ -17,10 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
+# pylint: disable=invalid-name
+# pylint: disable=redefined-builtin
 project = "ssacc"
 copyright = "© 2020 Tom Willis"
 author = "Tom Willis"
-
+# pylint: enable=redefined-builtin
 
 # -- General configuration ---------------------------------------------------
 
