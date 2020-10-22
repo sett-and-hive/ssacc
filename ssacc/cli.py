@@ -67,19 +67,20 @@ def main():
     """
     Build a new ZIP and FIPS CSV if asked
     """
+    zf = ZipFips()
     if args.r:
         project_root = Path(__file__).parents[1]  # was 2
         file_path = project_root.joinpath("data", "source")
         print(f"root file path {file_path}")
-        ZipFips.files_to_csv(file_path)
+        zf.files_to_csv(file_path)
     """ Read the ZIP and FIPS """
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
-    dfz = ZipFips.read_csv(file_path)
+    dfz = zf.read_csv(file_path)
     print(file_path)
     print(dfz.head())
     """ Read the ZIP and city name """
     file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    dfc = ZipFips.read_csv(file_path)
+    dfc = zf.read_csv(file_path)
     print(file_path)
     print(dfc.head())
     """ Merge DFs to create ZIP SSA table"""

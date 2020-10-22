@@ -18,19 +18,20 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 class ZipFips:
     """Build intermediate ZIP and FIPS county code data frame."""
 
-    @staticmethod
-    def files_to_csv(input_folder_path):
+    def __init__(self):
+        project_root = Path(__file__).parents[1]
+        state_file = project_root.joinpath("reference", "state_fips.json")
+        self.statecodes = json.load(open(state_file))
+
+    def files_to_csv(self, input_folder_path):
         """Read some files, build a data frame."""
         print("ZipFips.files_to_csv")
         project_root = Path(input_folder_path)
-        state_file = project_root.joinpath("state_fips.json")
-        statecodes = json.load(open(state_file))
-        #        zip_seen = {}
         df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
 
         print(project_root)
         frames = [
-            ZipFips.read_zip_fips_text_file(project_root.joinpath(filename), statecodes)
+            self.read_zip_fips_text_file(project_root.joinpath(filename))
             for filename in os.listdir(project_root)
             if filename.startswith("zipcty")
         ]
@@ -63,8 +64,7 @@ class ZipFips:
             print(f"Any other error reading {input_file_path}")
         return None
 
-    @staticmethod
-    def read_zip_fips_text_file(input_file_path, statecodes):
+    def read_zip_fips_text_file(self, input_file_path):
         zip_seen = {}
         df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
         zip_county_file = open(input_file_path)
@@ -83,7 +83,7 @@ class ZipFips:
                     zip_code = str(groupdict_result["zip"]).zfill(5)
                     fips = str(groupdict_result["fips"]).zfill(3)
                     try:
-                        fips_st_ct = str(statecodes[groupdict_result["state"]]).zfill(2)
+                        fips_st_ct = str(self.statecodes[groupdict_result["state"]]).zfill(2)
                     except KeyError:
                         print(
                             f"KeyError adding state code to {fips} "
