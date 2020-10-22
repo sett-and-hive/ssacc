@@ -18,7 +18,10 @@ class MapSsaZipFips:
         dfs - dataframe with SSA and FIPS county codes
         dfz - dataframe with ZIP and FIPS county codes
         """
-        dfm = pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+        try:
+            dfm = pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+        except KeyError:
+            dfm = None
         print(dfm)
         return dfm
 
@@ -30,8 +33,11 @@ class MapSsaZipFips:
         dfs - dataframe with ZIP, SSA and FIPS county codes
         dfz - dataframe with ZIP and city name
         """
-        dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
-        dfm = CleanDF.rename_columns(dfm, ["City"], ["city"])
+        try:
+            dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
+            dfm = CleanDF.rename_columns(dfm, ["City"], ["city"])
+        except KeyError:
+            dfm = None
         print(dfm)
         return dfm
 
