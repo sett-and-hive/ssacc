@@ -25,6 +25,10 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
     :target: https://www.codefactor.io/repository/github/tomwillis608/ssacc
     :alt: CodeFactor reviews
 
+.. image:: https://snyk.io/test/github/tomwillis608/ssacc/badge.svg
+    :target: https://snyk.io/test/github/tomwillis608/ssacc/
+    :alt: Snyk Tests
+
 Sloppy Python project that can grab source tables from the internet, extract relationships between
 SSA Country Codes and ZIPs through intermediary relationship to FIPS county codes.
 
@@ -32,8 +36,7 @@ SSA County Codes are used in some CMS databases, like NCH Part A, rather than FI
 attempt to create tables that show a mapping of USPS ZIP-5 Codes to SSA County Codes, along with other location
 information associated with ZIP Codes.
 
-This project was entirely developed in the PyCharm IDE, with some faint plans to properly project-ify
-it for pip, but that remains to-do.
+TODO: project-ify it for pip.
 
 Before running the Python, you need to download some input files from the internet.
 Run the ``fetch_batch.bat`` file if running from Windows.
@@ -65,7 +68,7 @@ Python 3.6+.
 Windows Support
 ---------------
 
-Developed on Windows 10. (Note the batch file.)
+Developed on Windows 10, initially (Note the batch file). More recently with WSL.
 
 Dependencies
 ------------
