@@ -1,11 +1,24 @@
 """Test MapSsaZipFips."""
-import pandas as pd
+from contextlib import suppress
+import os
+from pathlib import Path
+import warnings
+
+# suppress spurious "numpy.ufunc size changed" warnings
+# According to
+# https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility
+# these warnings are benign.
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+    warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
+    import pandas as pd
+
 
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 
+# Tests do not need to be DRY
 # pylint: disable=duplicate-code
 # pylint: disable=R0801
-# Tests do not need to be DRY
 
 
 def test_construction():
@@ -73,3 +86,44 @@ def test_map_city_bad():
     dfz = pd.DataFrame(zip_fips, columns=["Zipcode", "fipsstct"])
     df = MapSsaZipFips.map_city(dfs, dfz)
     assert df is None
+
+
+def test_write_csv():
+    """ Test writing a CSV. """
+    cars = {
+        "zip": [220, 250, 270, 350],
+        "ssacnty": [22, 25, 27, 35],
+        "countyname": [2, 3, 4, 5],
+        "county": [220, 250, 270, 350],
+        "stabbr": [22, 25, 27, 35],
+        "statecd": [2, 3, 4, 5],
+        "state": [220, 250, 270, 350],
+        "city": [22, 25, 27, 35],
+        "fipscc": [2, 3, 4, 5],
+        "fipsstco": [22, 25, 27, 35],
+        "fipsstct": [2, 3, 4, 5],
+        "ssastco": [12, 13, 14, 15],
+    }
+    df = pd.DataFrame(
+        cars,
+        columns=[
+            "zip",
+            "ssacnty",
+            "countyname",
+            "county",
+            "stabbr",
+            "statecd",
+            "state",
+            "city",
+            "fipscc",
+            "fipsstco",
+            "fipsstct",
+            "ssastco",
+        ],
+    )
+    project_root = Path(__file__).parents[1]
+    output_file_path = project_root.joinpath("temp", "m-test1.csv")
+    with suppress(FileNotFoundError):
+        os.remove(output_file_path)
+    MapSsaZipFips.write_csv(df, output_file_path)
+    assert os.path.isfile(output_file_path)

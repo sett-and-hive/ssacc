@@ -1,11 +1,19 @@
 """Test ZipFips."""
 from pathlib import Path
+import warnings
 
-from ssacc.zip_fips import ZipFips
+# suppress spurious "numpy.ufunc size changed" warnings
+# According to
+# https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility
+# these warnings are benign.
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+    warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
+    from ssacc.zip_fips import ZipFips
 
+# Tests do not need to be DRY
 # pylint: disable=duplicate-code
 # pylint: disable=R0801
-# Tests do not need to be DRY
 
 
 def test_construction():
