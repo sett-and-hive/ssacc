@@ -1,4 +1,6 @@
 """ Test CleanDF."""
+import warnings
+
 import pandas as pd
 
 from ssacc.clean_df import CleanDF
@@ -6,6 +8,8 @@ from ssacc.clean_df import CleanDF
 # pylint: disable=duplicate-code
 # pylint: disable=R0801
 # Tests do not need to be DRY
+warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 
 
 def test_construction():
