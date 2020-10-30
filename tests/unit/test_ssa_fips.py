@@ -109,3 +109,15 @@ def test_clean_csv_wrong_column():
     assert "partsab5bonus2018rate" not in df1.columns
     assert "ssacounty" not in df1.columns
     assert "ssacnty" in df1.columns
+
+
+def test_read_ssa_fips():
+    """Test read_csv() on the happy path."""
+    project_root = Path(__file__).parents[1]
+    file_path = project_root.joinpath("data", "test_ssa_fips_1.csv")
+    print(file_path)
+    required_columns = {"ssastco", "rating", "year", "runtime"}
+    df = SsaFips.read_ssa_fips(file_path)
+    assert not df.empty
+    for column_name in required_columns:
+        assert column_name in df.columns
