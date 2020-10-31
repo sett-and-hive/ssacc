@@ -88,7 +88,7 @@ def test_map_city_bad():
     assert df is None
 
 
-def test_write_csv():
+def test_write_csv(tmpdir):
     """ Test writing a CSV. """
     cars = {
         "zip": [220, 250, 270, 350],
@@ -121,8 +121,8 @@ def test_write_csv():
             "ssastco",
         ],
     )
-    project_root = Path(__file__).parents[1]
-    output_file_path = project_root.joinpath("temp", "m-test1.csv")
+    project_root = Path(tmpdir)
+    output_file_path = project_root.joinpath("m-test1.csv")
     with suppress(FileNotFoundError):
         os.remove(output_file_path)
     MapSsaZipFips.write_csv(df, output_file_path)
