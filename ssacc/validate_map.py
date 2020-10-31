@@ -188,7 +188,7 @@ class ValidateMap:
             except FileNotFoundError:
                 pass
         print(f"Missing fips count {missing}. Total count {total}. Expect 53881.")
-        return True if 0 == missing else False
+        return missing == 0
 
     @staticmethod
     def validate_all_state_codes(dfm):
@@ -210,7 +210,7 @@ class ValidateMap:
         missing = missing_list.count(True)
         total = len(missing_list)
         print(f"Missing state code+cnty count {missing}. Total count {total}. Expect 53881.")
-        return True if 0 == missing else False
+        return missing == 0
 
     @staticmethod
     def validate_all_zips_have_ssacnty(dfm):
@@ -240,4 +240,4 @@ class ValidateMap:
             except KeyError:
                 print(f"Error looking for ZIP in main file at position{i}")
         print(f"Missing SSA count {missing}. Total count {total}. Expect 53881.")
-        return True if 0 == missing else False
+        return missing == 0
