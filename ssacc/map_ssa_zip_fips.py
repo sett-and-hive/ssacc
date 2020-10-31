@@ -11,6 +11,9 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 
 
 class MapSsaZipFips:
+
+    """Map SSA and FIPS county codes with ZIP Codes."""
+
     @staticmethod
     def map_ssa_zip(dfs, dfz):
         """Merge date frame to join SSA anf FIPS county codes with ZIP codes.

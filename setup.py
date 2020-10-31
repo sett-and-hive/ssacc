@@ -1,3 +1,5 @@
+"""Setup for SSACC package."""
+
 from pathlib import Path
 
 import setuptools

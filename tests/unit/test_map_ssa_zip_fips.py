@@ -21,16 +21,24 @@ from ssacc.map_ssa_zip_fips import MapSsaZipFips
 # pylint: disable=R0801
 
 
+CAR1 = "Honda Civic"
+CAR2 = "Toyota Corolla"
+CAR3 = "Ford Focus"
+CAR4 = "Audi A4"
+
+
 def test_construction():
     """ Test the constructor. Trivial."""
     assert MapSsaZipFips()
 
 
 def test_map_ssa_zip():
-    """ Test Map SSA to ZIP code via FIPS county code."""
-    # pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+    """
+    Test Map SSA to ZIP code via FIPS county code.
+    pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+    """
     ssa_fips = {
-        "ssacc": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
+        "ssacc": [CAR1, CAR2, CAR3, CAR4],
         "fipsstco": [22000, 25000, 27000, 35000],
         "Year": [2015, 2013, 2018, 2019],
     }
@@ -43,10 +51,12 @@ def test_map_ssa_zip():
 
 
 def test_map_ssa_zip_bad():
-    """ Test Map SSA to ZIP code via FIPS county code. with bad data"""
-    # pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+    """
+    Test Map SSA to ZIP code via FIPS county code with bad data
+    pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+    """
     ssa_fips = {
-        "ssacc": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
+        "ssacc": [CAR1, CAR2, CAR3, CAR4],
         "xxfipsstco": [22000, 25000, 27000, 35000],
         "Year": [2015, 2013, 2018, 2019],
     }
@@ -58,10 +68,14 @@ def test_map_ssa_zip_bad():
 
 
 def test_map_city():
-    """ Test mapping of city data via ZIP codes."""
-    # dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
+    """
+    Test mapping of city data via ZIP codes.
+    This is tesing a dataframe merge where df_ssa "zip" merges
+    with df_zip "Zipcode"
+    df_merged = pd.merge(df_ssa, df_zip, how="outer", left_on="zip", right_on="Zipcode")
+    """
     ssa_fips = {
-        "City": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
+        "City": [CAR1, CAR2, CAR3, CAR4],
         "fipsstco": [22000, 25000, 27000, 35000],
         "zip": [2015, 2013, 2018, 2019],
     }
@@ -74,10 +88,14 @@ def test_map_city():
 
 
 def test_map_city_bad():
-    """ Test mapping of city data via ZIP codes with bad data."""
-    # dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
+    """
+    Test mapping of city data via ZIP codes with bad data.
+    This is tesing a dataframe merge where df_ssa "zip" merges
+    with df_zip "Zipcode"
+    df_merged = pd.merge(df_ssa, df_zip, how="outer", left_on="zip", right_on="Zipcode")
+    """
     ssa_fips = {
-        "City": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
+        "City": [CAR1, CAR2, CAR3, CAR4],
         "xxfipsstco": [22000, 25000, 27000, 35000],
         "xxzip": [2015, 2013, 2018, 2019],
     }
@@ -90,6 +108,21 @@ def test_map_city_bad():
 
 def test_write_csv(tmpdir):
     """ Test writing a CSV. """
+    df = _setup_df_for_test_write_csv()
+    output_file_path = _setup_file_path_for_test_write_csv(tmpdir)
+    MapSsaZipFips.write_csv(df, output_file_path)
+    assert os.path.isfile(output_file_path)
+
+
+def _setup_file_path_for_test_write_csv(tmpdir):
+    project_root = Path(tmpdir)
+    output_file_path = project_root.joinpath("m-test1.csv")
+    with suppress(FileNotFoundError):
+        os.remove(output_file_path)
+    return output_file_path
+
+
+def _setup_df_for_test_write_csv():
     cars = {
         "zip": [220, 250, 270, 350],
         "ssacnty": [22, 25, 27, 35],
@@ -121,9 +154,4 @@ def test_write_csv(tmpdir):
             "ssastco",
         ],
     )
-    project_root = Path(tmpdir)
-    output_file_path = project_root.joinpath("m-test1.csv")
-    with suppress(FileNotFoundError):
-        os.remove(output_file_path)
-    MapSsaZipFips.write_csv(df, output_file_path)
-    assert os.path.isfile(output_file_path)
+    return df
