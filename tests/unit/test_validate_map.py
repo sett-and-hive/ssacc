@@ -1,4 +1,4 @@
-""" Test ValidateMap."""
+"""Test ValidateMap."""
 from contextlib import suppress
 import os
 from pathlib import Path
@@ -22,7 +22,7 @@ from ssacc.validate_map import ValidateMap
 
 
 def test_construction():
-    """ Test the constructor. Trivial."""
+    """Test the constructor. Trivial."""
     assert ValidateMap()
 
 
@@ -48,7 +48,7 @@ def test_read_csv_file_not_found():
 
 
 def test_read_csv_exception():
-    """ Test read_csv() for bad data frame. """
+    """Test read_csv() for bad data frame."""
     project_root = Path(__file__).parents[1]
     file_path = project_root.joinpath("data", "test1.csv")
     print(file_path)
@@ -57,7 +57,7 @@ def test_read_csv_exception():
 
 
 def test_write_csv(tmpdir):
-    """ Test write to CSV. """
+    """Test write to CSV."""
     df = _create_dataframe_for_test_write_csv()
     project_root = Path(tmpdir)
     output_file_path = project_root.joinpath("test_validate_write_csv.csv")
@@ -68,7 +68,7 @@ def test_write_csv(tmpdir):
 
 
 def _create_dataframe_for_test_write_csv():
-    """ Create a dataframe for test_write_csv. """
+    """Create a dataframe for test_write_csv."""
     cars = {
         "zip": [220, 250, 270, 350],
         "ssacounty": [22, 25, 27, 35],
@@ -102,7 +102,7 @@ def _create_dataframe_for_test_write_csv():
 
 
 def test_validate_all_zips():
-    """ Test validate_all_zips. """
+    """Test validate_all_zips."""
     to_check = _create_dataframe_with_zipcodes_to_test()
     known_zips = _create_dataframe_with_known_zipcodes()
     missing_zips = ValidateMap.validate_all_zips(to_check, known_zips)
@@ -110,7 +110,7 @@ def test_validate_all_zips():
 
 
 def test_validate_all_zips_some_zips_missing():
-    """ Test validate_all_zips. """
+    """Test validate_all_zips."""
     to_check = _create_dataframe_with_empty_zipcodes_to_test()
     known_zips = _create_dataframe_with_known_zipcodes()
     missing_zips = ValidateMap.validate_all_zips(to_check, known_zips)
@@ -118,7 +118,7 @@ def test_validate_all_zips_some_zips_missing():
 
 
 def _create_dataframe_with_known_zipcodes():
-    """ Create dataframe of some known ZIP codes for test_validate_all_zips. """
+    """Create dataframe of some known ZIP codes for test_validate_all_zips."""
     df = pd.DataFrame(
         {
             "Zipcode": ["00705", "00611", "00610", "00612"],
@@ -130,7 +130,7 @@ def _create_dataframe_with_known_zipcodes():
 
 
 def _create_dataframe_with_zipcodes_to_test():
-    """ Create dataframe of sample ZIP codes for test_validate_all_zips. """
+    """Create dataframe of sample ZIP codes for test_validate_all_zips."""
     df = pd.DataFrame({"zip": ["00705", "00610", "00611", "00612"]}, columns=["zip"])
     return df
 

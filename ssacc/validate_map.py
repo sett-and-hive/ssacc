@@ -11,12 +11,12 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 
 
 class ValidateMap:
-    """ Validate the data mappings in the filters building up the final output. """
+
+    """Validate the data mappings in the filters building up the final output."""
 
     @staticmethod
     def validate(input_file_name):
-        """ Validate the penultimate file. """
-
+        """Validate the penultimate file."""
         dfm = ValidateMap.read_csv(input_file_name)
         project_root = Path(input_file_name).parents[1]
         test_file_name = project_root.joinpath("source", "zipcodes.csv")
@@ -57,7 +57,7 @@ class ValidateMap:
 
     @staticmethod
     def write_csv(df, output_file_path):
-        """ Write the csf from the data frame. """
+        """Write the csf from the data frame."""
         with suppress(FileNotFoundError):
             os.remove(output_file_path)
         # ssacounty	stabbr	countyname	fipsstco	state	year	zip	fipscc	fipsstct	statecd	county
@@ -81,7 +81,7 @@ class ValidateMap:
 
     @staticmethod
     def read_csv(input_file_path):
-        """ Create a dataframe from a csv file. """
+        """Create a dataframe from a csv file."""
         try:
             df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
             return df
@@ -141,7 +141,7 @@ class ValidateMap:
 
     @staticmethod
     def validate_all_county_names(dfm):
-        """ Validate the county names. """
+        """Validate the county names."""
         missing = 0
         total = 0
         count = len(dfm)
@@ -171,7 +171,7 @@ class ValidateMap:
 
     @staticmethod
     def validate_all_fips_state_county_codes(dfm):
-        """ Validate FIPS county codes. """
+        """Validate FIPS county codes."""
         missing = 0
         total = 0
         count = len(dfm)
@@ -192,8 +192,7 @@ class ValidateMap:
 
     @staticmethod
     def validate_all_state_codes(dfm):
-        """
-        Validate state codes.
+        """Validate state codes.
 
         There are two sources of state code and we want
         to test to see that they match when all the
@@ -215,7 +214,7 @@ class ValidateMap:
 
     @staticmethod
     def validate_all_zips_have_ssacnty(dfm):
-        """ Make sure ZIP codes have a SSA county code. """
+        """Make sure ZIP codes have a SSA county code."""
         print(dfm.head())
         missing = 0
         total = 0
