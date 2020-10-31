@@ -60,26 +60,26 @@ def main():
     print(df_ssa_fips.columns.values)
     print(file_path)
     print(df_ssa_fips.head())
-    """ZIPs and FIPS."""
+    # ZIPs and FIPS.
 
-    """ Build a new ZIP and FIPS CSV if asked."""
+    # Build a new ZIP and FIPS CSV if asked.
     zip_fips = ZipFips()
     if args.r:
         project_root = Path(__file__).parents[1]  # was 2
         file_path = project_root.joinpath("data", "source")
         print(f"root file path {file_path}")
         zip_fips.files_to_csv(file_path)
-    """Read the ZIP and FIPS."""
+    # Read the ZIP and FIPS.
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
     df_zip_fips = zip_fips.read_csv(file_path)
     print(file_path)
     print(df_zip_fips.head())
-    """Read the ZIP and city name."""
+    # Read the ZIP and city name.
     file_path = project_root.joinpath("data", "source", "zipcodes.csv")
     df_zip_codes = zip_fips.read_csv(file_path)
     print(file_path)
     print(df_zip_codes.head())
-    """Merge DFs to create ZIP SSA table."""
+    # Merge DFs to create ZIP SSA table.
     df_map_1 = MapSsaZipFips.map_ssa_zip(df_ssa_fips, df_zip_fips)
     df_map_2 = MapSsaZipFips.map_city(df_map_1, df_zip_codes)
     # title case all cities, counties, states
@@ -92,7 +92,7 @@ def main():
     df_map_2 = df_map_2.sort_values(by=["zip", "ssacnty"])
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
     df_map_result = MapSsaZipFips.write_csv(df_map_2, file_path)
-    """Validate the ZIP SSA table."""
+    # Validate the ZIP SSA table.
     result = ValidateMap.validate(file_path)
     if not result:
         print("Failed data validation test")
