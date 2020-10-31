@@ -13,25 +13,29 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 class MapSsaZipFips:
     @staticmethod
     def map_ssa_zip(dfs, dfz):
-        """
-        Merge date frame to join SSA anf FIPS county codes with ZIP codes
+        """Merge date frame to join SSA anf FIPS county codes with ZIP codes.
         dfs - dataframe with SSA and FIPS county codes
         dfz - dataframe with ZIP and FIPS county codes
         """
-        dfm = pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+        try:
+            dfm = pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
+        except KeyError:
+            dfm = None
         print(dfm)
         return dfm
 
     @staticmethod
     def map_city(dfs, dfz):
-        """
-        Merge data frames to add city names.
+        """Merge data frames to add city names.
 
         dfs - dataframe with ZIP, SSA and FIPS county codes
         dfz - dataframe with ZIP and city name
         """
-        dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
-        dfm = CleanDF.rename_columns(dfm, ["City"], ["city"])
+        try:
+            dfm = pd.merge(dfs, dfz, how="outer", left_on="zip", right_on="Zipcode")
+            dfm = CleanDF.rename_columns(dfm, ["City"], ["city"])
+        except KeyError:
+            dfm = None
         print(dfm)
         return dfm
 
@@ -46,6 +50,7 @@ class MapSsaZipFips:
 
     @staticmethod
     def reorder_and_sort_data(df):
+        """ Reorder and sort a dataframe."""
         # ssacounty	stabbr	countyname	fipsstco	state	year	zip	fipscc	fipsstct	statecd	county
         # change order to group
         df = CleanDF.reorder_columns(

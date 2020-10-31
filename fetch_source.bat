@@ -9,7 +9,7 @@ curl --create-dirs "https://wonder.cdc.gov/wonder/sci_data/datasets/zipctyB.zip"
 powershell Expand-Archive  data\source\compressed\zipctyA.zip -DestinationPath %CD%\data\source
 powershell Expand-Archive  data\source\compressed\zipctyB.zip -DestinationPath %CD%\data\source
 
-rem SSA country code to FIP county code in CSV
+rem SSA county code to FIP county code in CSV
 curl --create-dirs "https://data.nber.org/ratebook/2018/countyrate2018.csv" -o "data/source/countyrate.csv"
 
 rem FIPS county code to ZIP

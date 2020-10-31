@@ -32,6 +32,7 @@ class SsaFips:
             print(f"Any other error reading {input_file_path}")
         return None
 
+    # TODO Refactor with clean_df methods
     @staticmethod
     def clean_ssa_fips_data(df):
         """ Clean up SSA FIPS county code data."""

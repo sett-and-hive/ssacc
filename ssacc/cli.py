@@ -7,6 +7,9 @@ map them together
 
 assumes you ran fetch script to populate the data folders
 
+TODO: refactor this into a pipeline runner for a
+filter and pipes architecture that is more testable.
+
 """
 import argparse
 from pathlib import Path
@@ -39,9 +42,10 @@ def parse_args() -> argparse.Namespace:
 
 def main():
     """
-    Build ZIP to FIPS CC CSV
     Build SSA CC to FIPS CC mapping.
     Build ZIP to FIPS CC mapping.
+    Build joined ZIP, FIPS CC, SSA CC.
+    Add city, state.
     Build verification SSA CC to ZIP CSV.
     Build refined SSA CC (3 and 5 digit) to ZIP CSV.
     """
@@ -63,19 +67,20 @@ def main():
     """
     Build a new ZIP and FIPS CSV if asked
     """
+    zf = ZipFips()
     if args.r:
         project_root = Path(__file__).parents[1]  # was 2
         file_path = project_root.joinpath("data", "source")
         print(f"root file path {file_path}")
-        ZipFips.read_files(file_path)
+        zf.files_to_csv(file_path)
     """ Read the ZIP and FIPS """
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
-    dfz = ZipFips.read_csv(file_path)
+    dfz = zf.read_csv(file_path)
     print(file_path)
     print(dfz.head())
     """ Read the ZIP and city name """
     file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    dfc = ZipFips.read_csv(file_path)
+    dfc = zf.read_csv(file_path)
     print(file_path)
     print(dfc.head())
     """ Merge DFs to create ZIP SSA table"""
@@ -85,6 +90,10 @@ def main():
     dfm2 = CleanDF.titlecase_columns(dfm2, ["city", "countyname", "state"])
     print("dfm2 head")
     print(dfm2.head())
+    # drop duplicate rows
+    dfm2 = dfm2.drop_duplicates()
+    # sort by zip then county code
+    dfm2 = dfm2.sort_values(by=["zip", "ssacnty"])
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
     dfr = MapSsaZipFips.write_csv(dfm2, file_path)
     """ Validate the ZIP SSA table"""

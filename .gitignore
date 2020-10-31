@@ -11,7 +11,7 @@ env/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit test coverage reports
 htmlcov/
 .tox/
 .coverage
@@ -56,7 +56,7 @@ data/source/
 data/.ignore
 data/temp
 
-#project configuration
+# project configuration
 .idea/
 
 # sphinx build folder
@@ -73,3 +73,10 @@ _templates
 # Node.s
 node_modules/*
 package-lock.json
+
+# rope for refactoring Python
+.vscode/.ropeproject/config.py
+.vscode/.ropeproject/objectdb
+
+# testing cruft
+tests/temp/*
