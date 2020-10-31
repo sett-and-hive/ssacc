@@ -11,6 +11,7 @@ import shutil
 
 
 def main() -> None:
+    """The main event for cleaning docs folder."""
     docs_dir = Path(__file__).resolve().parent
     for folder in ("_build", "apidoc"):
         delete_dir = docs_dir / folder

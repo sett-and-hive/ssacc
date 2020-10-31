@@ -64,7 +64,9 @@ class ZipFips:
             print(f"Any other error reading {input_file_path}")
         return None
 
+    # TODO: refactor to reduce complexity and local variable count
     def read_zip_fips_text_file(self, input_file_path):
+        """ Read text file with ZIPS and FIPS codes."""
         zip_seen = {}
         df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
         zip_county_file = open(input_file_path)

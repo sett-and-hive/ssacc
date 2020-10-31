@@ -56,56 +56,51 @@ def main():
     Build CSV of SSA and FIPS codes
     """
     file_path = project_root.joinpath("data", "source", "countyrate.csv")
-    dfs = SsaFips.read_ssa_fips(file_path)
-    print(dfs.columns.values)
+    df_ssa_fips = SsaFips.read_ssa_fips(file_path)
+    print(df_ssa_fips.columns.values)
     print(file_path)
-    print(dfs.head())
-    """
-    ZIPs and FIPS
-    """
+    print(df_ssa_fips.head())
+    # ZIPs and FIPS.
 
-    """
-    Build a new ZIP and FIPS CSV if asked
-    """
-    zf = ZipFips()
+    # Build a new ZIP and FIPS CSV if asked.
+    zip_fips = ZipFips()
     if args.r:
         project_root = Path(__file__).parents[1]  # was 2
         file_path = project_root.joinpath("data", "source")
         print(f"root file path {file_path}")
-        zf.files_to_csv(file_path)
-    """ Read the ZIP and FIPS """
+        zip_fips.files_to_csv(file_path)
+    # Read the ZIP and FIPS.
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
-    dfz = zf.read_csv(file_path)
+    df_zip_fips = zip_fips.read_csv(file_path)
     print(file_path)
-    print(dfz.head())
-    """ Read the ZIP and city name """
+    print(df_zip_fips.head())
+    # Read the ZIP and city name.
     file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    dfc = zf.read_csv(file_path)
+    df_zip_codes = zip_fips.read_csv(file_path)
     print(file_path)
-    print(dfc.head())
-    """ Merge DFs to create ZIP SSA table"""
-    dfm1 = MapSsaZipFips.map_ssa_zip(dfs, dfz)
-    dfm2 = MapSsaZipFips.map_city(dfm1, dfc)
+    print(df_zip_codes.head())
+    # Merge DFs to create ZIP SSA table.
+    df_map_1 = MapSsaZipFips.map_ssa_zip(df_ssa_fips, df_zip_fips)
+    df_map_2 = MapSsaZipFips.map_city(df_map_1, df_zip_codes)
     # title case all cities, counties, states
-    dfm2 = CleanDF.titlecase_columns(dfm2, ["city", "countyname", "state"])
+    df_map_2 = CleanDF.titlecase_columns(df_map_2, ["city", "countyname", "state"])
     print("dfm2 head")
-    print(dfm2.head())
+    print(df_map_2.head())
     # drop duplicate rows
-    dfm2 = dfm2.drop_duplicates()
+    df_map_2 = df_map_2.drop_duplicates()
     # sort by zip then county code
-    dfm2 = dfm2.sort_values(by=["zip", "ssacnty"])
+    df_map_2 = df_map_2.sort_values(by=["zip", "ssacnty"])
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
-    dfr = MapSsaZipFips.write_csv(dfm2, file_path)
-    """ Validate the ZIP SSA table"""
-    b = ValidateMap.validate(file_path)
-    if not b:
+    df_map_result = MapSsaZipFips.write_csv(df_map_2, file_path)
+    # Validate the ZIP SSA table.
+    result = ValidateMap.validate(file_path)
+    if not result:
         print("Failed data validation test")
     else:
         print("Data quality tests pass")
         print("Writing refined ZIP to SSA County Code CSV")
         refined_file_path = project_root.joinpath("data", "ssa_cnty_zip.csv")
-        MapSsaZipFips.write_refined_csv(dfr, refined_file_path)
-    return None
+        MapSsaZipFips.write_refined_csv(df_map_result, refined_file_path)
 
 
 # Allow the script to be run standalone (useful during development in PyCharm).

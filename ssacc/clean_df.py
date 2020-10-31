@@ -1,10 +1,18 @@
 """Data cleaning methods."""
+
 from titlecase import titlecase
 
 
 class CleanDF:
+
+    """Utilities for cleaning data frames. Data engineering."""
+
     @staticmethod
     def titlecase_columns(df, column_list):
+        """Apply titlecase to some columns in a dataframe.
+
+        TODO: Resolve some weaknesses in the titlecase library.
+        """
         for column_name in column_list:
             if column_name in df.columns:
                 df[column_name] = df[column_name].map(
@@ -17,6 +25,7 @@ class CleanDF:
 
     @staticmethod
     def drop_columns(df, column_list):
+        """Drop a list of columns from a dataframe."""
         for column_name in column_list:
             if column_name in df.columns:
                 df.drop(column_name, axis=1, errors="ignore", inplace=True)
@@ -27,11 +36,13 @@ class CleanDF:
 
     @staticmethod
     def reorder_columns(df, column_list):
+        """Reorder the columns in a dataframe."""
         df = df[column_list]
         return df
 
     @staticmethod
     def rename_columns(df, original_list, renamed_list):
+        """Rename columns."""
         for i in range(len(df.columns)):
             if i < len(original_list):
                 if original_list[i] in df.columns:
@@ -43,6 +54,7 @@ class CleanDF:
 
     @staticmethod
     def dropna_rows(df, column_list):
+        """Drop rows with now data in certain columns."""
         for column_name in column_list:
             if column_name in df.columns:
                 df = df.dropna(subset=[column_name])

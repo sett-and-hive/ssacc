@@ -10,6 +10,9 @@ print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resol
 
 
 class SsaFips:
+
+    """Read and clean SSA and FIPS county codes."""
+
     @staticmethod
     def read_ssa_fips(input_file_path):
         """Read data then clean it up."""
@@ -49,6 +52,5 @@ class SsaFips:
         df = CleanDF.rename_columns(df, ["ssacounty"], ["ssastco"])  # SSA STate COunty
         # add column ssacnty with 3 digit SSA county code: strip off state code from ssastco
         df["ssacnty"] = df["ssastco"].str[2:]
-        # Preview the first 5 lines of the loaded data
         print(df.head())
         return df
