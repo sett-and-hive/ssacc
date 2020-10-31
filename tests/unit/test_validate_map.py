@@ -136,7 +136,7 @@ def _create_dataframe_with_zipcodes_to_test():
 
 
 def _create_dataframe_with_empty_zipcodes_to_test():
-    """ Create dataframe of sample ZIP codes with missing values
-        for test_validate_all_zips_some_zips_missing. """
+    """Create dataframe of sample ZIP codes with missing values
+    for test_validate_all_zips_some_zips_missing."""
     df = pd.DataFrame({"zip": ["00705"]}, columns=["zip"])
     return df
