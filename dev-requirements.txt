@@ -38,14 +38,14 @@ multicoretsne==0.1        # via randomly
 mypy-extensions==0.4.3    # via black, mypy
 mypy==0.790               # via -r dev-requirements.in
 nodeenv==1.5.0            # via pre-commit
-numpy==1.19.2             # via matplotlib, multicoretsne, pandas, scikit-learn, scipy, seaborn
+numpy==1.19.3             # via matplotlib, multicoretsne, pandas, scikit-learn, scipy, seaborn
 packaging==20.4           # via pytest, sphinx, tox
-pandas==1.1.3             # via randomly, seaborn
+pandas==1.1.4             # via randomly, seaborn
 pathspec==0.8.0           # via black
 pep8-naming==0.11.1       # via -r dev-requirements.in
 pillow==8.0.1             # via matplotlib
 pluggy==0.13.1            # via pytest, tox
-pre-commit==2.7.1         # via -r dev-requirements.in
+pre-commit==2.8.2         # via -r dev-requirements.in
 py==1.9.0                 # via pytest, tox
 pycodestyle==2.6.0        # via flake8
 pycparser==2.20           # via cffi
@@ -54,12 +54,12 @@ pygments==2.7.2           # via -r dev-requirements.in, sphinx
 pyparsing==2.4.7          # via matplotlib, packaging
 pytest-cov==2.10.1        # via -r dev-requirements.in
 pytest-randomly==3.4.1    # via -r dev-requirements.in
-pytest==6.1.1             # via -r dev-requirements.in, pytest-cov, pytest-randomly
+pytest==6.1.2             # via -r dev-requirements.in, pytest-cov, pytest-randomly
 python-dateutil==2.8.1    # via matplotlib, pandas
 pytz==2020.1              # via babel, pandas
 pyyaml==5.3.1             # via pre-commit
 randomly==0.1.5           # via -r dev-requirements.in
-regex==2020.10.23         # via black
+regex==2020.10.28         # via black
 requests==2.24.0          # via sphinx
 scikit-learn==0.23.2      # via randomly
 scipy==1.5.3              # via randomly, scikit-learn, seaborn
