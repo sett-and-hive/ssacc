@@ -157,20 +157,36 @@ class ValidateMap:
         """Validate FIPS county codes."""
         missing = 0
         total = 0
+        if True:
+            total = len(dfm)
+            df_missing = dfm
+            df_missing = df_missing.assign(
+                NotMissing=df_missing.fipsstco.isin(dfm.fipsstct).astype(int)
+            )
+            df_missing = df_missing.loc[df_missing["NotMissing"] == 0]
+            print(df_missing)
+            df_missing.drop("NotMissing", axis=1, errors="ignore", inplace=True)
+            missing = len(df_missing)
+            print("FIPS county codes method B")
 
-        count = len(dfm)
-        for i in range(count):
-            # TODO: make sure this use of df.loc is correct
-            fips = dfm.loc[i, "fipsstco"]
-            try:
-                dfm.loc[dfm["fipsstct"] == fips]
-                total += 1
-            except KeyError:
-                print(f"Count not find SSA fips {fips} in SSA map")
-                missing += 1
-                total += 1
-            except FileNotFoundError:
-                pass
+            project_root = Path(__file__).resolve().parents[1]
+            missing_file_name = project_root.joinpath("data/temp", "missing_fips_county_B.csv")
+            print(f"Storing missing FIPS codes in {missing_file_name}")
+            df_missing.to_csv(path_or_buf=missing_file_name, index=0)
+        if True:
+            count = len(dfm)
+            for i in range(count):
+                # TODO: make sure this use of df.loc is correct
+                fips = dfm.loc[i, "fipsstco"]
+                try:
+                    dfm.loc[dfm["fipsstct"] == fips]
+                    total += 1
+                except KeyError:
+                    print(f"Count not find SSA fips {fips} in SSA map")
+                    missing += 1
+                    total += 1
+                except FileNotFoundError:
+                    pass
         print(f"Missing fips count {missing}. Total count {total}. Expect 53881.")
         return missing == 0
 
