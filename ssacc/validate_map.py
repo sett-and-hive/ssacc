@@ -110,45 +110,14 @@ class ValidateMap:
                 rows for the ZIP codes not found in dfm.
         """
         dft = dft.sort_values(by=["Zipcode"])
-        df_missing = pd.DataFrame().reindex(columns=dft.columns)
-        found = 0
         missing = 0
-        total = 0
-        if True:
-            df_missing = dft
-            df_missing = df_missing.assign(NotMissing=df_missing.Zipcode.isin(dfm.zip).astype(int))
-            df_missing = df_missing.loc[df_missing["NotMissing"] == 0]
-            df_missing.drop("NotMissing", axis=1, errors="ignore", inplace=True)
-        else:
-            found = 0
-            missing = 0
-            total = 0
-            count = len(dft)
-            for i in range(count):
-                try:
-                    df_zip_code = dft.iloc[[i]]
-                    zip_code = df_zip_code["Zipcode"].to_string(index=False).strip()
-                    try:
-                        zip_found = dfm[dfm["zip"] == zip_code]
-                        if not zip_found.empty:
-                            found += 1
-                        else:
-                            df_missing = df_missing.append(df_zip_code, ignore_index=True)
-                            missing += 1
-                        total += 1
-                    except KeyError:
-                        print(f"Could not find ZIP code {zip_code} in SSA map")
-                        missing += 1
-                        total += 1
-                        continue
-                except KeyError:
-                    print(f"Error looking for ZIP code in test file at position{i}")
-        print(
-            "ZIP codes in sample: ",
-            f"Found {found}. ",
-            f"Missing {missing}. ",
-            f"Total {total}. Expect 42522.",
-        )
+        total = len(dft)
+        df_missing = dft
+        df_missing = df_missing.assign(NotMissing=df_missing.Zipcode.isin(dfm.zip).astype(int))
+        df_missing = df_missing.loc[df_missing["NotMissing"] == 0]
+        df_missing.drop("NotMissing", axis=1, errors="ignore", inplace=True)
+        missing = len(df_missing)
+        print("ZIP codes in sample: ", f"Missing {missing}. ", f"Total {total}. Expect 42522.")
         return df_missing
 
     @staticmethod
@@ -188,6 +157,7 @@ class ValidateMap:
         """Validate FIPS county codes."""
         missing = 0
         total = 0
+
         count = len(dfm)
         for i in range(count):
             # TODO: make sure this use of df.loc is correct
