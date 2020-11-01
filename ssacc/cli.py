@@ -18,6 +18,7 @@ import sys
 from clean_df import CleanDF
 from map_ssa_zip_fips import MapSsaZipFips
 from ssa_fips import SsaFips
+from timing_wrapper import timing
 from validate_map import ValidateMap
 from zip_fips import ZipFips
 
@@ -40,6 +41,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+@timing
 def main():
     """
     Build SSA CC to FIPS CC mapping.

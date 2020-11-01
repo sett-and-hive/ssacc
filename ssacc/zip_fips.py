@@ -12,6 +12,8 @@ import re
 import pandas as pd
 from pandas.io.parsers import ParserError
 
+from ssacc.timing_wrapper import timing
+
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
@@ -23,6 +25,7 @@ class ZipFips:
         state_file = project_root.joinpath("reference", "state_fips.json")
         self.statecodes = json.load(open(state_file))
 
+    @timing
     def files_to_csv(self, input_folder_path):
         """Read some files, build a data frame."""
         print("ZipFips.files_to_csv")
@@ -65,6 +68,7 @@ class ZipFips:
         return None
 
     # TODO: refactor to reduce complexity and local variable count
+    @timing
     def read_zip_fips_text_file(self, input_file_path):
         """ Read text file with ZIPS and FIPS codes."""
         zip_seen = {}

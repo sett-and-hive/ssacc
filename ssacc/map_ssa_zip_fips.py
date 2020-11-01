@@ -6,6 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 from ssacc.clean_df import CleanDF
+from ssacc.timing_wrapper import timing
 
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
@@ -15,6 +16,7 @@ class MapSsaZipFips:
     """Map SSA and FIPS county codes with ZIP Codes."""
 
     @staticmethod
+    @timing
     def map_ssa_zip(dfs, dfz):
         """Merge date frame to join SSA anf FIPS county codes with ZIP codes.
         dfs - dataframe with SSA and FIPS county codes
@@ -28,6 +30,7 @@ class MapSsaZipFips:
         return dfm
 
     @staticmethod
+    @timing
     def map_city(dfs, dfz):
         """Merge data frames to add city names.
 
