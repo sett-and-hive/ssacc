@@ -7,6 +7,8 @@ import numpy as np
 import pandas as pd
 from pandas.io.parsers import ParserError
 
+from ssacc.timing_wrapper import timing
+
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
@@ -95,6 +97,7 @@ class ValidateMap:
         return None
 
     @staticmethod
+    @timing
     def validate_all_zips(dfm, dft):
         """Validate ZIP codes in SSA FIP ZIP csv.
 
@@ -111,26 +114,35 @@ class ValidateMap:
         found = 0
         missing = 0
         total = 0
-        count = len(dft)
-        for i in range(count):
-            try:
-                df_zip_code = dft.iloc[[i]]
-                zip_code = df_zip_code["Zipcode"].to_string(index=False).strip()
+        if True:
+            df_missing = dft
+            df_missing = df_missing.assign(NotMissing=df_missing.Zipcode.isin(dfm.zip).astype(int))
+            df_missing = df_missing.loc[df_missing["NotMissing"] == 0]
+            df_missing.drop("NotMissing", axis=1, errors="ignore", inplace=True)
+        else:
+            found = 0
+            missing = 0
+            total = 0
+            count = len(dft)
+            for i in range(count):
                 try:
-                    zip_found = dfm[dfm["zip"] == zip_code]
-                    if not zip_found.empty:
-                        found += 1
-                    else:
-                        df_missing = df_missing.append(df_zip_code, ignore_index=True)
+                    df_zip_code = dft.iloc[[i]]
+                    zip_code = df_zip_code["Zipcode"].to_string(index=False).strip()
+                    try:
+                        zip_found = dfm[dfm["zip"] == zip_code]
+                        if not zip_found.empty:
+                            found += 1
+                        else:
+                            df_missing = df_missing.append(df_zip_code, ignore_index=True)
+                            missing += 1
+                        total += 1
+                    except KeyError:
+                        print(f"Could not find ZIP code {zip_code} in SSA map")
                         missing += 1
-                    total += 1
+                        total += 1
+                        continue
                 except KeyError:
-                    print(f"Could not find ZIP code {zip_code} in SSA map")
-                    missing += 1
-                    total += 1
-                    continue
-            except KeyError:
-                print(f"Error looking for ZIP code in test file at position{i}")
+                    print(f"Error looking for ZIP code in test file at position{i}")
         print(
             "ZIP codes in sample: ",
             f"Found {found}. ",
@@ -140,6 +152,7 @@ class ValidateMap:
         return df_missing
 
     @staticmethod
+    @timing
     def validate_all_county_names(dfm):
         """Validate the county names."""
         missing = 0
@@ -170,6 +183,7 @@ class ValidateMap:
         return True if 0 == missing else False
 
     @staticmethod
+    @timing
     def validate_all_fips_state_county_codes(dfm):
         """Validate FIPS county codes."""
         missing = 0
@@ -191,6 +205,7 @@ class ValidateMap:
         return missing == 0
 
     @staticmethod
+    @timing
     def validate_all_state_codes(dfm):
         """Validate state codes.
 
@@ -213,6 +228,7 @@ class ValidateMap:
         return missing == 0
 
     @staticmethod
+    @timing
     def validate_all_zips_have_ssacnty(dfm):
         """Make sure ZIP codes have a SSA county code."""
         print(dfm.head())
