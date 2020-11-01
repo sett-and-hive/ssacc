@@ -55,6 +55,7 @@ class MapSsaZipFips:
         return df
 
     @staticmethod
+    @timing
     def reorder_and_sort_data(df):
         """ Reorder and sort a dataframe."""
         # ssacounty	stabbr	countyname	fipsstco	state	year	zip	fipscc	fipsstct	statecd	county
@@ -91,6 +92,7 @@ class MapSsaZipFips:
         df.to_csv(path_or_buf=output_file_path, index=0)
 
     @staticmethod
+    @timing
     def clean_refined_data(df):
         """Clean up that data."""
         df = CleanDF.drop_columns(df, ["fipscc", "fipsstco", "fipsstct", "county", "statecd"])
