@@ -1,11 +1,13 @@
 # .github/workflows/pycharm_security.yaml
 name: pycharm_security
 
-on: [push]
-branches: [main]
-pull_request:
-  # The branches below must be a subset of the branches above
-  branches: [main]
+on:
+    push:
+      branches:
+        - main
+    pull_request:
+      branches:
+        - main
 
 jobs:
   security_checks:
