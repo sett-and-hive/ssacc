@@ -18,4 +18,4 @@ jobs:
       - name: Run PyCharm Security
         uses: tonybaloney/pycharm-security@master
         with:
-         - uses: ssacc/
+          path: ssacc/
