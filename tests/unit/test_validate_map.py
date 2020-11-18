@@ -269,3 +269,60 @@ def _create_dataframe_with_missing_ssacnty_to_test():
         columns=["zip", "ssacnty"],
     )
     return df
+
+
+def test_validate_all_county_names():
+    """Test validate_all_county_names."""
+    happy_path = _create_dataframe_with_county_names_to_test()
+    not_missing_code = ValidateMap.validate_all_county_names(happy_path)
+    assert not_missing_code
+
+
+def _create_dataframe_with_county_names_to_test():
+    """Create dataframe of sample FIPS county codes for test_validate_all_state_codes."""
+    df = pd.DataFrame(
+        {
+            "countyname": ["Suffolk", "Aguadilla", "Aguas Buenas", "Milwaukee"],
+            "county": ["SUFFOLK", "AGUADILLA", "AGUAS BUENAS", "MILWAUKEE"],
+        },
+        columns=["countyname", "county"],
+    )
+    return df
+
+
+def test_validate_all_county_names_missing_ssacnty():
+    """Test validate_all_county_names."""
+    unhappy_path = _create_dataframe_with_missing_county_to_test()
+    missing_code = ValidateMap.validate_all_county_names(unhappy_path)
+    assert missing_code
+
+
+def _create_dataframe_with_missing_county_to_test():
+    """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
+    df = pd.DataFrame(
+        {
+            "countyname": ["Suffolk", "Aguadilla", "Aguas Buenas", "Milwaukee"],
+            "county": ["SUFFOLK", "", "AGUAS BUENAS", "MILWAUKEE"],
+        },
+        columns=["countyname", "county"],
+    )
+    return df
+
+
+def test_validate_all_county_names_missing_countyname():
+    """Test validate_all_county_names."""
+    unhappy_path = _create_dataframe_with_missing_countyname_to_test()
+    missing_code = ValidateMap.validate_all_county_names(unhappy_path)
+    assert missing_code
+
+
+def _create_dataframe_with_missing_countyname_to_test():
+    """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
+    df = pd.DataFrame(
+        {
+            "countyname": ["Suffolk", "", "Aguas Buenas", "Milwaukee"],
+            "county": ["SUFFOLK", "AGUADILLA", "AGUAS BUENAS", "MILWAUKEE"],
+        },
+        columns=["countyname", "county"],
+    )
+    return df
