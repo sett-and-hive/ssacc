@@ -139,6 +139,11 @@ class ValidateMap:
         )
         return df_missing
 
+    # There are 3141 countries in the US
+    # cite: https://thehill.com/opinion/white-house/
+    #       525488-if-joe-biden-wants-to-unite-america-he-must-do-this-immediately
+    # Make sure we have them all
+
     @staticmethod
     def validate_all_county_names(dfm):
         """Validate the county names."""

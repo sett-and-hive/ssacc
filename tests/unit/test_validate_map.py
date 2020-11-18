@@ -140,3 +140,43 @@ def _create_dataframe_with_empty_zipcodes_to_test():
     for test_validate_all_zips_some_zips_missing."""
     df = pd.DataFrame({"zip": ["00705"]}, columns=["zip"])
     return df
+
+
+def test_validate_all_state_codes():
+    """Test validate_all_state_codes."""
+    happy_path = _create_dataframe_with_state_codes_to_test()
+    not_missing_states = ValidateMap.validate_all_state_codes(happy_path)
+    assert not_missing_states
+
+
+def _create_dataframe_with_state_codes_to_test():
+    """Create dataframe of sample state codes for test_validate_all_state_codes."""
+    df = pd.DataFrame(
+        {
+            "stabbr": ["WI", "IL", "OH", "AZ"],
+            "statecd": ["WI", "IL", "OH", "AZ"],
+            "ssacnty": ["800", "900", "100", "050"],
+        },
+        columns=["stabbr", "statecd", "ssacnty"],
+    )
+    return df
+
+
+def test_validate_all_state_codes_missing_county():
+    """Test validate_all_state_codes."""
+    happy_path = _create_dataframe_with_state_codes_missing_county_to_test()
+    missing_states = ValidateMap.validate_all_state_codes(happy_path)
+    assert missing_states
+
+
+def _create_dataframe_with_state_codes_missing_county_to_test():
+    """Create dataframe of sample state codes for test_validate_all_state_codes."""
+    df = pd.DataFrame(
+        {
+            "stabbr": ["WI", "IL", "OH", "AZ"],
+            "statecd": ["WI", "IL", "OH", "AZ"],
+            "ssacnty": ["800", "", "100", "050"],
+        },
+        columns=["stabbr", "statecd", "ssacnty"],
+    )
+    return df
