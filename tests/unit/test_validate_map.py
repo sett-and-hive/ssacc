@@ -237,3 +237,35 @@ def _create_dataframe_with_missing_fipsstco_to_test():
         columns=["fipsstco", "fipsstct"],
     )
     return df
+
+
+def test_validate_all_zips_have_ssacnty():
+    """Test validate_all_zips_have_ssacnty."""
+    happy_path = _create_dataframe_with_zips_and_ssacnty_to_test()
+    not_missing_code = ValidateMap.validate_all_zips_have_ssacnty(happy_path)
+    assert not_missing_code
+
+
+def _create_dataframe_with_zips_and_ssacnty_to_test():
+    """Create dataframe of sample FIPS county codes for test_validate_all_state_codes."""
+    df = pd.DataFrame(
+        {"zip": ["72001", "72002", "72023", "72127"], "ssacnty": ["001", "002", "023", "127"]},
+        columns=["zip", "ssacnty"],
+    )
+    return df
+
+
+def test_validate_all_zips_have_ssacnty_missing_ssacnty():
+    """Test validate_all_zips_have_ssacnty."""
+    unhappy_path = _create_dataframe_with_missing_ssacnty_to_test()
+    missing_code = ValidateMap.validate_all_zips_have_ssacnty(unhappy_path)
+    assert missing_code
+
+
+def _create_dataframe_with_missing_ssacnty_to_test():
+    """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
+    df = pd.DataFrame(
+        {"zip": ["72001", "72002", "72023", "72127"], "ssacnty": ["001", "002", "023", "127"]},
+        columns=["zip", "ssacnty"],
+    )
+    return df
