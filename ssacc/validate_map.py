@@ -226,7 +226,9 @@ class ValidateMap:
         count = len(dfm)
         for i in range(count):
             try:
-                # TODO: make sure this use of df.loc is correct
+                # There is a bug in this -
+                #  it does not amtter if a ssacnty is missing
+                # TODO: fix this use of df.loc
                 zip_code = dfm.loc[i, "zip"]
                 try:
                     # TODO: make sure this use of df.loc is correct

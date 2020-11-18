@@ -265,7 +265,7 @@ def test_validate_all_zips_have_ssacnty_missing_ssacnty():
 def _create_dataframe_with_missing_ssacnty_to_test():
     """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
     df = pd.DataFrame(
-        {"zip": ["72001", "72002", "72023", "72127"], "ssacnty": ["001", "002", "023", "127"]},
+        {"zip": ["72001", "72002", "72023", "72127"], "ssacnty": ["001", "", "023", "127"]},
         columns=["zip", "ssacnty"],
     )
     return df
