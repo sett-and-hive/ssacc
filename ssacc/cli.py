@@ -12,14 +12,18 @@ filter and pipes architecture that is more testable.
 
 """
 import argparse
+import os
 from pathlib import Path
 import sys
 
-from clean_df import CleanDF
-from map_ssa_zip_fips import MapSsaZipFips
-from ssa_fips import SsaFips
-from validate_map import ValidateMap
-from zip_fips import ZipFips
+from ssacc.clean_df import CleanDF
+from ssacc.map_ssa_zip_fips import MapSsaZipFips
+from ssacc.ssa_fips import SsaFips
+from ssacc.validate_map import ValidateMap
+from ssacc.zip_fips import ZipFips
+
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.abspath("../ssacc"))
 
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
