@@ -1,26 +1,31 @@
 """
 
-get zip and fips from one file
-get fips and ssa from another file
-get zips and cities from another file
-map them together
+get zip and fips from one file.
+get fips and ssa from another file.
+get zips and cities from another file.
+map them together.
 
-assumes you ran fetch script to populate the data folders
+assumes you ran fetch script to populate the data folders.
 
 TODO: refactor this into a pipeline runner for a
 filter and pipes architecture that is more testable.
 
 """
 import argparse
+import os
 from pathlib import Path
 import sys
 
-from clean_df import CleanDF
-from map_ssa_zip_fips import MapSsaZipFips
-from ssa_fips import SsaFips
+from ssacc.clean_df import CleanDF
+from ssacc.map_ssa_zip_fips import MapSsaZipFips
+from ssacc.ssa_fips import SsaFips
+from ssacc.validate_map import ValidateMap
+from ssacc.zip_fips import ZipFips
 from timing_wrapper import timing
-from validate_map import ValidateMap
-from zip_fips import ZipFips
+
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.abspath("../ssacc"))
+
 
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 

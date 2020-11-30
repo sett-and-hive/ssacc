@@ -1,10 +1,26 @@
-.. ssacc documentation master file, created by
-   sphinx-quickstart on Sat Aug  1 21:43:13 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root ``toctree`` directive.
-
-Welcome to ssacc's documentation!
+Welcome to SSACC's documentation!
 =================================
+Creating a crosswalk of SSA couty codes with FIPS county codes and USPS ZIP Codes.
+
+.. automodule:: ssacc.cli
+    :members:
+
+.. automodule:: ssacc.clean_df
+    :members:
+
+.. automodule:: ssacc.map_ssa_zip_fips
+    :members:
+
+.. automodule:: ssacc.ssa_fips
+    :members:
+
+.. automodule:: ssacc.validate_map
+    :members:
+
+.. automodule:: ssacc.zip_fips
+    :members:
+
+
 
 .. toctree::
    :maxdepth: 2
