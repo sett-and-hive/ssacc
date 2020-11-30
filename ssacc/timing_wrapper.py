@@ -23,4 +23,6 @@ def timing(func):
         print(f"Finished {func.__name__!r} in {run_time:.4f}")
         return result
 
+    wrapper_timing.__name__ = func.__name__
+    wrapper_timing.__doc__ = func.__doc__
     return wrapper_timing
