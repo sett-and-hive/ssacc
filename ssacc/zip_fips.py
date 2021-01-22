@@ -22,8 +22,9 @@ class ZipFips:
 
     def __init__(self):
         project_root = Path(__file__).parents[1]
-        state_file = project_root.joinpath("reference", "state_fips.json")
-        self.statecodes = json.load(open(state_file))
+        state_file_path = project_root.joinpath("reference", "state_fips.json")
+        with open(state_file_path) as state_file:
+            self.statecodes = json.load(state_file)
 
     @timing
     def files_to_csv(self, input_folder_path):
