@@ -187,7 +187,9 @@ class ValidateMap:
         print(f"FIPS county codes method B: missing {missing}")
 
         project_root = Path(__file__).resolve().parents[1]
-        missing_file_name = project_root.joinpath("data/temp", "missing_fips_county_B.csv")
+        data_temp_path = project_root.joinpath("data/temp")
+        Path(data_temp_path).mkdir(parents=True, exist_ok=True)
+        missing_file_name = project_root.joinpath(data_temp_path, "missing_fips_county_B.csv")
         print(f"Storing missing FIPS codes in {missing_file_name}")
         df_missing.to_csv(path_or_buf=missing_file_name, index=0)
 
