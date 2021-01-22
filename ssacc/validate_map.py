@@ -157,7 +157,7 @@ class ValidateMap:
         print(
             f"Missing county names count {missing}. Expect 739. Total count {total}. Expect 53881."
         )
-        return True if 0 == missing else False
+        return not missing
 
     @staticmethod
     @timing

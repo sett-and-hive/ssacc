@@ -1,4 +1,5 @@
-"""Timing wraper
+"""
+Timing wraper
 
     These references helped:
     https://stackoverflow.com/questions/1622943/timeit-versus-timing-decorator
