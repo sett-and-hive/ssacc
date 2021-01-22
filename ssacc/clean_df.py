@@ -2,12 +2,15 @@
 
 from titlecase import titlecase
 
+from ssacc.timing_wrapper import timing
+
 
 class CleanDF:
 
     """Utilities for cleaning data frames. Data engineering."""
 
     @staticmethod
+    @timing
     def titlecase_columns(df, column_list):
         """Apply titlecase to some columns in a dataframe.
 
@@ -24,6 +27,7 @@ class CleanDF:
         return df
 
     @staticmethod
+    @timing
     def drop_columns(df, column_list):
         """Drop a list of columns from a dataframe."""
         for column_name in column_list:
@@ -35,12 +39,14 @@ class CleanDF:
         return df
 
     @staticmethod
+    @timing
     def reorder_columns(df, column_list):
         """Reorder the columns in a dataframe."""
         df = df[column_list]
         return df
 
     @staticmethod
+    @timing
     def rename_columns(df, original_list, renamed_list):
         """Rename columns."""
         for i in range(len(df.columns)):
@@ -53,6 +59,7 @@ class CleanDF:
         return df
 
     @staticmethod
+    @timing
     def dropna_rows(df, column_list):
         """Drop rows with now data in certain columns."""
         for column_name in column_list:

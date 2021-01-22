@@ -50,7 +50,7 @@ Before running the Python, you need to download some input files from the intern
 Run the ``fetch_batch.bat`` file if running from Windows.
 If running from \*nix, you will need to curl the three files by hand and unzip the one.
 
-The first time you run the ``cli.py``, run with the ``-r 1`` option to generate
+The first time you run the ``python -m ssacc.cli``, run with the ``-r 1`` option to generate
 ``data/source/zipcodes.csv`` intermediate file. The goal is to create
 ``data/ssa_cnty_zip.csv`` which maps ZIP-5 to SSA Country Code, including the
 3-digit county-only value and the 5-digit value that includes the state code.

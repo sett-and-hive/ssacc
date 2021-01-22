@@ -5,6 +5,7 @@ import pandas as pd
 from pandas.io.parsers import ParserError
 
 from ssacc.clean_df import CleanDF
+from ssacc.timing_wrapper import timing
 
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
@@ -14,6 +15,7 @@ class SsaFips:
     """Read and clean SSA and FIPS county codes."""
 
     @staticmethod
+    @timing
     def read_ssa_fips(input_file_path):
         """Read data then clean it up."""
         df = SsaFips.read_csv(input_file_path)
@@ -37,6 +39,7 @@ class SsaFips:
 
     # TODO Refactor with clean_df methods
     @staticmethod
+    @timing
     def clean_ssa_fips_data(df):
         """ Clean up SSA FIPS county code data."""
         df = CleanDF.drop_columns(
