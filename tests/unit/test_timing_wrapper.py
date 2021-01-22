@@ -8,6 +8,7 @@ def test_construction():
 
     @timing
     def hello_world():
+        """Hello world"""
         return print("Hello, world.")
 
     result = hello_world()

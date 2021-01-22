@@ -1,5 +1,4 @@
-"""
-Timing wraper
+""" Timing wraper
 
     These references helped:
     https://stackoverflow.com/questions/1622943/timeit-versus-timing-decorator
@@ -12,7 +11,7 @@ import time
 
 
 def timing(func):
-    """Print the runtime of the decorated function"""
+    """Print the runtime of the decorated function."""
 
     @functools.wraps(functools)
     def wrapper_timing(*args, **kw):
