@@ -202,10 +202,10 @@ def _create_dataframe_with_fips_codes_to_test():
 
 
 def test_validate_all_fips_state_county_codes_missing_fipsstct():
-    """Test validate_all_fips_state_county_codes."""
+    """Test validate_all_fips_state_county_codes, missin value in fipsstct."""
     unhappy_path = _create_dataframe_with_missing_fipsstct_to_test()
-    missing_code = ValidateMap.validate_all_fips_state_county_codes(unhappy_path)
-    assert missing_code
+    codes_missing = ValidateMap.validate_all_fips_state_county_codes(unhappy_path)
+    assert not codes_missing
 
 
 def _create_dataframe_with_missing_fipsstct_to_test():
@@ -223,8 +223,8 @@ def _create_dataframe_with_missing_fipsstct_to_test():
 def test_validate_all_fips_state_county_codes_missing_fipsstco():
     """Test validate_all_fips_state_county_codes."""
     unhappy_path = _create_dataframe_with_missing_fipsstco_to_test()
-    missing_code = ValidateMap.validate_all_fips_state_county_codes(unhappy_path)
-    assert missing_code
+    codes_missing = ValidateMap.validate_all_fips_state_county_codes(unhappy_path)
+    assert not codes_missing
 
 
 def _create_dataframe_with_missing_fipsstco_to_test():

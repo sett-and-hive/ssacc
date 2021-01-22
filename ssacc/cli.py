@@ -19,9 +19,9 @@ import sys
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 from ssacc.ssa_fips import SsaFips
+from ssacc.timing_wrapper import timing
 from ssacc.validate_map import ValidateMap
 from ssacc.zip_fips import ZipFips
-from timing_wrapper import timing
 
 sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("../ssacc"))
