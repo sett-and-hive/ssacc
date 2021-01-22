@@ -1,9 +1,10 @@
-""" Timing wraper
+"""
+Timing wraper
 
-    These references helped:
-    https://stackoverflow.com/questions/1622943/timeit-versus-timing-decorator
-        Use wrapping from functools to improve Matt Alcock's answer.
-    https://realpython.com/primer-on-python-decorators/#timing-functions
+These references helped:
+https://stackoverflow.com/questions/1622943/timeit-versus-timing-decorator
+    Use wrapping from functools to improve Matt Alcock's answer.
+https://realpython.com/primer-on-python-decorators/#timing-functions
 """
 
 import functools
