@@ -193,6 +193,13 @@ The project directory structure is like:
     ├── tox.ini
     └── setup.py
 
+Operation
+---------
+
+``` code-block::
+   python3 -m ssacc.external.cli
+```
+
 Licensing
 ---------
 
