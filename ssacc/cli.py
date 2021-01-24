@@ -13,21 +13,18 @@ filter and pipes architecture that is more testable.
 """
 import argparse
 import os
-from pathlib import Path
 import sys
 
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 from ssacc.ssa_fips import SsaFips
 from ssacc.timing_wrapper import timing
+from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.zip_fips import ZipFips
 
 sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("../ssacc"))
-
-
-print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
 def parse_args() -> argparse.Namespace:
@@ -57,7 +54,7 @@ def main():
     Build refined SSA CC (3 and 5 digit) to ZIP CSV.
     """
 
-    project_root = Path(__file__).resolve().parents[1]
+    project_root = utils.get_project_root()
     args = parse_args()
     """
     Build CSV of SSA and FIPS codes
@@ -72,7 +69,7 @@ def main():
     # Build a new ZIP and FIPS CSV if asked.
     zip_fips = ZipFips()
     if args.r:
-        project_root = Path(__file__).parents[1]  # was 2
+        project_root = utils.get_project_root()  # was 2
         file_path = project_root.joinpath("data", "source")
         print(f"root file path {file_path}")
         zip_fips.files_to_csv(file_path)

@@ -8,8 +8,7 @@ import pandas as pd
 from pandas.io.parsers import ParserError
 
 from ssacc.timing_wrapper import timing
-
-print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
+from ssacc.utils import utils
 
 
 class ValidateMap:
@@ -186,8 +185,8 @@ class ValidateMap:
         missing = len(df_missing)
         print(f"FIPS county codes method B: missing {missing}")
 
-        project_root = Path(__file__).resolve().parents[1]
-        data_temp_path = project_root.joinpath("data/temp")
+        project_root = utils.get_project_root()
+        data_temp_path = project_root.joinpath("data", "temp")
         Path(data_temp_path).mkdir(parents=True, exist_ok=True)
         missing_file_name = project_root.joinpath(data_temp_path, "missing_fips_county_B.csv")
         print(f"Storing missing FIPS codes in {missing_file_name}")

@@ -4,6 +4,8 @@ import os
 from pathlib import Path
 import warnings
 
+from ssacc.utils import utils
+
 # suppress spurious "numpy.ufunc size changed" warnings
 # According to
 # https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility
@@ -12,7 +14,6 @@ with warnings.catch_warnings():
     warnings.filterwarnings("ignore", message="numpy.dtype size changed")
     warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
     import pandas as pd
-
 
 from ssacc.validate_map import ValidateMap
 
@@ -28,8 +29,8 @@ def test_construction():
 
 def test_read_csv():
     """Test read_csv() on the happy path."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "test1.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "test1.csv")
     print(file_path)
     required_columns = {"ssacounty", "rating", "year", "runtime"}
     df = ValidateMap.read_csv(file_path)
@@ -40,8 +41,8 @@ def test_read_csv():
 
 def test_read_csv_file_not_found():
     """Test read_csv() for bad path."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "file_not_found.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "file_not_found.csv")
     print(file_path)
     df = ValidateMap.read_csv(file_path)
     assert df is None
@@ -49,8 +50,8 @@ def test_read_csv_file_not_found():
 
 def test_read_csv_exception():
     """Test read_csv() for bad data frame."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "test1.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "test1.csv")
     print(file_path)
     df = ValidateMap.read_csv(None)
     assert df is None
@@ -59,8 +60,8 @@ def test_read_csv_exception():
 def test_write_csv(tmpdir):
     """Test write to CSV."""
     df = _create_dataframe_for_test_write_csv()
-    project_root = Path(tmpdir)
-    output_file_path = project_root.joinpath("test_validate_write_csv.csv")
+    tmp_root = Path(tmpdir)
+    output_file_path = tmp_root.joinpath("test_validate_write_csv.csv")
     with suppress(FileNotFoundError):
         os.remove(output_file_path)
     ValidateMap.write_csv(df, output_file_path)

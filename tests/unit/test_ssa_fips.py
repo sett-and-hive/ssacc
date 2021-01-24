@@ -1,6 +1,7 @@
 """Test SsaFips"""
-from pathlib import Path
 import warnings
+
+from ssacc.utils import utils
 
 # suppress spurious "numpy.ufunc size changed" warnings
 # According to
@@ -25,8 +26,8 @@ def test_construction():
 
 def test_read_csv():
     """Test read_csv() on the happy path."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "test1.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "test1.csv")
     print(file_path)
     required_columns = {"ssacounty", "rating", "year", "runtime"}
     df = SsaFips.read_csv(file_path)
@@ -37,8 +38,8 @@ def test_read_csv():
 
 def test_read_csv_file_not_found():
     """Test read_csv() for bad path."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "file_not_found.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "file_not_found.csv")
     print(file_path)
     df = SsaFips.read_csv(file_path)
     assert df is None
@@ -46,8 +47,8 @@ def test_read_csv_file_not_found():
 
 def test_read_csv_exception():
     """Test read_csv() for bad data frame."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "test1.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "test1.csv")
     print(file_path)
     df = SsaFips.read_csv(None)
     assert df is None
@@ -113,8 +114,8 @@ def test_clean_csv_wrong_column():
 
 def test_read_ssa_fips():
     """Test read_csv() on the happy path."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "test_ssa_fips_1.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "test_ssa_fips_1.csv")
     print(file_path)
     required_columns = {"ssastco", "rating", "year", "runtime"}
     df = SsaFips.read_ssa_fips(file_path)

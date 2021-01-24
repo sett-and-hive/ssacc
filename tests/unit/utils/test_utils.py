@@ -1,6 +1,5 @@
 """ Test utilities."""
 
-
 from pathlib import Path
 
 from ssacc.utils import utils
