@@ -74,9 +74,10 @@ _templates
 node_modules/*
 package-lock.json
 
-# rope for refactoring Python
+
 .vscode/.ropeproject/config.py
 .vscode/.ropeproject/objectdb
+.vscode/settings.json
 
 # testing cruft
 tests/temp/*
