@@ -1,6 +1,6 @@
 """Test the timing wrapper."""
 
-from ssacc.timing_wrapper import timing
+from ssacc.wrappers.timing_wrapper import timing
 
 
 def test_construction():

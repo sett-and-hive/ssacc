@@ -5,7 +5,7 @@ import pandas as pd
 from pandas.io.parsers import ParserError
 
 from ssacc.clean_df import CleanDF
-from ssacc.timing_wrapper import timing
+from ssacc.wrappers.timing_wrapper import timing
 
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 

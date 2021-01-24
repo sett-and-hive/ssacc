@@ -12,7 +12,7 @@ import re
 import pandas as pd
 from pandas.io.parsers import ParserError
 
-from ssacc.timing_wrapper import timing
+from ssacc.wrappers.timing_wrapper import timing
 
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
@@ -21,7 +21,7 @@ class ZipFips:
     """Build intermediate ZIP and FIPS county code data frame."""
 
     def __init__(self):
-        project_root = Path(__file__).parents[1]
+        project_root = Path(__file__).parents[1]  # This is basically a gateway to a JSON file
         state_file_path = project_root.joinpath("reference", "state_fips.json")
         with open(state_file_path) as state_file:
             self.statecodes = json.load(state_file)

@@ -2,7 +2,7 @@
 
 from titlecase import titlecase
 
-from ssacc.timing_wrapper import timing
+from ssacc.wrappers.timing_wrapper import timing
 
 
 class CleanDF:
