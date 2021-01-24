@@ -1,6 +1,9 @@
 """Test ZipFips."""
-from pathlib import Path
+
+
 import warnings
+
+from ssacc.utils import utils
 
 # suppress spurious "numpy.ufunc size changed" warnings
 # According to
@@ -23,8 +26,8 @@ def test_construction():
 
 def test_read_csv():
     """Test read_csv() on the happy path."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "test1.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "test1.csv")
     print(file_path)
     required_columns = {"ssacounty", "rating", "year", "runtime"}
     df = ZipFips.read_csv(file_path)
@@ -35,8 +38,8 @@ def test_read_csv():
 
 def test_read_csv_file_not_found():
     """Test read_csv() for bad path."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "file_not_found.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "file_not_found.csv")
     print(file_path)
     df = ZipFips.read_csv(file_path)
     assert df is None
@@ -44,8 +47,8 @@ def test_read_csv_file_not_found():
 
 def test_read_csv_exception():
     """Test read_csv() for bad data frame."""
-    project_root = Path(__file__).parents[1]
-    file_path = project_root.joinpath("data", "test1.csv")
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("tests", "data", "test1.csv")
     print(file_path)
     df = ZipFips.read_csv(None)
     assert df is None
@@ -53,7 +56,7 @@ def test_read_csv_exception():
 
 def test_read_zip_fips_text_file():
     """Test read_zip_fips_text_file with happy path input file."""
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = utils.get_project_root()
     test_file = project_root.joinpath("tests", "data", "zipcty-fake.txt")
     zip_fips = ZipFips()
     df = zip_fips.read_zip_fips_text_file(test_file)
@@ -63,7 +66,7 @@ def test_read_zip_fips_text_file():
 
 def test_read_zip_fips_text_file_too_short():
     """Test read_zip_fips_text_file with header but no content input file."""
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = utils.get_project_root()
     test_file = project_root.joinpath("tests", "data", "zipcty-too-short.txt")
     zip_fips = ZipFips()
     df = zip_fips.read_zip_fips_text_file(test_file)
@@ -76,7 +79,7 @@ def test_read_zip_fips_text_file_bad_state():
 
     That leads to 00 as fips state code.
     """
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = utils.get_project_root()
     test_file = project_root.joinpath("tests", "data", "zipcty-fake-state.txt")
     zip_fips = ZipFips()
     df = zip_fips.read_zip_fips_text_file(test_file)
@@ -86,7 +89,7 @@ def test_read_zip_fips_text_file_bad_state():
 
 def test_read_zip_fips_text_file_bad_content():
     """Test read_zip_fips_text_file with content line that won't match RE."""
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = utils.get_project_root()
     test_file = project_root.joinpath("tests", "data", "zipcty-bad-data.txt")
     zip_fips = ZipFips()
     df = zip_fips.read_zip_fips_text_file(test_file)
@@ -95,7 +98,7 @@ def test_read_zip_fips_text_file_bad_content():
 
 def test_read_zip_fips_text_file_repeat_zip_code():
     """Test read_zip_fips_text_file with repeated ZIP code."""
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = utils.get_project_root()
     test_file = project_root.joinpath("tests", "data", "zipcty-test.txt")
     zip_fips = ZipFips()
     df = zip_fips.read_zip_fips_text_file(test_file)
@@ -105,7 +108,7 @@ def test_read_zip_fips_text_file_repeat_zip_code():
 
 def test_files_to_csv():
     """Test files_to_csv with test files."""
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = utils.get_project_root()
     test_file_path = project_root.joinpath("tests", "data")
     zip_fips = ZipFips()
     df = zip_fips.files_to_csv(test_file_path)

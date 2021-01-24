@@ -24,6 +24,7 @@ import sys
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 from ssacc.ssa_fips import SsaFips
+from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
 from ssacc.zip_fips import ZipFips
@@ -70,7 +71,7 @@ def shell(args):
     """
     args = parse_args(args)
 
-    project_root = Path(__file__).resolve().parents[2]  # was 1
+    project_root = utils.get_project_root()
 
     """
     Build CSV of SSA and FIPS codes
@@ -86,9 +87,11 @@ def shell(args):
     # Takes about 5 minutes locally
     zip_fips = ZipFips()
     if args.r:
-        project_root = Path(__file__).parents[2]  # was 2
+        # use case: regerate Zip Fips CSV (zipcounty.csv)
+        # project_root = Path(__file__).parents[2]  # should be project path?
         file_path = project_root.joinpath("data", "source")
         print(f"root file path {file_path}")
+        # two gateways  - 1 to read files, 1 to write new csv
         zip_fips.files_to_csv(file_path)
     # Read the ZIP and FIPS.
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")

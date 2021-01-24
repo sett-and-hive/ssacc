@@ -12,6 +12,7 @@ import re
 import pandas as pd
 from pandas.io.parsers import ParserError
 
+from ssacc.utils import utils
 from ssacc.wrappers.timing_wrapper import timing
 
 print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
@@ -21,7 +22,7 @@ class ZipFips:
     """Build intermediate ZIP and FIPS county code data frame."""
 
     def __init__(self):
-        project_root = Path(__file__).parents[1]  # This is basically a gateway to a JSON file
+        project_root = utils.get_project_root()  # This is basically a gateway to a JSON file
         state_file_path = project_root.joinpath("reference", "state_fips.json")
         with open(state_file_path) as state_file:
             self.statecodes = json.load(state_file)
@@ -76,6 +77,11 @@ class ZipFips:
         # Gateway to a specialized text data file
         with open(input_file_path) as zip_county_file:
             zip_county_lines = zip_county_file.readlines()
+        # Business logic to extract ZipFips data frame
+        # if we treat the file as an external database, then the
+        # gateway can know how to return the desired data frame
+        # The interface is to return a data frame with
+        # columns=["zip", "fipscc", "fipsstct", "statecd", "county"]
         df = ZipFips.parse_zip_counties(zip_county_lines, self.statecodes)
         return df
 
