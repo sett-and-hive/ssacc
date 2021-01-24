@@ -1,8 +1,6 @@
 """Test SsaFips"""
 import warnings
 
-from ssacc.utils import utils
-
 # suppress spurious "numpy.ufunc size changed" warnings
 # According to
 # https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility
@@ -13,6 +11,7 @@ with warnings.catch_warnings():
     import pandas as pd
 
 from ssacc.ssa_fips import SsaFips
+from ssacc.utils import utils
 
 # Tests do not need to be DRY
 # pylint: disable=duplicate-code
