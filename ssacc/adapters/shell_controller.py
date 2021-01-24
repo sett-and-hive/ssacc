@@ -18,7 +18,6 @@ https://github.com/MicrosoftDocs/architecture-center/blob/master/docs/patterns/p
 
 import argparse
 import os
-from pathlib import Path
 import sys
 
 from ssacc.clean_df import CleanDF
@@ -32,9 +31,6 @@ from ssacc.zip_fips import ZipFips
 # Todo: can we eliminate this abspath cruft?
 sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("../../ssacc"))
-
-
-print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
 
 
 # Todo: Since cli.py is in an outer ring (external),

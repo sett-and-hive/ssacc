@@ -15,8 +15,6 @@ from pandas.io.parsers import ParserError
 from ssacc.utils import utils
 from ssacc.wrappers.timing_wrapper import timing
 
-print("Running" if __name__ == "__main__" else "Importing", Path(__file__).resolve())
-
 
 class ZipFips:
     """Build intermediate ZIP and FIPS county code data frame."""

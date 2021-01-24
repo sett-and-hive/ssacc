@@ -1,6 +1,4 @@
 """Test ZipFips."""
-
-
 import warnings
 
 from ssacc.utils import utils
