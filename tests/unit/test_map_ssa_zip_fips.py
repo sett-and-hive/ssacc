@@ -13,7 +13,6 @@ with warnings.catch_warnings():
     warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
     import pandas as pd
 
-
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 
 # Tests do not need to be DRY
