@@ -10,4 +10,4 @@ python-dateutil==2.8.1    # via pandas
 pytz==2020.5              # via pandas
 regex==2020.11.13         # via titlecase
 six==1.15.0               # via python-dateutil
-titlecase==1.1.1          # via -r requirements.in
+titlecase==2.0.0
