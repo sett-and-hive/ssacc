@@ -83,3 +83,4 @@ package-lock.json
 tests/temp/*
 FY2019-CMS-1677-FR-CBSA-Crosswalk.zip
 wily-report.html
+.vscode/settings.json
