@@ -1,0 +1,8 @@
+flake8:
+  enabled: true
+  config_file: tox.ini
+
+shellcheck:
+  enabled: true
+
+ # fail_on_violations: true
