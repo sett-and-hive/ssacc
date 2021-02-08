@@ -22,6 +22,7 @@ from ssacc.factories.factory import Factory, InjectionKeys
 
 
 def setup_factory():
+    """Set up dependency injection."""
     Factory.register(InjectionKeys.COUNTYRATE_SSA_FIPS_CC, countyrate_gateway.get_ssa_fips_cc_df)
     Factory.register(InjectionKeys.COUNTYRATE_FILEPATH, countyrate_gateway.get_countyrate_filepath)
 

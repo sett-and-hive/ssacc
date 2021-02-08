@@ -17,8 +17,6 @@ https://github.com/MicrosoftDocs/architecture-center/blob/master/docs/patterns/p
 """
 
 import argparse
-import os
-import sys
 
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
@@ -29,11 +27,6 @@ from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
 from ssacc.zip_fips import ZipFips
-
-# Todo: can we eliminate this abspath cruft?
-sys.path.insert(0, os.path.abspath(".."))
-sys.path.insert(0, os.path.abspath("../../ssacc"))
-
 
 # Todo: Since cli.py is in an outer ring (external),
 #  it should not know about all of these.

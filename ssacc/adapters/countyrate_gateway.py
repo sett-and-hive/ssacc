@@ -9,6 +9,7 @@ from ssacc.wrappers.timing_wrapper import timing
 
 
 def get_countyrate_filepath():
+    """Inject filepath to countyrate data."""
     project_root = utils.get_project_root()
     file_path = project_root.joinpath("data", "source", "countyrate.csv")
     return file_path
