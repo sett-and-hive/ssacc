@@ -13,7 +13,7 @@ class SsaFips:
     @staticmethod
     @timing
     def read_ssa_fips(input_file_path):
-        """Read data then clean it up."""
+        """Return clean SSA and FIPS county codes in a dataframe."""
         df = SsaFips.read_csv(input_file_path)
         df1 = SsaFips.clean_ssa_fips_data(df)
         print(df1.head())
@@ -33,7 +33,6 @@ class SsaFips:
             print(f"Any other error reading {input_file_path}")
         return None
 
-    # TODO Refactor with clean_df methods
     @staticmethod
     @timing
     def clean_ssa_fips_data(df):

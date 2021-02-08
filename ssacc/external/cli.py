@@ -17,11 +17,12 @@ https://github.com/MicrosoftDocs/architecture-center/blob/master/docs/patterns/p
 
 import sys
 
-from ssacc.adapters import shell_controller
+from ssacc.adapters import countyrate_gateway, shell_controller
+from ssacc.factories.factory import Factory, InjectionKeys
 
 
 def setup_factory():
-    # Factory.register(InjectionKeys.PERSIST_TOTAL_COUNT, persistence_gateway.get_total_count)
+    Factory.register(InjectionKeys.COUNTYRATE_SSA_FIPS_CC, countyrate_gateway.get_ssa_fips_cc_df)
     pass
 
 

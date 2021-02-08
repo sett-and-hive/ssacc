@@ -22,7 +22,9 @@ import sys
 
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
-from ssacc.ssa_fips import SsaFips
+
+# from ssacc.ssa_fips import SsaFips
+from ssacc.use_cases import ssa_fips_county_codes
 from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
@@ -72,10 +74,11 @@ def shell(args):
     """
     Build CSV of SSA and FIPS codes
     """
-    file_path = project_root.joinpath("data", "source", "countyrate.csv")
-    df_ssa_fips = SsaFips.read_ssa_fips(file_path)
+    # file_path = project_root.joinpath("data", "source", "countyrate.csv")
+    # df_ssa_fips = SsaFips.read_ssa_fips(file_path)
+    # first try at use_cases
+    df_ssa_fips = ssa_fips_county_codes.build_ssa_and_fips_county_code_dataframe()
     print(df_ssa_fips.columns.values)
-    print(file_path)
     print(df_ssa_fips.head())
 
     # ZIPs and FIPS.
@@ -116,9 +119,10 @@ def shell(args):
     # Validate the ZIP SSA table.
     result = ValidateMap.validate(file_path)
     if not result:
-        print("Failed data validation test")
+        print("Failed data validation test")  # ToDo: Print this in red in a Presenter
     else:
-        print("Data quality tests pass")
+        print("Data quality tests pass")  # ToDo: print this in green with Colorama
         print("Writing refined ZIP to SSA County Code CSV")
         refined_file_path = project_root.joinpath("data", "ssa_cnty_zip.csv")
         MapSsaZipFips.write_refined_csv(df_map_result, refined_file_path)
+    print("Running about 150 seconds locally.")
