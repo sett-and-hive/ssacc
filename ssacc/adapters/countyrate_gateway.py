@@ -1,18 +1,24 @@
 """Gateway to the countyrate.csv data."""
 
 import pandas as pd
-from pandas.io.parsers import ParserError
 
 from ssacc.clean_df import CleanDF
+from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.utils import utils
 from ssacc.wrappers.timing_wrapper import timing
 
 
+def get_countyrate_filepath():
+    project_root = utils.get_project_root()
+    file_path = project_root.joinpath("data", "source", "countyrate.csv")
+    return file_path
+
+
+@timing
 def get_ssa_fips_cc_df():
     """Return clean SSA and FIPS county codes in a dataframe."""
-    # Todo: move next two lies somewhere so the file can be injected for testing
-    project_root = utils.get_project_root()
-    input_file_path = project_root.joinpath("data", "source", "countyrate.csv")
+    get_filepath = Factory.get(InjectionKeys.COUNTYRATE_FILEPATH)
+    input_file_path = get_filepath()
     print(f"opening {input_file_path}")
     df = read_csv(input_file_path)
     print(df.head())
@@ -30,8 +36,6 @@ def read_csv(input_file_path):
         return df
     except FileNotFoundError:
         print(f"File {input_file_path} not found")
-    except ParserError:
-        print(f"Parser error {input_file_path} ")
     except Exception:
         print(f"Any other error reading {input_file_path}")
     return None

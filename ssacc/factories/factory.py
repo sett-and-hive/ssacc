@@ -7,7 +7,8 @@ from typing import Dict
 class InjectionKeys(Enum):
     """Enumerator for factory pattern for DI."""
 
-    COUNTYRATE_SSA_FIPS_CC = auto()
+    COUNTYRATE_SSA_FIPS_CC = (auto(),)
+    COUNTYRATE_FILEPATH = auto()
 
 
 class Factory:

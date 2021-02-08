@@ -23,7 +23,7 @@ from ssacc.factories.factory import Factory, InjectionKeys
 
 def setup_factory():
     Factory.register(InjectionKeys.COUNTYRATE_SSA_FIPS_CC, countyrate_gateway.get_ssa_fips_cc_df)
-    pass
+    Factory.register(InjectionKeys.COUNTYRATE_FILEPATH, countyrate_gateway.get_countyrate_filepath)
 
 
 # Allow the script to be run standalone.

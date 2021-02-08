@@ -11,16 +11,15 @@ with warnings.catch_warnings():
     warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
     import pandas as pd
 
+from os.path import isfile
+
 from ssacc.adapters import countyrate_gateway
+from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.utils import utils
 
 # Tests do not need to be DRY
 # pylint: disable=duplicate-code
 # pylint: disable=R0801
-
-
-def test_get_ssa_fips_cc_df():
-    pass
 
 
 def test_read_csv():
@@ -161,3 +160,26 @@ def test_rename_ssacounty_column():
     assert df1 is not None
     assert "ssacounty" not in df1.columns
     assert "ssastco" in df1.columns
+
+
+def test_get_countyrate_filepath():
+    """Make sure it returns a filepath that exists."""
+    file_path = countyrate_gateway.get_countyrate_filepath()
+    assert isfile(file_path)
+
+
+def test_get_ssa_fips_cc_df():
+    """Test get_ssa_fips_cc_df on the happy path with mock CSV."""
+
+    def mock_countyrate_filepath():
+        project_root = utils.get_project_root()
+        file_path = project_root.joinpath("tests", "data", "test_ssa_fips_1.csv")
+        return file_path
+
+    Factory.register(InjectionKeys.COUNTYRATE_FILEPATH, mock_countyrate_filepath)
+
+    required_columns = {"ssastco", "rating", "year", "runtime"}
+    df = countyrate_gateway.get_ssa_fips_cc_df()
+    assert not df.empty
+    for column_name in required_columns:
+        assert column_name in df.columns
