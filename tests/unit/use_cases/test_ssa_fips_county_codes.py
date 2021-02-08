@@ -17,5 +17,4 @@ def test_build_ssa_and_fips_county_code_dataframe():
     Factory.register(InjectionKeys.COUNTYRATE_SSA_FIPS_CC, mock_get_df)
     build_ssa_and_fips_county_code_dataframe()
 
-    global GET_SSA_FIPS_CC_DF_CALLED
     assert GET_SSA_FIPS_CC_DF_CALLED is True
