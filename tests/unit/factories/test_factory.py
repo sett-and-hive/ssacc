@@ -12,4 +12,4 @@ def test_register_concrete_implementation():
     injection_key = "deadbeef"
     Factory.register(injection_key, a_concrete_implementation)
     the_implementation = Factory.get(injection_key)
-    assert the_implementation == a_concrete_implementation
+    assert the_implementation is a_concrete_implementation
