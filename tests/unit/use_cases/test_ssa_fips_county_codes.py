@@ -1,4 +1,4 @@
-""" Test SSA FIPS County Codes use cases. """
+"""Test SSA FIPS County Codes use cases. """
 
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.use_cases.ssa_fips_county_codes import build_ssa_and_fips_county_code_dataframe

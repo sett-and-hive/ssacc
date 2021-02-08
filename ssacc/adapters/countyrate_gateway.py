@@ -44,7 +44,7 @@ def read_csv(input_file_path):
 
 @timing
 def clean_ssa_fips_data(df):
-    """ Clean up SSA FIPS county code data."""
+    """Clean up SSA FIPS county code data."""
     df = CleanDF.drop_columns(
         df,
         [

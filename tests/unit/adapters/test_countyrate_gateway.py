@@ -51,7 +51,7 @@ def test_read_csv_exception():
 
 
 def test_clean_csv():
-    """ Test CSV cleaning."""
+    """Test CSV cleaning."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -81,7 +81,7 @@ def test_clean_csv():
 
 
 def test_clean_csv_wrong_column():
-    """ Test CSV cleaning with bad column."""
+    """Test CSV cleaning with bad column."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -119,7 +119,7 @@ def test_read_ssa_fips():
 
 
 def test_split_ssacnty_column():
-    """ Test split_ssacnty_column."""
+    """Test split_ssacnty_column."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -140,7 +140,7 @@ def test_split_ssacnty_column():
 
 
 def test_rename_ssacounty_column():
-    """ Test rename_ssacounty_column."""
+    """Test rename_ssacounty_column."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
