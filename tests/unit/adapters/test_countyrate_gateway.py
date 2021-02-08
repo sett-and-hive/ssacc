@@ -11,8 +11,6 @@ with warnings.catch_warnings():
     warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
     import pandas as pd
 
-from os.path import isfile
-
 from ssacc.adapters import countyrate_gateway
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.utils import utils
@@ -163,9 +161,9 @@ def test_rename_ssacounty_column():
 
 
 def test_get_countyrate_filepath():
-    """Make sure it returns a filepath that exists."""
+    """Make sure it returns a filepath that is valid but may not exist."""
     file_path = countyrate_gateway.get_countyrate_filepath()
-    assert isfile(file_path)
+    assert file_path
 
 
 def test_get_ssa_fips_cc_df():
