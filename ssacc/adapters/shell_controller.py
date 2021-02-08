@@ -20,8 +20,6 @@ import argparse
 
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
-
-# from ssacc.ssa_fips import SsaFips
 from ssacc.use_cases import ssa_fips_county_codes
 from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
