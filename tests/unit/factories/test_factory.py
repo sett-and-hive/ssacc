@@ -7,6 +7,7 @@ def test_register_concrete_implementation():
     """Test register_concrete_implementation."""
 
     def a_concrete_implementation():
+        """Empty function. We ust want to insure it is inected."""
         pass
 
     injection_key = "deadbeef"
