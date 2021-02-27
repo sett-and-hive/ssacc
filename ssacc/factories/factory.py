@@ -9,7 +9,13 @@ class InjectionKeys(Enum):
     """Enumerator class for factory pattern for DI."""
 
     COUNTYRATE_SSA_FIPS_CC = (auto(),)
-    COUNTYRATE_FILEPATH = auto()
+    COUNTYRATE_FILEPATH = (auto(),)
+    GET_USPS_ZIP_FIPS_CC = (auto(),)
+    WRITE_ZIP_FIPS_CC = (auto(),)
+    USPS_ZIPCTY_PATH = (auto(),)
+    USPS_ZIPCTY_READ = (auto(),)
+    STATE_JSON_FILEPATH = (auto(),)
+    STATE_JSON_READ = (auto(),)
 
 
 class Factory:
@@ -27,3 +33,8 @@ class Factory:
     def get(cls, key: InjectionKeys):
         """Caller can get a concrete implementation for DI."""
         return cls.concrete_implementations[key]
+
+    @classmethod
+    def reset(cls):
+        """Caller can reset the factory state."""
+        cls.concrete_implementations = {}
