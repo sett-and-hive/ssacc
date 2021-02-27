@@ -17,7 +17,7 @@ def get_state_json_filepath():
 
 @timing
 def get_state_fips_json():
-    """Return state code and FIPS state codes in a ??dataframe."""
+    """Return state code and FIPS state codes in a dict."""
     get_path = Factory.get(InjectionKeys.STATE_JSON_FILEPATH)
     input_path = get_path()
     print(f"reading State FIPS JSON in {input_path}")
@@ -30,6 +30,7 @@ def get_state_fips_json():
 
 @timing
 def read_state_json(input_path):
+    """Read the state JSON file and return the results."""
     with open(input_path) as state_file:
         statecodes = json.load(state_file)
     return statecodes
