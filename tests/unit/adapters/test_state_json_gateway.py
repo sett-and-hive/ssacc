@@ -25,6 +25,7 @@ JSON_READ_CALLED = False
 
 
 def setup_function():
+    """Pytest setup function."""
     global GET_PATH_CALLED
     global JSON_READ_CALLED
     GET_PATH_CALLED = False
@@ -33,6 +34,7 @@ def setup_function():
 
 
 def teardown_function():
+    """Pytest teardown function."""
     Factory.reset()
 
 
