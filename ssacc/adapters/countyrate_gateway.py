@@ -36,9 +36,13 @@ def read_csv(input_file_path):
         df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
         return df
     except FileNotFoundError:
-        print(f"File {input_file_path} not found")
-    except Exception:
+        print(f"File {input_file_path} not found.")
+    except ValueError:
+        print(f"DF value error tyig to read {input_file_path}.")
+    except Exception as e:
         print(f"Any other error reading {input_file_path}")
+        print(e)
+        raise e
     return None
 
 
