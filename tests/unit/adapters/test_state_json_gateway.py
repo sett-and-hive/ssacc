@@ -19,6 +19,7 @@ from ssacc.factories.factory import Factory, InjectionKeys
 # Tests do not need to be DRY
 # pylint: disable=duplicate-code
 # pylint: disable=R0801
+# pylint: disable=W0603
 
 GET_PATH_CALLED = False
 JSON_READ_CALLED = False
