@@ -32,9 +32,10 @@ from ssacc.zip_fips import ZipFips
 #  and connect to the outside (CLI, I/O) with adapters
 
 
-def parse_args(args) -> argparse.Namespace:
+def parse_args() -> argparse.Namespace:
     """Parse user command line arguments."""
     parser = argparse.ArgumentParser(
+        prog="ssacc",
         description="Map SSA County Codes to ZIP Codes.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
@@ -58,7 +59,7 @@ def shell(args):
     Build verification SSA CC to ZIP CSV.
     Build refined SSA CC (3 and 5 digit) to ZIP CSV.
     """
-    args = parse_args(args)
+    args = parse_args()
 
     project_root = utils.get_project_root()
 
