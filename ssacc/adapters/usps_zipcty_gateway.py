@@ -42,6 +42,7 @@ def get_zip_fips_cc_df():
 
 @timing
 def read_zipcty_files(input_path):
+    """Read zipcty files."""
     pass  # ToDo: make it read
     # We expect a DF with these columns=["zip", "fipscc", "fipsstct", "statecd", "county"]
     #     df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])

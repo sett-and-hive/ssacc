@@ -56,7 +56,7 @@ def test_get_zip_fips_cc_df():
         GET_PATH_CALLED = True
         return "test_json_path"
 
-    def mock_read_zip_fips_filepath(mock_input_path):
+    def mock_read_zip_fips_filepath(_mock_input_path):
         """Mock for get_state_json_filepath()."""
         global STATE_READ_CALLED
         STATE_READ_CALLED = True
