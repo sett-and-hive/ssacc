@@ -15,7 +15,6 @@ https://github.com/MicrosoftDocs/architecture-center/blob/master/docs/patterns/p
 
 """
 
-import sys
 
 from ssacc.adapters import (
     countyrate_gateway,
@@ -53,4 +52,4 @@ def setup_factory():
 # Allow the script to be run standalone.
 if __name__ == "__main__":
     setup_factory()
-    shell_controller.shell(sys.argv)
+    shell_controller.shell()

@@ -50,7 +50,7 @@ def parse_args() -> argparse.Namespace:
 
 
 @timing
-def shell(args):
+def shell():
     """
     Build SSA CC to FIPS CC mapping.
     Build ZIP to FIPS CC mapping.
