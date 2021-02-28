@@ -3,6 +3,9 @@
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.use_cases.ssa_fips_county_codes import build_ssa_and_fips_county_code_dataframe
 
+# globals OK in these mocks
+# pylint: disable=W0603
+
 GET_SSA_FIPS_CC_DF_CALLED = False
 
 

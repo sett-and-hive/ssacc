@@ -3,6 +3,9 @@
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.use_cases.regenerate_zip_fips_county_codes import regerate_zip_fips_county_code_data
 
+# globals OK in these mocks
+# pylint: disable=W0603
+
 GET_ZIP_FIPS_CC_DF_CALLED = False
 PUT_ZIP_FIPS_CC_DF_CALLED = False
 

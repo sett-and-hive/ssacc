@@ -20,6 +20,8 @@ from ssacc.factories.factory import Factory, InjectionKeys
 # pylint: disable=duplicate-code
 # pylint: disable=R0801
 # pylint: disable=W0603
+# globals OK in these mocks
+# pylint: disable=W0603
 
 GET_PATH_CALLED = False
 STATE_READ_CALLED = False
