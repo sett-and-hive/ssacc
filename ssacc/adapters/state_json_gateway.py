@@ -1,5 +1,8 @@
-"""Gateway to read state code to state FIPS JSON file."""
+"""
+    Gateway to read state code to state FIPS JSON file.
 
+    Replaces code in __init__() from ZipFips.
+    """
 import json
 
 #  from ssacc.clean_df import CleanDF
