@@ -39,10 +39,10 @@ def read_csv(input_file_path):
         print(f"File {input_file_path} not found.")
     except ValueError:
         print(f"DF value error tyig to read {input_file_path}.")
-    except Exception as e:
+    except Exception as exception:
         print(f"Any other error reading {input_file_path}")
-        print(e)
-        raise e
+        print(exception)
+        raise exception
     return None
 
 
