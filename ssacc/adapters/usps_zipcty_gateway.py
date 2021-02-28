@@ -26,6 +26,7 @@ def get_zipcty_path():
 @timing
 def get_zip_fips_cc_df():
     """Return clean ZIP and FIPS county codes in a dataframe."""
+    # We expect a DF with these columns=["zip", "fipscc", "fipsstct", "statecd", "county"]
     get_path = Factory.get(InjectionKeys.USPS_ZIPCTY_PATH)
     input_path = get_path()
     print(f"reading zipcty files from {input_path}")
@@ -42,3 +43,18 @@ def get_zip_fips_cc_df():
 @timing
 def read_zipcty_files(input_path):
     pass  # ToDo: make it read
+    # We expect a DF with these columns=["zip", "fipscc", "fipsstct", "statecd", "county"]
+    #     df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
+    # The usps_zipcty_gateway should return a df in the above format
+    #     print(project_root)
+    #     frames = [
+    #         self.read_zip_fips_text_file(project_root.joinpath(filename))
+    #         for filename in os.listdir(project_root)
+    #         if filename.startswith("zipcty")
+    #     ]
+    #     df = df.append(frames)
+    #     if df is not None:
+    #         print("Head of zip county df")
+    #         print(df.head())
+    #     else:
+    #         print("Oh no. zip county df is None")

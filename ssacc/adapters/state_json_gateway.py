@@ -35,5 +35,5 @@ def get_state_fips_json():
 def read_state_json(input_path):
     """Read the state JSON file and return the results."""
     with open(input_path) as state_file:
-        statecodes = json.load(state_file)
+        statecodes = json.load(state_file)  # ToDo: use humble obect here
     return statecodes
