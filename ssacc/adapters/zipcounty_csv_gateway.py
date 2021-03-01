@@ -4,6 +4,9 @@
 from contextlib import suppress
 import os
 
+import pandas as pd
+from pandas.io.parsers import ParserError
+
 # from ssacc.clean_df import CleanDF
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.utils import utils
@@ -63,3 +66,16 @@ def read_zipcounty_csv():
     get_filepath = Factory.get(InjectionKeys.ZIPCOUNTY_FILEPATH)
     input_file_path = get_filepath()
     print(f"Read zipcounty.csv data from {input_file_path}")
+    # Humble method to read_csv
+    try:
+        df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
+        return df
+    except FileNotFoundError:
+        print(f"File {input_file_path} not found")
+    except ParserError:
+        print(f"Parser error {input_file_path} ")
+    except Exception as exception:
+        print(f"Any other error reading {input_file_path}")
+        print(exception)
+        raise
+    return None
