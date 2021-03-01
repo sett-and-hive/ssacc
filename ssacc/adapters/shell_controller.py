@@ -20,7 +20,7 @@ import argparse
 
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
-from ssacc.use_cases import ssa_fips_county_codes
+from ssacc.use_cases import regenerate_zip_fips_county_codes, ssa_fips_county_codes
 from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
@@ -79,11 +79,7 @@ def shell():
     zip_fips = ZipFips()
     if args.r:
         # use case: regerate Zip Fips CSV (zipcounty.csv)
-        # project_root = Path(__file__).parents[2]  # should be project path?
-        file_path = project_root.joinpath("data", "source")
-        print(f"root file path {file_path}")
-        # two gateways  - 1 to read files, 1 to write new csv
-        zip_fips.files_to_csv(file_path)
+        regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
     # Read the ZIP and FIPS.
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
     df_zip_fips = zip_fips.read_csv(file_path)

@@ -21,25 +21,28 @@ def assure_zipcounty_path():
 def get_zipcounty_filepath():
     """Inject filepath to zipcounty data."""
     project_root = utils.get_project_root()
-    file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
+    file_path = project_root.joinpath(
+        "data", "temp", "zipcounty-new.csv"
+    )  # TODO restore original name
     return file_path
 
-    # @timing
-    # def files_to_csv(self, input_folder_path):
-    #     """Read some files, build a data frame."""
-    #     print("ZipFips.files_to_csv")  # This is basically a gateway to a CSV file
-    #     project_root = Path(input_folder_path)
-    #     df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
-    # The usps_zipcty_gateway should return a df in the above format
 
-    #     output_file_folder = project_root.parent.joinpath("temp")
-    #     os.makedirs(output_file_folder, exist_ok=True)
-    #     output_file_path = output_file_folder.joinpath("zipcounty.csv")
-    #     print(f"Writing to {output_file_path}")
-    #     with suppress(FileNotFoundError):
-    #         os.remove(output_file_path)
-    #     df.to_csv(path_or_buf=output_file_path, index=False)
-    #     return df
+# @timing
+# def files_to_csv(self, input_folder_path):
+#     """Read some files, build a data frame."""
+#     print("ZipFips.files_to_csv")  # This is basically a gateway to a CSV file
+#     project_root = Path(input_folder_path)
+#     df = pd.DataFrame(columns=["zip", "fipscc", "fipsstct", "statecd", "county"])
+# The usps_zipcty_gateway should return a df in the above format
+
+#     output_file_folder = project_root.parent.joinpath("temp")
+#     os.makedirs(output_file_folder, exist_ok=True)
+#     output_file_path = output_file_folder.joinpath("zipcounty.csv")
+#     print(f"Writing to {output_file_path}")
+#     with suppress(FileNotFoundError):
+#         os.remove(output_file_path)
+#     df.to_csv(path_or_buf=output_file_path, index=False)
+#     return df
 
 
 @timing

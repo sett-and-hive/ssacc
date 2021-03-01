@@ -25,10 +25,8 @@ def get_state_fips_json():
     input_path = get_path()
     print(f"reading State FIPS JSON in {input_path}")
     read_json = Factory.get(InjectionKeys.STATE_JSON_READ)
-    df = read_json(input_path)
-    print(df.head())
-
-    return df
+    state_fips_dict = read_json(input_path)
+    return state_fips_dict
 
 
 @timing

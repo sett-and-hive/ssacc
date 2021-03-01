@@ -24,7 +24,7 @@ def test_regerate_zip_fips_county_code_data():
         PUT_ZIP_FIPS_CC_DF_CALLED = True
 
     Factory.register(InjectionKeys.GET_USPS_ZIP_FIPS_CC, mock_get_df)
-    Factory.register(InjectionKeys.WRITE_ZIP_FIPS_CC, mock_put_df)
+    Factory.register(InjectionKeys.ZIPCOUNTY_WRITE, mock_put_df)
     regerate_zip_fips_county_code_data()
 
     assert GET_ZIP_FIPS_CC_DF_CALLED is True
