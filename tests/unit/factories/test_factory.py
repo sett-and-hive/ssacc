@@ -7,8 +7,7 @@ def test_register_concrete_implementation():
     """Test register_concrete_implementation."""
 
     def a_concrete_implementation():
-        """Empty function. We ust want to insure it is inected."""
-        pass
+        """Empty function. We just want to insure it is injected."""
 
     injection_key = "deadbeef"
     Factory.register(injection_key, a_concrete_implementation)
