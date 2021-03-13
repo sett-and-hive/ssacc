@@ -81,6 +81,8 @@ def shell():
         # use case: regerate Zip Fips CSV (zipcounty.csv)
         regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
     # Read the ZIP and FIPS.
+    # vvv Use Case: create SSA FIPS ZIPS csv
+    # create_ssa_fips_zip
     file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
     df_zip_fips = zip_fips.read_csv(file_path)
     print(file_path)
@@ -103,6 +105,7 @@ def shell():
     df_map_2 = df_map_2.sort_values(by=["zip", "ssacnty"])
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
     df_map_result = MapSsaZipFips.write_csv(df_map_2, file_path)
+    # ^^^ create SSA FIPS ZIPS csv
 
     # Validate the ZIP SSA table.
     result = ValidateMap.validate(file_path)
