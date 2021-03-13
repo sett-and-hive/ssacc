@@ -35,15 +35,9 @@ def read_csv(input_file_path):
     try:
         df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
         return df
-    except FileNotFoundError:
+    except FileNotFoundError as exception:
         print(f"File {input_file_path} not found.")
-    except ValueError:
-        print(f"DF value error tyig to read {input_file_path}.")
-    except Exception as exception:
-        print(f"Any other error reading {input_file_path}")
-        print(exception)
         raise exception
-    return None
 
 
 @timing
