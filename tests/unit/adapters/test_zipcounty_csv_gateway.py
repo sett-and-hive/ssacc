@@ -15,8 +15,6 @@ with warnings.catch_warnings():
 from ssacc.adapters import zipcounty_csv_gateway
 from ssacc.factories.factory import Factory, InjectionKeys
 
-#  from ssacc.utils import utils
-
 # Tests do not need to be DRY
 # pylint: disable=duplicate-code
 # pylint: disable=R0801

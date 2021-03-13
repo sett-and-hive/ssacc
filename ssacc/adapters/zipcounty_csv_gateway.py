@@ -1,13 +1,11 @@
 """Gateway to the zipcounty.csv data."""
 
-# import pandas as pd
 from contextlib import suppress
 import os
 
 import pandas as pd
 from pandas.io.parsers import ParserError
 
-# from ssacc.clean_df import CleanDF
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.utils import utils
 from ssacc.wrappers.timing_wrapper import timing

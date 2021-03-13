@@ -71,8 +71,6 @@ def test_clean_csv():
     df1 = countyrate_gateway.clean_ssa_fips_data(df)
     assert df1 is not None
     assert "partsab5bonus2018rate" not in df1.columns
-    # assert "ssacounty" not in df1.columns
-    # assert "ssacnty" in df1.columns
 
 
 def test_clean_csv_wrong_column():
