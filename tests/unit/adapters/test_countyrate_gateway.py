@@ -37,16 +37,11 @@ def test_read_csv_file_not_found():
     project_root = utils.get_project_root()
     file_path = project_root.joinpath("tests", "data", "file_not_found.csv")
     print(file_path)
-    df = countyrate_gateway.read_csv(file_path)
-    assert df is None
-
-
-def test_read_csv_exception():
-    """Test read_csv() for bad data frame."""
-    project_root = utils.get_project_root()
-    file_path = project_root.joinpath("tests", "data", "test1.csv")
-    print(file_path)
-    df = countyrate_gateway.read_csv(None)
+    df = None
+    try:
+        df = countyrate_gateway.read_csv(file_path)
+    except FileNotFoundError:
+        pass
     assert df is None
 
 
