@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 from pandas.io.parsers import ParserError
 
-from ssacc.timing_wrapper import timing
 from ssacc.utils import utils
+from ssacc.wrappers.timing_wrapper import timing
 
 
 class ValidateMap:

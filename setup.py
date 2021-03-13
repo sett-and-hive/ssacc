@@ -9,7 +9,7 @@ project_dir = Path(__file__).parent
 
 setuptools.setup(
     name="ssacc",
-    version="0.1.0",
+    version="0.2.0",
     description="Map ZIPs to SSA County Code",
     extras_require=dict(tests=["pytest"]),
     packages=setuptools.find_packages(where="ssacc"),

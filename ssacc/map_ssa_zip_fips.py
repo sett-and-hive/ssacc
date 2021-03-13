@@ -5,7 +5,7 @@ import os
 import pandas as pd
 
 from ssacc.clean_df import CleanDF
-from ssacc.timing_wrapper import timing
+from ssacc.wrappers.timing_wrapper import timing
 
 
 class MapSsaZipFips:
