@@ -2,6 +2,8 @@
 
 import warnings
 
+from ssacc.utils import utils
+
 # suppress spurious "numpy.ufunc size changed" warnings
 # According to
 # https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility
@@ -69,3 +71,11 @@ def test_get_state_fips_json():
 
     assert GET_PATH_CALLED is True
     assert JSON_READ_CALLED is True
+
+
+def test_read_state_json():
+    """Test read_state_json."""
+    project_root = utils.get_project_root()
+    test_file = project_root.joinpath("tests", "data", "fake.json")
+    statecodes = state_json_gateway.read_state_json(test_file)
+    assert statecodes is not None
