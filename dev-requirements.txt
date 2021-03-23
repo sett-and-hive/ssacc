@@ -54,7 +54,7 @@ imagesize==1.2.0
     # via sphinx
 iniconfig==1.1.1
     # via pytest
-isort==5.7.0
+isort==5.8.0
     # via -r dev-requirements.in
 jinja2==2.11.3
     # via sphinx
