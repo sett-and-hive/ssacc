@@ -1,4 +1,4 @@
-""" Test creat_ssa_fips_zip use case."""
+"""Test create_ssa_fips_zip use case."""
 
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.use_cases import create_ssa_fips_zip
