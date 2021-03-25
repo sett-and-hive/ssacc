@@ -66,12 +66,7 @@ def shell():
 
     project_root = utils.get_project_root()
 
-    """
-    Build CSV of SSA and FIPS codes
-    """
-    # file_path = project_root.joinpath("data", "source", "countyrate.csv")
-    # df_ssa_fips = SsaFips.read_ssa_fips(file_path)
-    # first try at use_cases
+    # Build CSV of SSA and FIPS codes
     df_ssa_fips = ssa_fips_county_codes.build_ssa_and_fips_county_code_dataframe()
     print(df_ssa_fips.columns.values)
     print(df_ssa_fips.head())
