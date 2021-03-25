@@ -36,10 +36,37 @@ from ssacc.wrappers.timing_wrapper import timing
 
 @timing
 def create_fips_zip_dataframe():
-    """Build the fips cc + ZIP code dataframe."""
+    """Build the fips cc + ZIP code dataframe.
+
+    Dataframe should contain these columns:
+
+    - zip The 5 digit ZIP code
+    - fipscc The 3 digit FIPS county code
+    - fipsstct The 5 digit FIPS state and county code
+    - statecd The 2 letter state postal code
+    - county The name of the county
+    """
     # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
     # get df_zip_fips from ateway = zip_fips.read_csv(file_path)
     get_fips_zip_df = Factory.get(InjectionKeys.ZIPCOUNTY_READ)
     df = get_fips_zip_df()
+
+    return df
+
+
+@timing
+def create_zip_codes_dataframe():
+    """Build the fips cc + ZIP code dataframe.
+
+    Dataframe should contain these columns:
+
+    - Zipcode The 5 digit ZIP code
+    - City The ame of the primary city in the ZIP code
+    - State The 2 letter postal code for the city
+    """
+    # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
+    # get df_zip_fips from ateway = zip_fips.read_csv(file_path)
+    get_zip_codes_df = Factory.get(InjectionKeys.ZIPCODES_READ)
+    df = get_zip_codes_df()
 
     return df

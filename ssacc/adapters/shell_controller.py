@@ -28,7 +28,8 @@ from ssacc.use_cases import (
 from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
-from ssacc.zip_fips import ZipFips
+
+# from ssacc.zip_fips import ZipFips
 
 # Todo: Since cli.py is in an outer ring (external),
 #  it should not know about all of these.
@@ -80,7 +81,7 @@ def shell():
     # ZIPs and FIPS.
     # Build a new ZIP and FIPS CSV if asked.
     # Takes about 5 minutes locally
-    zip_fips = ZipFips()
+    # zip_fips = ZipFips()
     if args.r:
         # use case: regerate Zip Fips CSV (zipcounty.csv)
         regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
@@ -93,9 +94,10 @@ def shell():
     # print(file_path)
     print(df_zip_fips.head())
     # Read the ZIP and city name.
-    file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    df_zip_codes = zip_fips.read_csv(file_path)
-    print(file_path)
+    # file_path = project_root.joinpath("data", "source", "zipcodes.csv")
+    # df_zip_codes = zip_fips.read_csv(file_path)
+    df_zip_codes = create_ssa_fips_zip.create_zip_codes_dataframe()
+    # print(file_path)
     print(df_zip_codes.head())
     # Merge DFs to create ZIP SSA table.
     df_map_1 = MapSsaZipFips.map_ssa_zip(df_ssa_fips, df_zip_fips)
