@@ -57,6 +57,10 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
    :target: https://lgtm.com/projects/g/tomwillis608/ssacc/context:python
    :alt: LGTM language grade: Python
 
+.. image:: https://bettercodehub.com/edge/badge/tomwillis608/ssacc?branch=main
+   :target: https://bettercodehub.com/
+   :alt: BCH compliance
+
 Sloppy Python project that can grab source tables from the internet, extract relationships between
 SSA Country Codes and ZIPs through intermediary relationship to FIPS county codes.
 
