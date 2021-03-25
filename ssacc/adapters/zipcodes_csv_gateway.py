@@ -6,13 +6,6 @@ from pandas.io.parsers import ParserError
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.utils import utils
 
-# def assure_zipcounty_path():
-#     """Make sure path to zipcounty data exists."""
-#     project_root = utils.get_project_root()
-#     file_path = project_root.joinpath("data", "temp")
-#     os.makedirs(file_path, exist_ok=True)
-#     return file_path
-
 
 def get_zipcodes_filepath():
     """Inject filepath to zipcounty data."""
