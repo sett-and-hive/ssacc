@@ -55,7 +55,7 @@ def create_fips_zip_dataframe():
 
 
 @timing
-def create_zip_codes_dataframe():
+def create_zip_city_dataframe():
     """Build the fips cc + ZIP code dataframe.
 
     Dataframe should contain these columns:

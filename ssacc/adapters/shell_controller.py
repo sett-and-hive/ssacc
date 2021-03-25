@@ -29,8 +29,6 @@ from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
 
-# from ssacc.zip_fips import ZipFips
-
 # Todo: Since cli.py is in an outer ring (external),
 #  it should not know about all of these.
 # Develop use cases and entities with the business logical
@@ -81,22 +79,15 @@ def shell():
     # ZIPs and FIPS.
     # Build a new ZIP and FIPS CSV if asked.
     # Takes about 5 minutes locally
-    # zip_fips = ZipFips()
     if args.r:
         # use case: regerate Zip Fips CSV (zipcounty.csv)
         regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
     # Read the ZIP and FIPS.
     # vvv Use Case: create SSA FIPS ZIPS csv
-    # create_fips_zip_dataframe
-    # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
-    # df_zip_fips = zip_fips.read_csv(file_path)
     df_zip_fips = create_ssa_fips_zip.create_fips_zip_dataframe()
-    # print(file_path)
     print(df_zip_fips.head())
     # Read the ZIP and city name.
-    # file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    # df_zip_codes = zip_fips.read_csv(file_path)
-    df_zip_codes = create_ssa_fips_zip.create_zip_codes_dataframe()
+    df_zip_codes = create_ssa_fips_zip.create_zip_city_dataframe()
     # print(file_path)
     print(df_zip_codes.head())
     # Merge DFs to create ZIP SSA table.
