@@ -22,9 +22,7 @@ def assure_zipcounty_path():
 def get_zipcounty_filepath():
     """Inject filepath to zipcounty data."""
     project_root = utils.get_project_root()
-    file_path = project_root.joinpath(
-        "data", "temp", "zipcounty-new.csv"
-    )  # TODO restore original name
+    file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
     return file_path
 
 

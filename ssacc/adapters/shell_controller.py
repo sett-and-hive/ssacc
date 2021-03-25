@@ -20,7 +20,11 @@ import argparse
 
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
-from ssacc.use_cases import regenerate_zip_fips_county_codes, ssa_fips_county_codes
+from ssacc.use_cases import (
+    create_ssa_fips_zip,
+    regenerate_zip_fips_county_codes,
+    ssa_fips_county_codes,
+)
 from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
@@ -82,10 +86,11 @@ def shell():
         regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
     # Read the ZIP and FIPS.
     # vvv Use Case: create SSA FIPS ZIPS csv
-    # create_ssa_fips_zip
-    file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
-    df_zip_fips = zip_fips.read_csv(file_path)
-    print(file_path)
+    # create_fips_zip_dataframe
+    # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
+    # df_zip_fips = zip_fips.read_csv(file_path)
+    df_zip_fips = create_ssa_fips_zip.create_fips_zip_dataframe()
+    # print(file_path)
     print(df_zip_fips.head())
     # Read the ZIP and city name.
     file_path = project_root.joinpath("data", "source", "zipcodes.csv")

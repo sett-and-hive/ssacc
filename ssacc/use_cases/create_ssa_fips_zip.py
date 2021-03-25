@@ -28,5 +28,18 @@
 
 # Maybe the entity is the final merged data set
 
-# from ssacc.factories.factory import Factory, InjectionKeys
-# from ssacc.wrappers.timing_wrapper import timing
+from ssacc.factories.factory import Factory, InjectionKeys
+from ssacc.wrappers.timing_wrapper import timing
+
+# Busiess logic here.  No knowledge of files or databases
+
+
+@timing
+def create_fips_zip_dataframe():
+    """Build the fips cc + ZIP code dataframe."""
+    # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
+    # get df_zip_fips from ateway = zip_fips.read_csv(file_path)
+    get_fips_zip_df = Factory.get(InjectionKeys.ZIPCOUNTY_READ)
+    df = get_fips_zip_df()
+
+    return df
