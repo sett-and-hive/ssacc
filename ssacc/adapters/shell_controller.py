@@ -20,11 +20,14 @@ import argparse
 
 from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
-from ssacc.use_cases import regenerate_zip_fips_county_codes, ssa_fips_county_codes
+from ssacc.use_cases import (
+    create_ssa_fips_zip,
+    regenerate_zip_fips_county_codes,
+    ssa_fips_county_codes,
+)
 from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
-from ssacc.zip_fips import ZipFips
 
 # Todo: Since cli.py is in an outer ring (external),
 #  it should not know about all of these.
@@ -76,19 +79,16 @@ def shell():
     # ZIPs and FIPS.
     # Build a new ZIP and FIPS CSV if asked.
     # Takes about 5 minutes locally
-    zip_fips = ZipFips()
     if args.r:
         # use case: regerate Zip Fips CSV (zipcounty.csv)
         regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
     # Read the ZIP and FIPS.
-    file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
-    df_zip_fips = zip_fips.read_csv(file_path)
-    print(file_path)
+    # vvv Use Case: create SSA FIPS ZIPS csv
+    df_zip_fips = create_ssa_fips_zip.create_fips_zip_dataframe()
     print(df_zip_fips.head())
     # Read the ZIP and city name.
-    file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    df_zip_codes = zip_fips.read_csv(file_path)
-    print(file_path)
+    df_zip_codes = create_ssa_fips_zip.create_zip_city_dataframe()
+    # print(file_path)
     print(df_zip_codes.head())
     # Merge DFs to create ZIP SSA table.
     df_map_1 = MapSsaZipFips.map_ssa_zip(df_ssa_fips, df_zip_fips)
@@ -103,6 +103,7 @@ def shell():
     df_map_2 = df_map_2.sort_values(by=["zip", "ssacnty"])
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
     df_map_result = MapSsaZipFips.write_csv(df_map_2, file_path)
+    # ^^^ create SSA FIPS ZIPS csv
 
     # Validate the ZIP SSA table.
     result = ValidateMap.validate(file_path)

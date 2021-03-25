@@ -24,6 +24,9 @@ class InjectionKeys(Enum):
     ZIPCOUNTY_FILEPATH = (auto(),)
     ZIPCOUNTY_READ = (auto(),)
     ZIPCOUNTY_WRITE = (auto(),)
+    # zipcodes CSV data gateway
+    ZIPCODES_FILEPATH = (auto(),)
+    ZIPCODES_READ = (auto(),)
 
 
 class Factory:

@@ -21,6 +21,7 @@ from ssacc.adapters import (
     shell_controller,
     state_json_gateway,
     usps_zipcty_gateway,
+    zipcodes_csv_gateway,
     zipcounty_csv_gateway,
 )
 from ssacc.factories.factory import Factory, InjectionKeys
@@ -45,6 +46,9 @@ def setup_factory():
     )
     Factory.register(InjectionKeys.ZIPCOUNTY_READ, zipcounty_csv_gateway.read_zipcounty_csv)
     Factory.register(InjectionKeys.ZIPCOUNTY_WRITE, zipcounty_csv_gateway.write_zipcounty_csv)
+    # zipcodes CSV data gateway
+    Factory.register(InjectionKeys.ZIPCODES_FILEPATH, zipcodes_csv_gateway.get_zipcodes_filepath)
+    Factory.register(InjectionKeys.ZIPCODES_READ, zipcodes_csv_gateway.read_zipcodes_csv)
 
 
 # Allow the script to be run standalone.
