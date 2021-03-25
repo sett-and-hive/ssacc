@@ -36,8 +36,7 @@ from ssacc.wrappers.timing_wrapper import timing
 
 @timing
 def create_fips_zip_dataframe():
-    """
-    Build the fips cc + ZIP code dataframe.
+    """Build the fips cc + ZIP code dataframe.
 
     Dataframe should contain these columns:
 
@@ -57,8 +56,7 @@ def create_fips_zip_dataframe():
 
 @timing
 def create_zip_city_dataframe():
-    """
-    Build the ZIP code + city name dataframe.
+    """Build the ZIP code + city name dataframe.
 
     Dataframe should contain these columns:
 
