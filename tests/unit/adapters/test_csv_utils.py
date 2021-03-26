@@ -35,5 +35,4 @@ def test_create_dataframe_from_empty_csv():
     with pytest.raises(Exception):
         project_root = utils.get_project_root()
         file_path = project_root.joinpath("tests", "data", "empty.csv")
-        df = csv_utils.create_dataframe_from_csv(file_path)
-        assert df is None
+        csv_utils.create_dataframe_from_csv(file_path)
