@@ -1,5 +1,10 @@
 """Test create_ssa_fips_zip use case."""
 
+from contextlib import suppress
+import os
+from pathlib import Path
+import tempfile
+
 import pandas as pd
 
 from ssacc.factories.factory import Factory, InjectionKeys
@@ -126,9 +131,9 @@ def test_merge_dataframes_on_zip_code_bad():
 
 def test_create_ssa_fips_zip_csv():
     """Test create_ssa_fips_zip_csv."""
-    # Mock ZIPCOUNTY_READ
-    # Mock ZIPCODES_READ
+
     def mock_zipcounty_read():
+        """Return mock df for ZIP county data."""
         zip_fips = {
             "zip": [2015, 2013, 2018, 2019],
             "fipsstct": [22000, 25000, 27000, 35000],
@@ -138,12 +143,21 @@ def test_create_ssa_fips_zip_csv():
         return pd.DataFrame(zip_fips, columns=["zip", "fipsstct", "statecd", "county"])
 
     def mock_zipcodes_read():
+        """Return mock data for ZIP city data."""
         zip_city = {
             "City": [CAR1, CAR2, CAR3, CAR4],
             "Lat": [22000, 25000, 27000, 35000],
             "Zipcode": [2015, 2013, 2018, 2019],
         }
         return pd.DataFrame(zip_city, columns=["City", "Lat", "Zipcode"])
+
+    def mock_filepath_tmp():
+        """Return file in scratch space for CSV output."""
+        project_root = Path(tempfile.gettempdir())
+        output_file_path = project_root.joinpath("m-test1.csv")
+        with suppress(FileNotFoundError):
+            os.remove(output_file_path)
+        return output_file_path
 
     ssa_fips = {
         "ssacnty": [CAR1, CAR2, CAR3, CAR4],
@@ -171,8 +185,15 @@ def test_create_ssa_fips_zip_csv():
 
     Factory.register(InjectionKeys.ZIPCOUNTY_READ, mock_zipcounty_read)
     Factory.register(InjectionKeys.ZIPCODES_READ, mock_zipcodes_read)
+    Factory.register(InjectionKeys.SSAFIPZIPS_FILEPATH, mock_filepath_tmp)
 
     filepath, df = create_ssa_fips_zip.create_ssa_fips_zip_csv(dfs)
     assert not df.empty
     assert filepath
     assert str(df.fipsstco.values) in str(df.fipsstct.values)
+
+
+def test_get_csv_filepath():
+    """Make sure it returns a filepath that is valid but may not exist."""
+    file_path = create_ssa_fips_zip.get_ssa_zip_fips_file_path()
+    assert file_path

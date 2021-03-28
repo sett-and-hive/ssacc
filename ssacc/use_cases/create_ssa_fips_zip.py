@@ -33,10 +33,20 @@ def create_ssa_fips_zip_csv(df_ssa_fips):
     df_map_2 = df_map_2.drop_duplicates()
     # sort by zip then county code
     df_map_2 = df_map_2.sort_values(by=["zip", "ssacnty"])
+    get_filepath = Factory.get(InjectionKeys.SSAFIPZIPS_FILEPATH)
+    output_file_path = get_filepath()
+    df_map_result = MapSsaZipFips.write_csv(df_map_2, output_file_path)
+    return output_file_path, df_map_result
+
+
+def get_ssa_zip_fips_file_path():
+    """Inject path to CSV output.
+
+    This belongs in a gateway.
+    """
     project_root = utils.get_project_root()
     file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
-    df_map_result = MapSsaZipFips.write_csv(df_map_2, file_path)
-    return file_path, df_map_result
+    return file_path
 
 
 @timing
