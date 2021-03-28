@@ -80,11 +80,14 @@ def shell():
     # create SSA FIPS ZIPS csv
     file_path, df_map_result = create_ssa_fips_zip.create_ssa_fips_zip_csv(df_ssa_fips)
     # Validate the ZIP SSA table.
+    # use case - validate ssa_fips_zip data set
+    # entity knows how to validate
     result = ValidateMap.validate(file_path)
     if not result:
-        print("Failed data validation test")  # ToDo: Print this in red in a Presenter
+        print("Failed data validation test")  # Print this in red in a Presenter
     else:
-        print("Data quality tests pass")  # ToDo: print this in green with Colorama
+        print("Data quality tests pass")  # Print this in green with Colorama
+        # Insert refined SSACC data use case that calls gateway here
         print("Writing refined ZIP to SSA County Code CSV")
         refined_file_path = project_root.joinpath("data", "ssa_cnty_zip.csv")
         MapSsaZipFips.write_refined_csv(df_map_result, refined_file_path)

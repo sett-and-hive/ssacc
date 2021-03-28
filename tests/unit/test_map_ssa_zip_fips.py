@@ -4,6 +4,8 @@ import os
 from pathlib import Path
 import warnings
 
+import pandas as pd
+
 # suppress spurious "numpy.ufunc size changed" warnings
 # According to
 # https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility
@@ -11,7 +13,6 @@ import warnings
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", message="numpy.dtype size changed")
     warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
-    import pandas as pd
 
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 
@@ -32,8 +33,8 @@ def test_construction():
 
 
 def test_map_ssa_zip():
-    """
-    Test Map SSA to ZIP code via FIPS county code.
+    """Test Map SSA to ZIP code via FIPS county code.
+
     pd.merge(dfs, dfz, how="outer", left_on="fipsstco", right_on="fipsstct")
     """
     ssa_fips = {

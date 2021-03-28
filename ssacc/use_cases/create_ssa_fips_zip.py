@@ -93,7 +93,7 @@ def create_zip_city_dataframe():
     Dataframe should contain these columns:
 
     - Zipcode The 5 digit ZIP code
-    - City The ame of the primary city in the ZIP code
+    - City The name of the primary city in the ZIP code
     - State The 2 letter postal code for the city
     """
     # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
