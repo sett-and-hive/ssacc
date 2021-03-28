@@ -25,6 +25,7 @@ from ssacc.adapters import (
     zipcounty_csv_gateway,
 )
 from ssacc.factories.factory import Factory, InjectionKeys
+from ssacc.use_cases import create_ssa_fips_zip
 
 
 def setup_factory():
@@ -49,6 +50,10 @@ def setup_factory():
     # zipcodes CSV data gateway
     Factory.register(InjectionKeys.ZIPCODES_FILEPATH, zipcodes_csv_gateway.get_zipcodes_filepath)
     Factory.register(InjectionKeys.ZIPCODES_READ, zipcodes_csv_gateway.read_zipcodes_csv)
+    # SSA FIPS ZIP CSV data gateway
+    Factory.register(
+        InjectionKeys.SSAFIPZIPS_FILEPATH, create_ssa_fips_zip.get_ssa_zip_fips_file_path
+    )
 
 
 # Allow the script to be run standalone.

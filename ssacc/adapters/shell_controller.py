@@ -18,7 +18,6 @@ https://github.com/MicrosoftDocs/architecture-center/blob/master/docs/patterns/p
 
 import argparse
 
-from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 from ssacc.use_cases import (
     create_ssa_fips_zip,
@@ -28,11 +27,6 @@ from ssacc.use_cases import (
 from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
-
-# Todo: Since cli.py is in an outer ring (external),
-#  it should not know about all of these.
-# Develop use cases and entities with the business logical
-#  and connect to the outside (CLI, I/O) with adapters
 
 
 def parse_args() -> argparse.Namespace:
@@ -77,35 +71,17 @@ def shell():
     if args.r:
         # use case: regerate Zip Fips CSV (zipcounty.csv)
         regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
-    # Read the ZIP and FIPS.
-    # vvv Use Case: create SSA FIPS ZIPS csv
-    df_zip_fips = create_ssa_fips_zip.create_fips_zip_dataframe()
-    print(df_zip_fips.head())
-    # Read the ZIP and city name.
-    df_zip_codes = create_ssa_fips_zip.create_zip_city_dataframe()
-    # print(file_path)
-    print(df_zip_codes.head())
-    # Merge DFs to create ZIP SSA table.
-    df_map_1 = MapSsaZipFips.map_ssa_zip(df_ssa_fips, df_zip_fips)
-    df_map_2 = MapSsaZipFips.map_city(df_map_1, df_zip_codes)
-    # title case all cities, counties, states
-    df_map_2 = CleanDF.titlecase_columns(df_map_2, ["city", "countyname", "state"])
-    print("dfm2 head")
-    print(df_map_2.head())
-    # drop duplicate rows
-    df_map_2 = df_map_2.drop_duplicates()
-    # sort by zip then county code
-    df_map_2 = df_map_2.sort_values(by=["zip", "ssacnty"])
-    file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
-    df_map_result = MapSsaZipFips.write_csv(df_map_2, file_path)
-    # ^^^ create SSA FIPS ZIPS csv
-
+    # create SSA FIPS ZIPS csv
+    file_path, df_map_result = create_ssa_fips_zip.create_ssa_fips_zip_csv(df_ssa_fips)
     # Validate the ZIP SSA table.
+    # use case - validate ssa_fips_zip data set
+    # entity knows how to validate
     result = ValidateMap.validate(file_path)
     if not result:
-        print("Failed data validation test")  # ToDo: Print this in red in a Presenter
+        print("Failed data validation test")  # Print this in red in a Presenter
     else:
-        print("Data quality tests pass")  # ToDo: print this in green with Colorama
+        print("Data quality tests pass")  # Print this in green with Colorama
+        # Insert refined SSACC data use case that calls gateway here
         print("Writing refined ZIP to SSA County Code CSV")
         refined_file_path = project_root.joinpath("data", "ssa_cnty_zip.csv")
         MapSsaZipFips.write_refined_csv(df_map_result, refined_file_path)

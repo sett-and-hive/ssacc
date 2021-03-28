@@ -27,6 +27,8 @@ class InjectionKeys(Enum):
     # zipcodes CSV data gateway
     ZIPCODES_FILEPATH = (auto(),)
     ZIPCODES_READ = (auto(),)
+    # SSA FIPS ZIP CSV data gateway
+    SSAFIPZIPS_FILEPATH = (auto(),)
 
 
 class Factory:
