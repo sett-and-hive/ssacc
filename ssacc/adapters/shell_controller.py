@@ -29,11 +29,6 @@ from ssacc.utils import utils
 from ssacc.validate_map import ValidateMap
 from ssacc.wrappers.timing_wrapper import timing
 
-# Todo: Since shell_cotroller.py is in an outer ring (external),
-#  it should not know about all of these.
-# Develop use cases and entities with the business logical
-#  and connect to the outside (CLI, I/O) with adapters
-
 
 def parse_args() -> argparse.Namespace:
     """Parse user command line arguments."""

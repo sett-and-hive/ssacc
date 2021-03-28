@@ -42,6 +42,7 @@ from ssacc.wrappers.timing_wrapper import timing
 
 @timing
 def create_ssa_fips_zip_csv(df_ssa_fips):
+    """Create the SSA cc+FIPS cc+ZIP Code data set."""
     df_zip_fips = create_fips_zip_dataframe()
     print(df_zip_fips.head())
     # Read the ZIP and city name.

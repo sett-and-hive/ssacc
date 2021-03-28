@@ -174,4 +174,5 @@ def test_create_ssa_fips_zip_csv():
 
     filepath, df = create_ssa_fips_zip.create_ssa_fips_zip_csv(dfs)
     assert not df.empty
+    assert filepath
     assert str(df.fipsstco.values) in str(df.fipsstct.values)
