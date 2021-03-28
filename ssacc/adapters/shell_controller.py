@@ -18,7 +18,6 @@ https://github.com/MicrosoftDocs/architecture-center/blob/master/docs/patterns/p
 
 import argparse
 
-# from ssacc.clean_df import CleanDF
 from ssacc.map_ssa_zip_fips import MapSsaZipFips
 from ssacc.use_cases import (
     create_ssa_fips_zip,
