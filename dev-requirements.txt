@@ -129,7 +129,7 @@ pyparsing==2.4.7
     #   packaging
 pytest-cov==2.11.1
     # via -r dev-requirements.in
-pytest-randomly==3.6.0
+pytest-randomly==3.5.0
     # via -r dev-requirements.in
 pytest==6.2.2
     # via
