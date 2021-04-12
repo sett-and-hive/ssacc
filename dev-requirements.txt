@@ -14,8 +14,6 @@ attrs==20.3.0
     # via pytest
 babel==2.9.0
     # via sphinx
-backports.entry-points-selectable==1.0.2
-    # via pytest-randomly
 black==20.8b1
     # via -r dev-requirements.in
 certifi==2020.12.5
@@ -54,6 +52,8 @@ idna==2.10
     # via requests
 imagesize==1.2.0
     # via sphinx
+importlib-metadata==3.10.0
+    # via pytest-randomly
 iniconfig==1.1.1
     # via pytest
 isort==5.8.0
@@ -131,7 +131,7 @@ pyparsing==2.4.7
     #   packaging
 pytest-cov==2.11.1
     # via -r dev-requirements.in
-pytest-randomly==3.6.0
+pytest-randomly==3.7.0
     # via -r dev-requirements.in
 pytest==6.2.3
     # via
@@ -209,6 +209,8 @@ virtualenv==20.4.0
     # via
     #   pre-commit
     #   tox
+zipp==3.4.1
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
