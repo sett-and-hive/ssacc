@@ -11,4 +11,5 @@ Sphinx
 pre-commit
 pygments
 randomly
-cmake
+cmake >= 3.20.0
+pip-tools >= 6.1.0
