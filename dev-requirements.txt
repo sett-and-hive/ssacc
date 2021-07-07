@@ -96,7 +96,7 @@ packaging==20.8
     #   pytest
     #   sphinx
     #   tox
-pandas==1.2.4
+pandas==1.3.0
     # via
     #   randomly
     #   seaborn
