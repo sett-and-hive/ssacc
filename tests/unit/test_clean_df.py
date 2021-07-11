@@ -199,7 +199,7 @@ def test_reorder_columns():
     df = pd.DataFrame(cars, columns=["Brand", "Price", "Year"])
     reordered_list = ["Year", "Brand", "Price"]
     df1 = CleanDF.reorder_columns(df, reordered_list)
-    for index, element in enumerate(df1.columns):
+    for index, _unused in enumerate(df1.columns):
         assert df1.columns[index] is reordered_list[index]
 
 
@@ -261,7 +261,7 @@ def test_rename_columns():
     df = pd.DataFrame(cars, columns=["Brand", "Price", "Year", "Sign"])
     renamed_list = ["Marque", "Cost", "Zodiac"]
     df1 = CleanDF.rename_columns(df, original_list, renamed_list)
-    for index, element in enumerate(df1.columns):
+    for index, _unused in enumerate(df1.columns):
         if index < len(original_list):
             assert df1.columns[index] is renamed_list[index]
 
