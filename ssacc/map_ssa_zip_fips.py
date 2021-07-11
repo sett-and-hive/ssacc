@@ -54,7 +54,7 @@ class MapSsaZipFips:
     @staticmethod
     @timing
     def reorder_and_sort_data(df):
-        """ Reorder and sort a dataframe."""
+        """Reorder and sort a dataframe."""
         # ssacounty	stabbr	countyname	fipsstco	state	year	zip	fipscc	fipsstct	statecd	county
         # change order to group
         df = CleanDF.reorder_columns(
