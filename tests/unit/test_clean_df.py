@@ -152,7 +152,7 @@ def test_titlecase_columns_bad_column_name():
 
 
 def test_drop_columns():
-    """ Test column dropping."""
+    """Test column dropping."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -176,7 +176,7 @@ def test_drop_columns():
 
 
 def test_drop_columns_bad_column_name():
-    """ Test column droppin with bad name."""
+    """Test column droppin with bad name."""
     cars = {
         "Brand": ["Honda Civic", "Toyota Corolla", "Ford Focus", "Audi A4"],
         "Price": [22000, 25000, 27000, 35000],
@@ -190,7 +190,7 @@ def test_drop_columns_bad_column_name():
 
 
 def test_reorder_columns():
-    """ Test column reordering."""
+    """Test column reordering."""
     cars = {
         "Brand": ["Chevrolet Bel Air", "Lotus Esprit", "Citroën 2CV", "Aston Martin DBS V-12"],
         "Price": [49995, 59950, 18650, 114000],
@@ -204,7 +204,7 @@ def test_reorder_columns():
 
 
 def test_dropna_rows():
-    """ Test empty row dropping."""
+    """Test empty row dropping."""
     cars = {
         "Brand": [
             "Chitty Chitty Bang Bang",
@@ -227,7 +227,7 @@ def test_dropna_rows():
 
 
 def test_dropna_rows_bad_column_name():
-    """ Test empty row droppin with bad column name."""
+    """Test empty row droppin with bad column name."""
     cars = {
         "Brand": [
             "Chitty Chitty Bang Bang",
@@ -250,7 +250,7 @@ def test_dropna_rows_bad_column_name():
 
 
 def test_rename_columns():
-    """ Test column renaming."""
+    """Test column renaming."""
     cars = {
         "Brand": ["Chevrolet Bel Air", "Lotus Esprit", "Citroën 2CV", "Aston Martin DBS V-12"],
         "Price": [49995, 59950, 18650, 114000],
@@ -267,7 +267,7 @@ def test_rename_columns():
 
 
 def test_rename_columns_bad_column_name():
-    """ Test column renamin with bad column name."""
+    """Test column renamin with bad column name."""
     cars = {
         "Brand": ["Chevrolet Bel Air", "Lotus Esprit"],
         "Price": [49995, 59950],

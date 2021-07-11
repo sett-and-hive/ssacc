@@ -75,7 +75,7 @@ def read_zipcty_files(input_path):
 # TODO: refactor to reduce complexity and local variable count
 @timing
 def read_zip_fips_text_file(input_file_path):
-    """ Read text file with ZIPS and FIPS codes."""
+    """Read text file with ZIPS and FIPS codes."""
     # Gateway to a specialized text data file
     with open(input_file_path) as zip_county_file:
         zip_county_lines = zip_county_file.readlines()
@@ -97,7 +97,7 @@ def read_zip_fips_text_file(input_file_path):
 
 @timing
 def parse_zip_counties(lines, statecodes):
-    """ Parse columns from ZIP FIPS data. """
+    """Parse columns from ZIP FIPS data."""
     # Compromise plan
     # 1) call statecode gateway directly from here to make it work
     # 2) refactor one of two ways

@@ -28,7 +28,7 @@ CAR4 = "Audi A4"
 
 
 def test_construction():
-    """ Test the constructor. Trivial."""
+    """Test the constructor. Trivial."""
     assert MapSsaZipFips()
 
 
@@ -107,7 +107,7 @@ def test_map_city_bad():
 
 
 def test_write_csv(tmpdir):
-    """ Test writing a CSV. """
+    """Test writing a CSV."""
     df = _setup_df_for_test_write_csv()
     output_file_path = _setup_file_path_for_test_write_csv(tmpdir)
     MapSsaZipFips.write_csv(df, output_file_path)
