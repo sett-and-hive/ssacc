@@ -49,7 +49,7 @@ class CleanDF:
     @timing
     def rename_columns(df, original_list, renamed_list):
         """Rename columns."""
-        for i in range(len(df.columns)):
+        for i, _unused in enumerate(df.columns):
             if i < len(original_list):
                 if original_list[i] in df.columns:
                     df.rename(columns={original_list[i]: renamed_list[i]}, inplace=True)

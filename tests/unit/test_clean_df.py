@@ -69,7 +69,7 @@ def test_titlecase_one_column():
     df_fixture = pd.DataFrame(names_fixture, columns=["names"])
     df = CleanDF.titlecase_columns(df, ["names"])
     assert df["names"][0] == "District of Columbia"
-    for i in range(len(df)):
+    for i, _unused in enumerate(df):
         assert df["names"][i] == df_fixture["names"][i]
 
 
@@ -124,7 +124,7 @@ def test_titlecase_columns():
     df = pd.DataFrame(best_sellers, columns=["titles", "authors"])
     df_fixture = pd.DataFrame(best_sellers_fixture, columns=["titles", "authors"])
     df = CleanDF.titlecase_columns(df, ["titles", "authors"])
-    for i in range(len(df)):
+    for i, _unused in enumerate(df):
         assert df["titles"][i] == df_fixture["titles"][i]
         assert df["authors"][i] == df_fixture["authors"][i]
 
@@ -146,7 +146,7 @@ def test_titlecase_columns_bad_column_name():
     df = pd.DataFrame(best_sellers, columns=["titles", "authors"])
     df_fixture = pd.DataFrame(best_sellers_fixture, columns=["titles", "authors"])
     df = CleanDF.titlecase_columns(df, ["titles", "authors", "fake_column"])
-    for i in range(len(df)):
+    for i, _unused in enumerate(df):
         assert df["titles"][i] == df_fixture["titles"][i]
         assert df["authors"][i] == df_fixture["authors"][i]
 
@@ -199,8 +199,8 @@ def test_reorder_columns():
     df = pd.DataFrame(cars, columns=["Brand", "Price", "Year"])
     reordered_list = ["Year", "Brand", "Price"]
     df1 = CleanDF.reorder_columns(df, reordered_list)
-    for i in range(len(df1.columns)):
-        assert df1.columns[i] is reordered_list[i]
+    for index, _unused in enumerate(df1.columns):
+        assert df1.columns[index] is reordered_list[index]
 
 
 def test_dropna_rows():
@@ -261,9 +261,9 @@ def test_rename_columns():
     df = pd.DataFrame(cars, columns=["Brand", "Price", "Year", "Sign"])
     renamed_list = ["Marque", "Cost", "Zodiac"]
     df1 = CleanDF.rename_columns(df, original_list, renamed_list)
-    for i in range(len(df1.columns)):
-        if i < len(original_list):
-            assert df1.columns[i] is renamed_list[i]
+    for index, _unused in enumerate(df1.columns):
+        if index < len(original_list):
+            assert df1.columns[index] is renamed_list[index]
 
 
 def test_rename_columns_bad_column_name():
