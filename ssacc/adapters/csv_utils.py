@@ -1,7 +1,7 @@
 """Utility functions to read CSV files."""
 
 import pandas as pd
-from pandas.io.parsers import ParserError
+from pandas.errors import ParserError
 
 
 def create_dataframe_from_csv(input_file_path: str):

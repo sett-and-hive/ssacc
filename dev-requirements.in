@@ -10,4 +10,5 @@ isort
 Sphinx
 pre-commit
 pygments
-randomly
+# randomly
+# cmake == 3.19.7

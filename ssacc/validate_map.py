@@ -5,7 +5,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from pandas.io.parsers import ParserError
+from pandas.errors import ParserError
 
 from ssacc.utils import utils
 from ssacc.wrappers.timing_wrapper import timing
