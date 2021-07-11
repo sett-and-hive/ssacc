@@ -199,8 +199,8 @@ def test_reorder_columns():
     df = pd.DataFrame(cars, columns=["Brand", "Price", "Year"])
     reordered_list = ["Year", "Brand", "Price"]
     df1 = CleanDF.reorder_columns(df, reordered_list)
-    for i in range(len(df1.columns)):
-        assert df1.columns[i] is reordered_list[i]
+    for index, element in enumerate(df1.columns):
+        assert df1.columns[index] is reordered_list[index]
 
 
 def test_dropna_rows():
@@ -261,9 +261,9 @@ def test_rename_columns():
     df = pd.DataFrame(cars, columns=["Brand", "Price", "Year", "Sign"])
     renamed_list = ["Marque", "Cost", "Zodiac"]
     df1 = CleanDF.rename_columns(df, original_list, renamed_list)
-    for i in range(len(df1.columns)):
-        if i < len(original_list):
-            assert df1.columns[i] is renamed_list[i]
+    for index, element in enumerate(df1.columns):
+        if index < len(original_list):
+            assert df1.columns[index] is renamed_list[index]
 
 
 def test_rename_columns_bad_column_name():
