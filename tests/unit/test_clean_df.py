@@ -69,7 +69,7 @@ def test_titlecase_one_column():
     df_fixture = pd.DataFrame(names_fixture, columns=["names"])
     df = CleanDF.titlecase_columns(df, ["names"])
     assert df["names"][0] == "District of Columbia"
-    for i in range(len(df)):
+    for i, _unused in enumerate(df):
         assert df["names"][i] == df_fixture["names"][i]
 
 
@@ -124,7 +124,7 @@ def test_titlecase_columns():
     df = pd.DataFrame(best_sellers, columns=["titles", "authors"])
     df_fixture = pd.DataFrame(best_sellers_fixture, columns=["titles", "authors"])
     df = CleanDF.titlecase_columns(df, ["titles", "authors"])
-    for i in range(len(df)):
+    for i, _unused in enumerate(df):
         assert df["titles"][i] == df_fixture["titles"][i]
         assert df["authors"][i] == df_fixture["authors"][i]
 
@@ -146,7 +146,7 @@ def test_titlecase_columns_bad_column_name():
     df = pd.DataFrame(best_sellers, columns=["titles", "authors"])
     df_fixture = pd.DataFrame(best_sellers_fixture, columns=["titles", "authors"])
     df = CleanDF.titlecase_columns(df, ["titles", "authors", "fake_column"])
-    for i in range(len(df)):
+    for i, _unused in enumerate(df):
         assert df["titles"][i] == df_fixture["titles"][i]
         assert df["authors"][i] == df_fixture["authors"][i]
 
