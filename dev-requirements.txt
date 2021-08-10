@@ -142,7 +142,7 @@ toml==0.10.2
     #   tox
 tomli==1.0.4
     # via black
-tox==3.24.0
+tox==3.24.1
     # via -r dev-requirements.in
 typing-extensions==3.10.0.0
     # via mypy
