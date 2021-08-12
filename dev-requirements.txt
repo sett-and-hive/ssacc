@@ -43,7 +43,7 @@ flake8-polyfill==1.0.2
     # via pep8-naming
 identify==2.2.13
     # via pre-commit
-idna==2.10
+idna==3.2
     # via requests
 imagesize==1.2.0
     # via sphinx
