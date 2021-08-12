@@ -140,7 +140,7 @@ toml==0.10.2
     #   pytest
     #   pytest-cov
     #   tox
-tomli==1.0.4
+tomli==1.2.1
     # via black
 tox==3.24.1
     # via -r dev-requirements.in
