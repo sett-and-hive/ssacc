@@ -103,7 +103,7 @@ pytest==6.2.4
     #   pytest-randomly
 pytest-cov==2.12.1
     # via -r dev-requirements.in
-pytest-randomly==3.8.0
+pytest-randomly==3.10.1
     # via -r dev-requirements.in
 pytz==2021.1
     # via babel
