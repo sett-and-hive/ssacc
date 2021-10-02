@@ -107,7 +107,7 @@ pytest-cov==2.12.1
     # via -r dev-requirements.in
 pytest-randomly==3.10.1
     # via -r dev-requirements.in
-pytz==2021.1
+pytz==2021.3
     # via babel
 pyyaml==5.4.1
     # via pre-commit
