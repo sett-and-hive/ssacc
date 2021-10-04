@@ -156,7 +156,7 @@ virtualenv==20.8.1
     # via
     #   pre-commit
     #   tox
-zipp==3.5.0
+zipp==3.6.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
