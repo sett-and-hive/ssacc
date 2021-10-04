@@ -22,7 +22,7 @@ charset-normalizer==2.0.6
     # via requests
 click==8.0.1
     # via black
-coverage==6.0
+coverage[toml]==6.0
     # via pytest-cov
 distlib==0.3.3
     # via virtualenv
@@ -103,7 +103,7 @@ pytest==6.2.5
     #   -r dev-requirements.in
     #   pytest-cov
     #   pytest-randomly
-pytest-cov==2.12.1
+pytest-cov==3.0.0
     # via -r dev-requirements.in
 pytest-randomly==3.10.1
     # via -r dev-requirements.in
@@ -140,10 +140,11 @@ toml==0.10.2
     #   mypy
     #   pre-commit
     #   pytest
-    #   pytest-cov
     #   tox
 tomli==1.2.1
-    # via black
+    # via
+    #   black
+    #   coverage
 tox==3.24.4
     # via -r dev-requirements.in
 typing-extensions==3.10.0.2
