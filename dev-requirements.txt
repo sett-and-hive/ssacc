@@ -22,7 +22,7 @@ charset-normalizer==2.0.6
     # via requests
 click==8.0.1
     # via black
-coverage==6.0
+coverage==6.0.1
     # via pytest-cov
 distlib==0.3.3
     # via virtualenv
