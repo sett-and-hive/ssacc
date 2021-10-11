@@ -14,7 +14,7 @@ backports.entry-points-selectable==1.1.0
     # via virtualenv
 black==21.9b0
     # via -r dev-requirements.in
-certifi==2021.5.30
+certifi==2021.10.8
     # via requests
 cfgv==3.3.1
     # via pre-commit
