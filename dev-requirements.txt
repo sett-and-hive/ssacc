@@ -22,7 +22,7 @@ charset-normalizer==2.0.7
     # via requests
 click==8.0.3
     # via black
-coverage==6.0.2
+coverage[toml]==6.0.2
     # via pytest-cov
 distlib==0.3.3
     # via virtualenv
@@ -32,7 +32,7 @@ filelock==3.3.0
     # via
     #   tox
     #   virtualenv
-flake8==3.9.2
+flake8==4.0.1
     # via
     #   -r dev-requirements.in
     #   flake8-polyfill
@@ -88,9 +88,9 @@ py==1.10.0
     # via
     #   pytest
     #   tox
-pycodestyle==2.7.0
+pycodestyle==2.8.0
     # via flake8
-pyflakes==2.3.1
+pyflakes==2.4.0
     # via flake8
 pygments==2.10.0
     # via
@@ -140,10 +140,11 @@ toml==0.10.2
     #   mypy
     #   pre-commit
     #   pytest
-    #   pytest-cov
     #   tox
 tomli==1.2.1
-    # via black
+    # via
+    #   black
+    #   coverage
 tox==3.24.4
     # via -r dev-requirements.in
 typing-extensions==3.10.0.2
