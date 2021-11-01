@@ -12,7 +12,7 @@ babel==2.9.1
     # via sphinx
 backports.entry-points-selectable==1.1.0
     # via virtualenv
-black==21.9b0
+black==21.10b0
     # via -r dev-requirements.in
 certifi==2021.10.8
     # via requests
@@ -22,7 +22,7 @@ charset-normalizer==2.0.7
     # via requests
 click==8.0.3
     # via black
-coverage==6.0.2
+coverage[toml]==6.0.2
     # via pytest-cov
 distlib==0.3.3
     # via virtualenv
@@ -45,8 +45,6 @@ idna==3.3
     # via requests
 imagesize==1.2.0
     # via sphinx
-importlib-metadata==4.8.1
-    # via pytest-randomly
 iniconfig==1.1.1
     # via pytest
 isort==5.9.3
@@ -140,10 +138,11 @@ toml==0.10.2
     #   mypy
     #   pre-commit
     #   pytest
-    #   pytest-cov
     #   tox
 tomli==1.2.1
-    # via black
+    # via
+    #   black
+    #   coverage
 tox==3.24.4
     # via -r dev-requirements.in
 typing-extensions==3.10.0.2
@@ -156,8 +155,6 @@ virtualenv==20.8.1
     # via
     #   pre-commit
     #   tox
-zipp==3.6.0
-    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
