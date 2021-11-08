@@ -109,7 +109,7 @@ pytz==2021.3
     # via babel
 pyyaml==6.0
     # via pre-commit
-regex==2021.10.8
+regex==2021.11.2
     # via black
 requests==2.26.0
     # via sphinx
