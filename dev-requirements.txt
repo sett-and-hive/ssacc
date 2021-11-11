@@ -39,7 +39,7 @@ flake8==3.9.2
     #   pep8-naming
 flake8-polyfill==1.0.2
     # via pep8-naming
-identify==2.3.0
+identify==2.3.5
     # via pre-commit
 idna==3.3
     # via requests
