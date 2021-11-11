@@ -49,7 +49,7 @@ iniconfig==1.1.1
     # via pytest
 isort==5.10.0
     # via -r dev-requirements.in
-jinja2==3.0.2
+jinja2==3.0.3
     # via sphinx
 markupsafe==2.0.1
     # via jinja2
