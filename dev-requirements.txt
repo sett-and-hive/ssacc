@@ -43,7 +43,7 @@ identify==2.3.5
     # via pre-commit
 idna==3.3
     # via requests
-imagesize==1.2.0
+imagesize==1.3.0
     # via sphinx
 iniconfig==1.1.1
     # via pytest
