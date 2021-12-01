@@ -145,7 +145,7 @@ tomli==1.2.2
     #   coverage
 tox==3.24.4
     # via -r dev-requirements.in
-typing-extensions==3.10.0.2
+typing-extensions==4.0.1
     # via
     #   black
     #   mypy
