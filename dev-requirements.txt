@@ -55,7 +55,7 @@ markupsafe==2.0.1
     # via jinja2
 mccabe==0.6.1
     # via flake8
-mypy==0.910
+mypy==0.920
     # via -r dev-requirements.in
 mypy-extensions==0.4.3
     # via
@@ -135,7 +135,6 @@ sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 toml==0.10.2
     # via
-    #   mypy
     #   pre-commit
     #   pytest
     #   tox
@@ -143,6 +142,7 @@ tomli==1.2.2
     # via
     #   black
     #   coverage
+    #   mypy
 tox==3.24.4
     # via -r dev-requirements.in
 typing-extensions==4.0.1
