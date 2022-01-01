@@ -1,6 +1,10 @@
 """Test gateway to USPS ZIp Code to FIPS county code data."""
 
+from pathlib import Path
+from unittest.mock import patch
 import warnings
+
+import numpy as np
 
 # suppress spurious "numpy.ufunc size changed" warnings
 # According to
@@ -71,3 +75,45 @@ def test_get_zip_fips_cc_df():
 
     assert GET_PATH_CALLED is True
     assert STATE_READ_CALLED is True
+
+
+@patch("ssacc.adapters.usps_zipcty_gateway.read_zip_fips_text_file")
+def test_read_zipcty_files(mock_read_zip_fips_text_file, fs):
+    """Test that read_zipcty_files calls read_zip_fips_text_file."""
+    states = {"name": ["Wisconsin"], "code": ["WI"]}
+    df = pd.DataFrame(states, columns=["name", "code"])
+    fs.create_file("/tmp/zipcty.fake")
+    mock_read_zip_fips_text_file.return_value = df
+    result = usps_zipcty_gateway.read_zipcty_files(Path("/tmp"))
+
+    assert result["zip"][0] is np.nan
+    assert result["name"][0] == df["name"][0]
+    assert mock_read_zip_fips_text_file.called
+
+
+@patch("ssacc.adapters.usps_zipcty_gateway.parse_zip_counties")
+def test_read_zip_fips_text_file(mock_parse_zip_counties, fs):
+    """Test that parse_zip_counties is called."""
+
+    def mock_read_state_json():
+        """Mock for get_state_json()."""
+        return {}
+
+    Factory.register(InjectionKeys.GET_STATE_JSON, mock_read_state_json)
+    states = {"name": ["Iowa"], "code": ["IA"]}
+    df = pd.DataFrame(states, columns=["name", "code"])
+    mock_parse_zip_counties.return_value = df
+    fs.create_file("/tmp/zipcty.fake")
+    result = usps_zipcty_gateway.read_zip_fips_text_file(Path("/tmp/zipcty.fake"))
+    assert result["name"][0] == df["name"][0]
+    assert mock_parse_zip_counties.called
+
+
+def test_parse_zip_counties():
+    line = "00401000000000100010001NY119WESTCHESTER"
+    lines = ["header", line]
+    state_codes = {"NY": "36"}
+    result = usps_zipcty_gateway.parse_zip_counties(lines, state_codes)
+
+    assert "00401" == result["zip"][0]
+    assert "WESTCHESTER" == result["county"][0]
