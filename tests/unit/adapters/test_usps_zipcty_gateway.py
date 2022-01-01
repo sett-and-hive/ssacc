@@ -18,8 +18,6 @@ with warnings.catch_warnings():
 from ssacc.adapters import usps_zipcty_gateway
 from ssacc.factories.factory import Factory, InjectionKeys
 
-#  from ssacc.utils import utils
-
 # Tests do not need to be DRY
 # pylint: disable=duplicate-code
 # pylint: disable=R0801
@@ -117,3 +115,12 @@ def test_parse_zip_counties():
 
     assert "00401" == result["zip"][0]
     assert "WESTCHESTER" == result["county"][0]
+
+
+def test_parse_zip_counties_bad_state_code():
+    line = "00401000000000100010001NY119WESTCHESTER"
+    lines = ["header", line]
+    state_codes = {"TX": "36"}
+    result = usps_zipcty_gateway.parse_zip_counties(lines, state_codes)
+
+    assert "00119" == result["fipsstct"][0]
