@@ -18,7 +18,7 @@ def get_state_json_filepath():
 
 
 @timing
-def get_state_fips_json():
+def get_state_fips_json() -> dict:
     """Return state code and FIPS state codes in a dict."""
     get_path = Factory.get(InjectionKeys.STATE_JSON_FILEPATH)
     input_path = get_path()

@@ -89,6 +89,18 @@ def test_read_zipcty_files(mock_read_zip_fips_text_file, fs):
     assert mock_read_zip_fips_text_file.called
 
 
+@patch("ssacc.adapters.usps_zipcty_gateway.read_zip_fips_text_file")
+def test_read_zipcty_files_empty_frame(mock_read_zip_fips_text_file, fs):
+    """Test that read_zipcty_files calls read_zip_fips_text_file."""
+    states = {}
+    df = pd.DataFrame(states, columns=["name", "code"])
+    fs.create_file("/tmp/zipcty.fake")
+    mock_read_zip_fips_text_file.return_value = df
+    result = usps_zipcty_gateway.read_zipcty_files(Path("/tmp"))
+
+    assert result.empty
+
+
 @patch("ssacc.adapters.usps_zipcty_gateway.parse_zip_counties")
 def test_read_zip_fips_text_file(mock_parse_zip_counties, fs):
     """Test that parse_zip_counties is called."""
@@ -124,3 +136,10 @@ def test_parse_zip_counties_bad_state_code():
     result = usps_zipcty_gateway.parse_zip_counties(lines, state_codes)
 
     assert "00119" == result["fipsstct"][0]
+
+
+def test_foo():
+    df = pd.DataFrame(columns=["foo"])
+    assert df.empty
+    df.append([])
+    assert df is not None
