@@ -137,8 +137,8 @@ def test_parse_zip_counties():
     state_codes = {"NY": "36"}
     result = usps_zipcty_gateway.parse_zip_counties(lines, state_codes)
 
-    assert "00401" == result["zip"][0]
-    assert "WESTCHESTER" == result["county"][0]
+    assert result["zip"][0] == "00401"
+    assert result["county"][0] == "WESTCHESTER"
 
 
 def test_parse_zip_counties_bad_state_code():
@@ -148,4 +148,4 @@ def test_parse_zip_counties_bad_state_code():
     state_codes = {"TX": "36"}
     result = usps_zipcty_gateway.parse_zip_counties(lines, state_codes)
 
-    assert "00119" == result["fipsstct"][0]
+    assert result["fipsstct"][0] == "00119"
