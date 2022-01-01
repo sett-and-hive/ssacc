@@ -1,5 +1,6 @@
 """Test gateway to USPS ZIp Code to FIPS county code data."""
 
+import os
 from pathlib import Path
 from unittest.mock import patch
 import warnings
@@ -76,13 +77,16 @@ def test_get_zip_fips_cc_df():
 
 
 @patch("ssacc.adapters.usps_zipcty_gateway.read_zip_fips_text_file")
-def test_read_zipcty_files(mock_read_zip_fips_text_file, fs):
+def test_read_zipcty_files(mock_read_zip_fips_text_file, tmp_path):
     """Test that read_zipcty_files calls read_zip_fips_text_file."""
     states = {"name": ["Wisconsin"], "code": ["WI"]}
     df = pd.DataFrame(states, columns=["name", "code"])
-    fs.create_file("/tmp/zipcty.fake")
     mock_read_zip_fips_text_file.return_value = df
-    result = usps_zipcty_gateway.read_zipcty_files(Path("/tmp"))
+
+    temp_filepath = tmp_path.joinpath("zipcty.fake")
+    temp_filepath.write_text("test")  # Add file for read_zipcty_files to find.
+    result = usps_zipcty_gateway.read_zipcty_files(tmp_path)
+    os.remove(temp_filepath)
 
     assert result["zip"][0] is np.nan
     assert result["name"][0] == df["name"][0]
@@ -90,19 +94,22 @@ def test_read_zipcty_files(mock_read_zip_fips_text_file, fs):
 
 
 @patch("ssacc.adapters.usps_zipcty_gateway.read_zip_fips_text_file")
-def test_read_zipcty_files_empty_frame(mock_read_zip_fips_text_file, fs):
+def test_read_zipcty_files_empty_frame(mock_read_zip_fips_text_file, tmp_path):
     """Test that read_zipcty_files calls read_zip_fips_text_file."""
     states = {}
     df = pd.DataFrame(states, columns=["name", "code"])
-    fs.create_file("/tmp/zipcty.fake")
     mock_read_zip_fips_text_file.return_value = df
-    result = usps_zipcty_gateway.read_zipcty_files(Path("/tmp"))
+
+    temp_filepath = tmp_path.joinpath("zipcty.fake")
+    temp_filepath.write_text("test")  # Add file for read_zipcty_files to find.
+    result = usps_zipcty_gateway.read_zipcty_files(tmp_path)
+    os.remove(temp_filepath)
 
     assert result.empty
 
 
 @patch("ssacc.adapters.usps_zipcty_gateway.parse_zip_counties")
-def test_read_zip_fips_text_file(mock_parse_zip_counties, fs):
+def test_read_zip_fips_text_file(mock_parse_zip_counties, tmp_path):
     """Test that parse_zip_counties is called."""
 
     def mock_read_state_json():
@@ -113,13 +120,18 @@ def test_read_zip_fips_text_file(mock_parse_zip_counties, fs):
     states = {"name": ["Iowa"], "code": ["IA"]}
     df = pd.DataFrame(states, columns=["name", "code"])
     mock_parse_zip_counties.return_value = df
-    fs.create_file("/tmp/zipcty.fake")
-    result = usps_zipcty_gateway.read_zip_fips_text_file(Path("/tmp/zipcty.fake"))
+
+    temp_filepath = tmp_path.joinpath("fake.file")
+    temp_filepath.write_text("test")
+    result = usps_zipcty_gateway.read_zip_fips_text_file(Path(temp_filepath))
+    os.remove(temp_filepath)
+
     assert result["name"][0] == df["name"][0]
     assert mock_parse_zip_counties.called
 
 
 def test_parse_zip_counties():
+    """Test zip_parse_counties."""
     line = "00401000000000100010001NY119WESTCHESTER"
     lines = ["header", line]
     state_codes = {"NY": "36"}
@@ -130,16 +142,10 @@ def test_parse_zip_counties():
 
 
 def test_parse_zip_counties_bad_state_code():
+    """Test zip_parse_counties with a state code not in dict."""
     line = "00401000000000100010001NY119WESTCHESTER"
     lines = ["header", line]
     state_codes = {"TX": "36"}
     result = usps_zipcty_gateway.parse_zip_counties(lines, state_codes)
 
     assert "00119" == result["fipsstct"][0]
-
-
-def test_foo():
-    df = pd.DataFrame(columns=["foo"])
-    assert df.empty
-    df.append([])
-    assert df is not None
