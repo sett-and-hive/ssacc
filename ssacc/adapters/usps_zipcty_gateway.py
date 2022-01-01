@@ -64,11 +64,11 @@ def read_zipcty_files(input_path):
         if filename.startswith("zipcty")
     ]
     df = df.append(frames)
-    if df is not None:
+    if not df.empty:
         print("Head of zip county df")
         print(df.head())
     else:
-        print("Oh no. zip county df is None")
+        print("Oh no. zip county df is empty")
     return df
 
 
