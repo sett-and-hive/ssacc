@@ -136,7 +136,7 @@ toml==0.10.2
     #   pre-commit
     #   pytest
     #   tox
-tomli==1.2.3
+tomli==2.0.1
     # via
     #   black
     #   coverage
