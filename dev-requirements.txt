@@ -24,7 +24,7 @@ coverage[toml]==6.2
     # via pytest-cov
 distlib==0.3.4
     # via virtualenv
-docutils==0.17.1
+docutils==0.18.1
     # via sphinx
 filelock==3.4.2
     # via
