@@ -147,7 +147,7 @@ typing-extensions==4.0.1
     # via
     #   black
     #   mypy
-urllib3==1.26.7
+urllib3==1.26.8
     # via requests
 virtualenv==20.12.0
     # via
