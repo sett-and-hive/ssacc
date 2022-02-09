@@ -2,6 +2,7 @@ tox
 pytest
 pytest-cov
 pytest-randomly
+pyfakefs
 mypy
 flake8 >= 3.3.0
 pep8-naming >= 0.4.1

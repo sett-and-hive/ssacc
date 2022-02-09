@@ -11,16 +11,19 @@
 """
 
 import os
+from pathlib import Path
 import re
+from typing import List
 
 import pandas as pd
+from pandas.core.frame import DataFrame
 
 from ssacc.factories.factory import Factory, InjectionKeys
 from ssacc.utils import utils
 from ssacc.wrappers.timing_wrapper import timing
 
 
-def get_zipcty_path():
+def get_zipcty_path() -> Path:
     """Inject path to USPS zipcty data."""
     project_root = utils.get_project_root()
     path = project_root.joinpath("data", "source")
@@ -34,7 +37,7 @@ def get_zipcty_path():
 
 
 @timing
-def get_zip_fips_cc_df():
+def get_zip_fips_cc_df() -> DataFrame:
     """Return clean ZIP and FIPS county codes in a dataframe."""
     # We expect a DF with these columns=["zip", "fipscc", "fipsstct", "statecd", "county"]
     get_path = Factory.get(InjectionKeys.USPS_ZIPCTY_PATH)
@@ -51,7 +54,7 @@ def get_zip_fips_cc_df():
 
 
 @timing
-def read_zipcty_files(input_path):
+def read_zipcty_files(input_path: Path):
     """Read zipcty files."""
     # ToDo: make it read
     # We expect a DF with these columns=["zip", "fipscc", "fipsstct", "statecd", "county"]
@@ -64,17 +67,17 @@ def read_zipcty_files(input_path):
         if filename.startswith("zipcty")
     ]
     df = df.append(frames)
-    if df is not None:
+    if not df.empty:
         print("Head of zip county df")
         print(df.head())
     else:
-        print("Oh no. zip county df is None")
+        print("Oh no. zip county df is empty")
     return df
 
 
 # TODO: refactor to reduce complexity and local variable count
 @timing
-def read_zip_fips_text_file(input_file_path):
+def read_zip_fips_text_file(input_file_path: Path) -> DataFrame:
     """Read text file with ZIPS and FIPS codes."""
     # Gateway to a specialized text data file
     with open(input_file_path) as zip_county_file:
@@ -96,7 +99,7 @@ def read_zip_fips_text_file(input_file_path):
 
 
 @timing
-def parse_zip_counties(lines, statecodes):
+def parse_zip_counties(lines: List[str], statecodes: dict):
     """Parse columns from ZIP FIPS data."""
     # Compromise plan
     # 1) call statecode gateway directly from here to make it work
