@@ -90,7 +90,7 @@ pyfakefs==4.5.3
     # via -r dev-requirements.in
 pyflakes==2.4.0
     # via flake8
-pygments==2.11.1
+pygments==2.11.2
     # via
     #   -r dev-requirements.in
     #   sphinx
