@@ -1,5 +1,15 @@
 {
   "extends": [
-    "config:base"
+    "config:base", ":dependencyDashboard"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "matchDepTypes": ["devDependencies", "dev-dependencies", "tool.poetry.dev-dependencies"],
+      "automerge": true
+    }
   ]
 }
