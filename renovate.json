@@ -6,9 +6,18 @@
     "enabled": true,
     "automerge": true
   },
+  "pip-compile": {
+    "enabled": true,
+    "fileMatch": ["(^|/)requirements\\.in$"]
+  },
+  "labels": ["dependencies"],
+  "python":{
+    "addLabels": ["lang: python"]
+  },
   "packageRules": [
     {
-      "matchDepTypes": ["devDependencies", "dev-dependencies", "tool.poetry.dev-dependencies"],
+      "matchDepTypes": ["devDependencies", "dev-dependencies"],
+      "matchPackagePatterns": ["mypy", "black","isort","pre-commit","flake8","pygments","pytest","pytest-cov","pytest-randomly","pyfakefs","pep8-naming"],
       "automerge": true
     }
   ]
