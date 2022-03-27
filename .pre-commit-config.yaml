@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.1.0
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
@@ -15,7 +15,7 @@ repos:
     -   id: check-merge-conflict
 
 -   repo: https://github.com/psf/black
-    rev: 21.6b0
+    rev: 22.1.0
     hooks:
     -   id: black
 
@@ -25,12 +25,12 @@ repos:
     -   id: flake8
 
 -   repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: 'v1.5.7'  # Use the sha / tag you want to point at
+    rev: 'v1.6.0'  # Use the sha / tag you want to point at
     hooks:
     -   id: autopep8
 
 -   repo: https://github.com/pre-commit/mirrors-isort
-    rev: 'v5.9.3'  # Use the revision sha / tag you want to point at
+    rev: 'v5.10.1'  # Use the revision sha / tag you want to point at
     hooks:
     -   id: isort
 
@@ -46,16 +46,25 @@ repos:
     -   id: rst-inline-touching-normal
 
 -   repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: '2.1.5'
+    rev: '2.1.6'
     hooks:
     -   id: shellcheck
 
 -   repo: https://github.com/gruntwork-io/pre-commit
-    rev: 'v0.1.12'
+    rev: 'v0.1.17'
     hooks:
     -   id: markdown-link-check
 
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v2.25.0
+    rev: v2.31.1
     hooks:
     -   id: pyupgrade
+
+# -   repo: https://github.com/ibm/detect-secrets
+#     rev: 0.13.1+ibm.47.dss
+#     hooks:
+#     -   id: detect-secrets
+#         name: Detect secrets (IBM)
+#         language: python
+#         entry: detect-secrets
+#         args: ['scan', '--update', '.secrets.baseline', '--use-all-plugins']

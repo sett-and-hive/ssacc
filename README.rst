@@ -94,13 +94,13 @@ The column headers are:
 Requirements
 ------------
 
-Python 3.6+.
+Python 3.7+.
 
 
 Windows Support
 ---------------
 
-Developed on Windows 10, initially (Note the batch file). More recently with WSL.
+Developed on Windows 10, initially (Note the batch file). More recently with WSL. No longer tested on Windows.
 
 Dependencies
 ------------
@@ -175,6 +175,17 @@ Code coverage is provided by the `pytest-cov <https://pytest-cov.readthedocs.io/
 plugin.
 
 Code coverage is configured in ``pyproject.toml``.
+
+Secret Scanning
+^^^^^^^^^^^^^^^
+
+Use the IBM fork of `detect-secrets <https://githubplus.com/IBM/detect-secrets>`_. This will run in the pre-commit hooks.
+If secrets are detected in the scan, then you need to run an audit and correct findings or indicate false positives in the
+scan results. To audit:
+
+.. code-block:: console
+
+    (venv) $ detect-secrets audit .secrets.baseline
 
 
 Automated Code Formatting
