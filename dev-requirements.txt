@@ -20,37 +20,27 @@ filelock==3.6.0
     # via
     #   tox
     #   virtualenv
-flake8-polyfill==1.0.2
-    # via pep8-naming
 flake8==4.0.1
     # via
     #   -r dev-requirements.in
     #   flake8-polyfill
     #   pep8-naming
+flake8-polyfill==1.0.2
+    # via pep8-naming
 identify==2.4.11
     # via pre-commit
-importlib-metadata==4.2.0
-    # via
-    #   click
-    #   flake8
-    #   pluggy
-    #   pre-commit
-    #   pytest
-    #   pytest-randomly
-    #   tox
-    #   virtualenv
 iniconfig==1.1.1
     # via pytest
 isort==5.10.1
     # via -r dev-requirements.in
 mccabe==0.6.1
     # via flake8
+mypy==0.942
+    # via -r dev-requirements.in
 mypy-extensions==0.4.3
     # via
     #   black
     #   mypy
-mypy==0.931
-    # via -r dev-requirements.in
 nodeenv==1.6.0
     # via pre-commit
 packaging==21.3
@@ -85,15 +75,15 @@ pygments==2.11.2
     # via -r dev-requirements.in
 pyparsing==3.0.7
     # via packaging
-pytest-cov==3.0.0
-    # via -r dev-requirements.in
-pytest-randomly==3.11.0
-    # via -r dev-requirements.in
 pytest==7.0.1
     # via
     #   -r dev-requirements.in
     #   pytest-cov
     #   pytest-randomly
+pytest-cov==3.0.0
+    # via -r dev-requirements.in
+pytest-randomly==3.11.0
+    # via -r dev-requirements.in
 pyyaml==6.0
     # via pre-commit
 six==1.16.0
@@ -113,18 +103,9 @@ tomli==2.0.1
     #   pytest
 tox==3.24.5
     # via -r dev-requirements.in
-typed-ast==1.5.2
-    # via
-    #   black
-    #   mypy
 typing-extensions==4.1.1
-    # via
-    #   black
-    #   importlib-metadata
-    #   mypy
+    # via mypy
 virtualenv==20.14.0
     # via
     #   pre-commit
     #   tox
-zipp==3.7.0
-    # via importlib-metadata
