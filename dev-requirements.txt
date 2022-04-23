@@ -89,7 +89,7 @@ pytest-cov==3.0.0
     # via -r dev-requirements.in
 pytest-randomly==3.11.0
     # via -r dev-requirements.in
-pytest==7.0.1
+pytest==7.1.2
     # via
     #   -r dev-requirements.in
     #   pytest-cov
