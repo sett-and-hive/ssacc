@@ -27,7 +27,7 @@ flake8==4.0.1
     #   -r dev-requirements.in
     #   flake8-polyfill
     #   pep8-naming
-identify==2.4.11
+identify==2.5.0
     # via pre-commit
 importlib-metadata==4.2.0
     # via
