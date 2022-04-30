@@ -26,11 +26,6 @@ jobs:
       with:
         timeZone: 8
         format: 'YYYY-MM-DD-HH-mm-ss'
-    - name: Start Time
-      env:
-        TIME: "${{ steps.time.outputs.time }}"
-      run: |
-        echo $TIME
 
     - name: Run pre-commit in a container
       uses: tomwillis608/docker-pre-commit-terraform@master
@@ -41,8 +36,3 @@ jobs:
       with:
         timeZone: 8
         format: 'YYYY-MM-DD-HH-mm-ss'
-    - name: End Time
-      env:
-        TIME: "${{ steps.time.outputs.time }}"
-      run: |
-        echo $TIME
