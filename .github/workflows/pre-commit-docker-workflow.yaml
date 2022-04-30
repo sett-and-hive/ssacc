@@ -1,5 +1,5 @@
 # .github/workflows/ci.yaml
-name: pre-commit CI
+name: pre-commit CI in Docker
 on:
   push:
     branches:
@@ -10,7 +10,9 @@ on:
 
 jobs:
   test:
-    name: "Pre-commit tests"
+
+
+    name: "Pre-commit tests in Docker"
     runs-on: ubuntu-latest
     steps:
     - name: "Checkout"
@@ -18,22 +20,29 @@ jobs:
       with:
         clean: true
 
-    - name: Run IBM's detect-secrets
+    - name: Get Time Start
+      id: time
+      uses: nanzm/get-time-action@v1.1
+      with:
+        timeZone: 8
+        format: 'YYYY-MM-DD-HH-mm-ss'
+    - name: Start Time
+      env:
+        TIME: "${{ steps.time.outputs.time }}"
+      run: |
+        echo $TIME
+
+    - name: Run pre-commit in a container
       uses: tomwillis608/docker-pre-commit-terraform@master
 
-    # - name: "Set up Python"
-    #   uses: actions/setup-python@v3
-    #   with:
-    #     python-version: "3.8"
-
-    # - name: "Install dependencies"
-    #   run: |
-    #     set -xe
-    #     python -VV
-    #     python -m site
-    #     python -m pip install --upgrade pip setuptools wheel
-    #     python -m pip install --upgrade pre-commit
-    #     pre-commit install
-
-    # - name: "Run pre-commit"
-    #   run: "pre-commit run --all-files"
+    - name: Get Time End
+      id: time
+      uses: nanzm/get-time-action@v1.1
+      with:
+        timeZone: 8
+        format: 'YYYY-MM-DD-HH-mm-ss'
+    - name: End Time
+      env:
+        TIME: "${{ steps.time.outputs.time }}"
+      run: |
+        echo $TIME
