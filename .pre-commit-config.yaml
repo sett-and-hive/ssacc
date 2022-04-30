@@ -49,11 +49,13 @@ repos:
     rev: '2.1.6'
     hooks:
     -   id: shellcheck
+        # language: docker_image
+        # entry: koalaman/shellcheck:v0.8.0
 
--   repo: https://github.com/gruntwork-io/pre-commit
-    rev: 'v0.1.17'
-    hooks:
-    -   id: markdown-link-check
+# -   repo: https://github.com/gruntwork-io/pre-commit
+#     rev: 'v0.1.17'
+#     hooks:
+#     -   id: markdown-link-check
 
 -   repo: https://github.com/asottile/pyupgrade
     rev: v2.31.1
