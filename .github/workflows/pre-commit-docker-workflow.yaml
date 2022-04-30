@@ -1,0 +1,39 @@
+# .github/workflows/ci.yaml
+name: pre-commit CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: "Pre-commit tests"
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v3
+      with:
+        clean: true
+
+    - name: Run IBM's detect-secrets
+      uses: tomwillis608/docker-pre-commit-terraform@master
+
+    # - name: "Set up Python"
+    #   uses: actions/setup-python@v3
+    #   with:
+    #     python-version: "3.8"
+
+    # - name: "Install dependencies"
+    #   run: |
+    #     set -xe
+    #     python -VV
+    #     python -m site
+    #     python -m pip install --upgrade pip setuptools wheel
+    #     python -m pip install --upgrade pre-commit
+    #     pre-commit install
+
+    # - name: "Run pre-commit"
+    #   run: "pre-commit run --all-files"
