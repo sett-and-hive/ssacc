@@ -1,18 +1,18 @@
 # .github/workflows/ci.yaml
-name: CI
+name: Tox CI
 
 on:
   push:
     branches:
       - main
     paths-ignore:
-      - .github/**
+      - '.github/**'
       - '**.md'
   pull_request:
     branches:
       - main
     paths-ignore:
-      - .github/**
+      - '.github/**'
       - '**.md'
 
 jobs:
