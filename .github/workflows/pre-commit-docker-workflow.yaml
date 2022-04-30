@@ -21,7 +21,7 @@ jobs:
         clean: true
 
     - name: Get Time Start
-      id: time
+      id: start_time
       uses: nanzm/get-time-action@v1.1
       with:
         timeZone: 8
@@ -36,7 +36,7 @@ jobs:
       uses: tomwillis608/docker-pre-commit-terraform@master
 
     - name: Get Time End
-      id: time
+      id: end_time
       uses: nanzm/get-time-action@v1.1
       with:
         timeZone: 8
