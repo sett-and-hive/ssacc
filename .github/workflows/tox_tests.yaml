@@ -1,13 +1,19 @@
 # .github/workflows/ci.yaml
-name: CI
+name: Tox CI
 
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - '**.md'
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - '**.md'
 
 jobs:
   test:
@@ -45,5 +51,6 @@ jobs:
       if: "contains(env.USING_COVERAGE, matrix.python-version)"
       uses: codecov/codecov-action@v2
       with:
+        token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true
         fail_ci_if_error: true
