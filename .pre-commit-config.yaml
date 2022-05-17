@@ -68,3 +68,14 @@ repos:
 #         language: python
 #         entry: detect-secrets
 #         args: ['scan', '--update', '.secrets.baseline', '--use-all-plugins']
+
+
+# -   repo: https://github.com/PyCQA/bandit
+#     rev: '1.7.4'
+#     hooks:
+#     - id: bandit
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: v1.0.5
+    hooks:
+    -   id: python-bandit-vulnerability-check
+        args: [--verbose,  -r, ssacc, -c, .bandit.yaml]
