@@ -13,7 +13,7 @@
     "enabled": true,
     "fileMatch": ["(^|/)requirements\\.in$"]
   },
-  "labels": ["dependencies"],
+  "labels": ["dependencies", "renovate-bot"],
   "python":{
     "addLabels": ["lang: python"]
   },
@@ -23,5 +23,13 @@
       "matchPackagePatterns": ["mypy", "black","isort","pre-commit","flake8","pygments","pytest","pytest-cov","pytest-randomly","pyfakefs","pep8-naming"],
       "automerge": true
     }
-  ]
+  ],
+  "pre-commit": {
+    "enabled": true
+  },
+  "major": {
+    "automerge": false
+  },
+  "automergeType": "pr",
+  "automergeStrategy": "squash"
 }
