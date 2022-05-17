@@ -11,3 +11,4 @@ black
 isort
 pre-commit
 pygments
+bandit
