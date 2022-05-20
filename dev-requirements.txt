@@ -49,7 +49,7 @@ mypy-extensions==0.4.3
     # via
     #   black
     #   mypy
-mypy==0.931
+mypy==0.950
     # via -r dev-requirements.in
 nodeenv==1.6.0
     # via pre-commit
