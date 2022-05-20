@@ -69,7 +69,7 @@ pluggy==1.0.0
     # via
     #   pytest
     #   tox
-pre-commit==2.17.0
+pre-commit==2.19.0
     # via -r dev-requirements.in
 py==1.11.0
     # via

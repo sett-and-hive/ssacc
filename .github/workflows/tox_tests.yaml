@@ -1,13 +1,19 @@
 # .github/workflows/ci.yaml
-name: CI
+name: Tox CI
 
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - '**.md'
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - '**.md'
 
 jobs:
   test:
@@ -17,7 +23,7 @@ jobs:
       USING_COVERAGE: '3.8'
     strategy:
       matrix:
-        python-version: ["3.7", "3.8"]
+        python-version: ["3.7", "3.8", "3.9"]
 
     steps:
     - name: "Checkout"
@@ -36,8 +42,6 @@ jobs:
         python -VV
         python -m site
         python -m pip install --upgrade pip setuptools wheel
-        # python -m pip install --upgrade cmake
-        # python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions codecov randomly
         python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions codecov
 
     - name: "Run tox targets for ${{ matrix.python-version }}"
@@ -47,5 +51,6 @@ jobs:
       if: "contains(env.USING_COVERAGE, matrix.python-version)"
       uses: codecov/codecov-action@v2
       with:
+        token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true
         fail_ci_if_error: true
