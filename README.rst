@@ -1,8 +1,8 @@
 ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
 ==================================================
 
-.. image:: https://github.com/tomwillis608/ssacc/workflows/CI/badge.svg
-    :target: https://github.com/tomwillis608/ssacc/actions?workflow=CI
+.. image:: https://github.com/sett-and-hive/ssacc/workflows/Tox-CI/badge.svg
+    :target: https://github.com/sett-and-hive/ssacc/actions?workflow=Tox-CI
     :alt: GitHub Actions CI Status
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -25,8 +25,8 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
     :target: https://www.codefactor.io/repository/github/tomwillis608/ssacc
     :alt: CodeFactor reviews
 
-.. image:: https://snyk.io/test/github/tomwillis608/ssacc/badge.svg
-    :target: https://snyk.io/test/github/tomwillis608/ssacc/
+.. image:: https://snyk.io/test/github/sett-and-hive/ssacc/badge.svg
+    :target: https://snyk.io/test/github/sett-and-hive/ssacc/
     :alt: Snyk Tests
 
 .. image:: https://api.codeclimate.com/v1/badges/97ee5c5cbbbb16c9fc4a/maintainability
@@ -41,28 +41,28 @@ ssacc - Map SSA County Codes and ZIP codes (ZIP-5)
    :target: https://houndci.com
    :alt: Reviewed by Hound
 
-.. image:: https://deepsource.io/gh/tomwillis608/ssacc.svg/?label=active+issues&show_trend=true
-   :target: https://deepsource.io/gh/tomwillis608/ssacc/?ref=repository-badge
+.. image:: https://deepsource.io/gh/sett-and-hive/ssacc.svg/?label=active+issues&show_trend=true
+   :target: https://deepsource.io/gh/sett-and-hive/ssacc/?ref=repository-badge
    :alt: DeepSource Active Issues
 
-.. image:: https://deepsource.io/gh/tomwillis608/ssacc.svg/?label=resolved+issues&show_trend=true
-   :target: https://deepsource.io/gh/tomwillis608/ssacc/?ref=repository-badge
+.. image:: https://deepsource.io/gh/sett-and-hive/ssacc.svg/?label=resolved+issues&show_trend=true
+   :target: https://deepsource.io/gh/sett-and-hive/ssacc/?ref=repository-badge
    :alt: DeepSource Resolved Issues
 
-.. image:: https://img.shields.io/lgtm/alerts/g/tomwillis608/ssacc.svg?logo=lgtm&logoWidth=18
-   :target: https://lgtm.com/projects/g/tomwillis608/ssacc/alerts/
+.. image:: https://img.shields.io/lgtm/alerts/g/sett-and-hive/ssacc.svg?logo=lgtm&logoWidth=18
+   :target: https://lgtm.com/projects/g/sett-and-hive/ssacc/alerts/
    :alt: LGTM Alerts
 
-.. image:: https://img.shields.io/lgtm/grade/python/g/tomwillis608/ssacc.svg?logo=lgtm&logoWidth=18
-   :target: https://lgtm.com/projects/g/tomwillis608/ssacc/context:python
+.. image:: https://img.shields.io/lgtm/grade/python/g/sett-and-hive/ssacc.svg?logo=lgtm&logoWidth=18
+   :target: https://lgtm.com/projects/g/sett-and-hive/ssacc/context:python
    :alt: LGTM language grade: Python
 
-.. image:: https://bettercodehub.com/edge/badge/tomwillis608/ssacc?branch=main
+.. image:: https://bettercodehub.com/edge/badge/sett-and-hive/ssacc?branch=main
    :target: https://bettercodehub.com/
    :alt: BCH compliance
 
-.. image:: https://results.pre-commit.ci/badge/github/tomwillis608/ssacc/main.svg
-   :target: https://results.pre-commit.ci/latest/github/tomwillis608/ssacc/main
+.. image:: https://results.pre-commit.ci/badge/github/sett-and-hive/ssacc/main.svg
+   :target: https://results.pre-commit.ci/latest/github/sett-and-hive/ssacc/main
    :alt: pre-commit.ci status
 
 .. image:: https://img.shields.io/badge/security-bandit-yellow.svg
@@ -76,7 +76,9 @@ SSA County Codes are used in some CMS databases, like NCH Part A, rather than FI
 attempt to create tables that show a mapping of USPS ZIP-5 Codes to SSA County Codes, along with other location
 information associated with ZIP Codes.
 
-TODO: project-ify it for pip.
+TODO:
+- project-ify it for pip.
+- convert to Poetry
 
 Before running the Python, you need to download some input files from the internet.
 Run the ``fetch_batch.bat`` file if running from Windows.
