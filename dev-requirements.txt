@@ -83,7 +83,7 @@ pygments==2.11.2
     # via -r dev-requirements.in
 pyparsing==3.0.7
     # via packaging
-pytest==7.0.1
+pytest==7.1.2
     # via
     #   -r dev-requirements.in
     #   pytest-cov
