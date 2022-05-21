@@ -45,12 +45,10 @@ repos:
     -   id: rst-backticks
     -   id: rst-inline-touching-normal
 
--   repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: '2.1.6'
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.8.0.4
     hooks:
     -   id: shellcheck
-        language: docker_image
-        entry: koalaman/shellcheck:v0.8.0
 
 # -   repo: https://github.com/gruntwork-io/pre-commit
 #     rev: 'v0.1.17'
@@ -71,13 +69,19 @@ repos:
 #         entry: detect-secrets
 #         args: ['scan', '--update', '.secrets.baseline', '--use-all-plugins']
 
-
-# -   repo: https://github.com/PyCQA/bandit
-#     rev: '1.7.4'
-#     hooks:
-#     - id: bandit
 -   repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
     rev: v1.0.5
     hooks:
     -   id: python-bandit-vulnerability-check
         args: [--verbose,  -r, ssacc, -c, .bandit.yaml]
+
+ci:
+    autofix_commit_msg: |
+        [pre-commit.ci] auto fixes from pre-commit.com hooks
+        for more information, see https://pre-commit.ci
+    autofix_prs: true
+    autoupdate_branch: ''
+    autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+    autoupdate_schedule: weekly
+    skip: []
+    submodules: false
