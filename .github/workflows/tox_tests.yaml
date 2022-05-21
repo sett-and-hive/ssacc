@@ -1,5 +1,5 @@
 # .github/workflows/ci.yaml
-name: Tox CI
+name: Tox-CI
 
 on:
   push:
