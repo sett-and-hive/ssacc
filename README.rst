@@ -76,7 +76,9 @@ SSA County Codes are used in some CMS databases, like NCH Part A, rather than FI
 attempt to create tables that show a mapping of USPS ZIP-5 Codes to SSA County Codes, along with other location
 information associated with ZIP Codes.
 
-TODO: project-ify it for pip.
+TODO:
+- project-ify it for pip.
+- convert to Poetry
 
 Before running the Python, you need to download some input files from the internet.
 Run the ``fetch_batch.bat`` file if running from Windows.
