@@ -20,10 +20,10 @@ jobs:
     name: "Python $({ matrix.python-version }) tests"
     runs-on: ubuntu-latest
     env:
-      USING_COVERAGE: '3.8'
+      USING_COVERAGE: '3.9'
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9"]
+        python-version: ["3.8", "3.9","3.10"]
 
     steps:
     - name: "Checkout"
@@ -41,7 +41,7 @@ jobs:
         set -xe
         python -VV
         python -m site
-        python -m pip install --upgrade pip setuptools wheel
+        python -m pip install --upgrade pip setuptools wheel pip-license
         python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions codecov
 
     - name: "Run tox targets for ${{ matrix.python-version }}"
