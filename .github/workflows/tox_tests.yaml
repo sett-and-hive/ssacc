@@ -41,7 +41,7 @@ jobs:
         set -xe
         python -VV
         python -m site
-        python -m pip install --upgrade pip setuptools wheel pip-license
+        python -m pip install --upgrade pip setuptools wheel pip-licenses
         python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions codecov
 
     - name: "Run tox targets for ${{ matrix.python-version }}"
