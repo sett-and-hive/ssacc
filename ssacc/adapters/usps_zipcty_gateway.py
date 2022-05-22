@@ -46,10 +46,6 @@ def get_zip_fips_cc_df() -> DataFrame:
     read_files = Factory.get(InjectionKeys.USPS_ZIPCTY_READ)
     df = read_files(input_path)
     print(df.head())
-    # df1 = clean_ssa_fips_data(df)
-    # print(df1.head())
-    # df2 = rename_ssacounty_column(df1)
-    # df3 = split_ssacnty_column(df2)
     return df
 
 
@@ -66,7 +62,8 @@ def read_zipcty_files(input_path: Path):
         for filename in os.listdir(input_path)
         if filename.startswith("zipcty")
     ]
-    df = df.append(frames)
+    df_list = [df] + frames
+    df = pd.concat(df_list, ignore_index=True)
     if not df.empty:
         print("Head of zip county df")
         print(df.head())
