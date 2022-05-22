@@ -79,17 +79,25 @@ def test_get_zip_fips_cc_df():
 @patch("ssacc.adapters.usps_zipcty_gateway.read_zip_fips_text_file")
 def test_read_zipcty_files(mock_read_zip_fips_text_file, tmp_path):
     """Test that read_zipcty_files calls read_zip_fips_text_file."""
-    states = {"name": ["Wisconsin"], "code": ["WI"]}
-    df = pd.DataFrame(states, columns=["name", "code"])
+    states = {"name": ["Wisconsin", "Iowa"], "code": ["WI", "IA"], "statecd": ["55", "42"]}
+    df = pd.DataFrame(states, columns=["name", "code", "statecd"])
+
     mock_read_zip_fips_text_file.return_value = df
 
-    temp_filepath = tmp_path.joinpath("zipcty.fake")
-    temp_filepath.write_text("test")  # Add file for read_zipcty_files to find.
+    temp_filepath0 = tmp_path.joinpath("zipcty0.fake")
+    temp_filepath1 = tmp_path.joinpath("zipcty1.fake")
+    temp_filepath0.write_text("test 0")  # Add files for read_zipcty_files to find.
+    temp_filepath1.write_text("test 1")
+
     result = usps_zipcty_gateway.read_zipcty_files(tmp_path)
-    os.remove(temp_filepath)
+    os.remove(temp_filepath0)
+    os.remove(temp_filepath1)
 
     assert result["zip"][0] is np.nan
+    assert result["zip"][1] is np.nan
     assert result["name"][0] == df["name"][0]
+    assert result["code"][0] == df["code"][0]
+    assert result["statecd"][0] == df["statecd"][0]
     assert mock_read_zip_fips_text_file.called
 
 
