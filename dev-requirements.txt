@@ -90,7 +90,7 @@ pytest==7.1.2
     #   pytest-randomly
 pytest-cov==3.0.0
     # via -r dev-requirements.in
-pytest-randomly==3.11.0
+pytest-randomly==3.12.0
     # via -r dev-requirements.in
 pyyaml==6.0
     # via
