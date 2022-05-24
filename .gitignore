@@ -86,3 +86,4 @@ wily-report.html
 .vscode/settings.json
 data/.ssa_cnty_zip.csv
 test_csv_path
+.python-version

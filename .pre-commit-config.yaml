@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
@@ -45,18 +45,18 @@ repos:
     -   id: rst-backticks
     -   id: rst-inline-touching-normal
 
--   repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: '2.1.6'
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.8.0.4
     hooks:
     -   id: shellcheck
 
--   repo: https://github.com/gruntwork-io/pre-commit
-    rev: 'v0.1.17'
-    hooks:
-    -   id: markdown-link-check
+# -   repo: https://github.com/gruntwork-io/pre-commit
+#     rev: 'v0.1.17'
+#     hooks:
+#     -   id: markdown-link-check
 
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.1
+    rev: v2.32.1
     hooks:
     -   id: pyupgrade
 
@@ -68,3 +68,20 @@ repos:
 #         language: python
 #         entry: detect-secrets
 #         args: ['scan', '--update', '.secrets.baseline', '--use-all-plugins']
+
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: v1.0.6
+    hooks:
+    -   id: python-bandit-vulnerability-check
+        args: [--verbose,  -r, ssacc, -c, .bandit.yaml]
+
+ci:
+    autofix_commit_msg: |
+        [pre-commit.ci] auto fixes from pre-commit.com hooks
+        for more information, see https://pre-commit.ci
+    autofix_prs: true
+    autoupdate_branch: ''
+    autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+    autoupdate_schedule: weekly
+    skip: []
+    submodules: false
