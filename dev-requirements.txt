@@ -12,7 +12,7 @@ black==22.3.0
     # via -r dev-requirements.in
 cfgv==3.3.1
     # via pre-commit
-click==8.0.4
+click==8.1.0
     # via black
 coverage[toml]==6.3.2
     # via pytest-cov
@@ -59,7 +59,7 @@ pbr==5.9.0
     # via stevedore
 pep8-naming==0.12.1
     # via -r dev-requirements.in
-platformdirs==2.5.1
+platformdirs==2.5.2
     # via
     #   black
     #   virtualenv
@@ -75,7 +75,7 @@ py==1.11.0
     #   tox
 pycodestyle==2.8.0
     # via flake8
-pyfakefs==4.5.5
+pyfakefs==4.5.6
     # via -r dev-requirements.in
 pyflakes==2.4.0
     # via flake8
