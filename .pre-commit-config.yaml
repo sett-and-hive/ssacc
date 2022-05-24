@@ -70,7 +70,7 @@ repos:
 #         args: ['scan', '--update', '.secrets.baseline', '--use-all-plugins']
 
 -   repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
-    rev: v1.0.5
+    rev: v1.0.6
     hooks:
     -   id: python-bandit-vulnerability-check
         args: [--verbose,  -r, ssacc, -c, .bandit.yaml]
