@@ -19,9 +19,13 @@
   },
   "packageRules": [
     {
-      "matchDepTypes": ["devDependencies", "dev-dependencies"],
-      "matchPackagePatterns": ["mypy", "black","isort","pre-commit","flake8","pygments","pytest","pytest-cov","pytest-randomly","pyfakefs","pep8-naming"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "devDependencies (non-major)"
     }
   ],
   "pre-commit": {
