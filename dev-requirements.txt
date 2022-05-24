@@ -14,11 +14,11 @@ cfgv==3.3.1
     # via pre-commit
 click==8.1.0
     # via black
-coverage[toml]==6.3.2
+coverage[toml]==6.4
     # via pytest-cov
 distlib==0.3.4
     # via virtualenv
-filelock==3.6.0
+filelock==3.7.0
     # via
     #   tox
     #   virtualenv
