@@ -9,6 +9,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: "Python $({ matrix.python-version }) tests"
@@ -20,13 +23,18 @@ jobs:
         python-version: ["3.8", "3.9","3.10"]
 
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813 #  tag=v1.4
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: "Checkout"
-      uses: actions/checkout@v3
+      uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28 # tag=v3
       with:
         clean: true
 
     - name: "Set up Python"
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@d09bd5e6005b175076f227b13d9730d56e9dcfcb # tag=v4
       with:
         python-version: "${{ matrix.python-version }}"
 
@@ -43,7 +51,7 @@ jobs:
 
     - name: "Post to codecov.io"
       if: "contains(env.USING_COVERAGE, matrix.python-version)"
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378 # tag=v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true

@@ -9,13 +9,22 @@ on:
       branches:
         - main
 
+permissions:
+  contents: read
+
 jobs:
   security_checks:
     runs-on: ubuntu-latest
     name: Execute the pycharm-security action
     steps:
-      - uses: actions/checkout@v3
-      - name: Run PyCharm Security
-        uses: tonybaloney/pycharm-security@master
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813 # tag=v1/4
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28 # tag=v3
+
+      - name: Run PyCharm Security # Does SCA with SafetyDB
+        uses: tonybaloney/pycharm-security@431b505a2d42b48e86628dfccdbe43bbfd49ca3e # tag=v1.25
         with:
           path: ssacc/
