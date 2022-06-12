@@ -39,7 +39,7 @@ iniconfig==1.1.1
     # via pytest
 isort==5.10.1
     # via -r dev-requirements.in
-mccabe==0.6.1
+mccabe==0.7.0
     # via flake8
 mypy==0.961
     # via -r dev-requirements.in
