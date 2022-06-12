@@ -1,6 +1,6 @@
 {
   "extends": [
-    "config:base", ":dependencyDashboard"
+    "config:base", ":dependencyDashboard", ":rebaseStalePrs"
   ],
   "constraints": {
     "python": "3.8"
