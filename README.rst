@@ -153,6 +153,7 @@ To setup the virtual environment locally, as in the ``travis.yml``:
 python3 -m venv env
 
 source env/bin/activate
+
 Testing
 -------
 
