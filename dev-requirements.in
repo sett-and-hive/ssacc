@@ -6,6 +6,7 @@ pytest-randomly
 pyfakefs
 mypy
 flake8 >= 3.3.0
+mccabe == 0.6.1
 pep8-naming >= 0.4.1
 black
 isort
