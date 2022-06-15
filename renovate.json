@@ -26,7 +26,7 @@
       "automerge": true
     },
     {
-      "matchDepTypes": ["devDependencies"],
+      "matchDepTypes": ["devDependencies","action"],
       "matchUpdateTypes": ["patch", "minor", "pin", "digest"],
       "groupName": "devDependencies (non-major)",
       "groupSlug": "all-dev-minor-patch",
