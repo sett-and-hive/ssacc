@@ -19,6 +19,7 @@
   },
   "packageRules": [
     {
+      "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "groupName": "app dependencies (non-major)",
       "groupSlug": "all-app-minor-patch",
@@ -30,6 +31,10 @@
       "groupName": "devDependencies (non-major)",
       "groupSlug": "all-dev-minor-patch",
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["mccabe"],
+      "enabled": false
     }
   ],
   "pre-commit": {
