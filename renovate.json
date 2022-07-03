@@ -19,16 +19,16 @@
   },
   "packageRules": [
     {
-      "matchDepTypes": ["dependencies"],
+      "matchDepTypes": ["dependencies","peerDependencies"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "groupName": "app dependencies (non-major)",
       "groupSlug": "all-app-minor-patch",
       "automerge": true
     },
     {
-      "matchDepTypes": ["devDependencies","action"],
+      "matchDepTypes": ["devDependencies","action","dev-dependencies"],
       "matchUpdateTypes": ["patch", "minor", "pin", "digest"],
-      "groupName": "devDependencies (non-major)",
+      "groupName": "dev dependencies (non-major)",
       "groupSlug": "all-dev-minor-patch",
       "automerge": true
     },
@@ -43,6 +43,22 @@
   "major": {
     "automerge": false
   },
+  "minor": {
+    "automerge": true,
+    "groupName": "minor dependencies",
+    "groupSlug": "all-minor",
+    "stabilityDays": 3
+  },
+  "patch": {
+    "automerge": true,
+    "groupName": "patch dependencies",
+    "groupSlug": "all-patch",
+    "stabilityDays": 0
+  },
+  "digest": {
+    "automerge": true
+  },
+  "transitiveRemediation": true,
   "automergeType": "pr",
   "automergeStrategy": "squash"
 }
