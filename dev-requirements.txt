@@ -117,7 +117,7 @@ tomli==2.0.1
     #   pytest
 tox==3.25.1
     # via -r dev-requirements.in
-typing-extensions==4.2.0
+typing-extensions==4.3.0
     # via mypy
 virtualenv==20.15.1
     # via
