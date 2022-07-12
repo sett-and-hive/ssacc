@@ -25,10 +25,7 @@ filelock==3.7.1
 flake8==4.0.1
     # via
     #   -r dev-requirements.in
-    #   flake8-polyfill
     #   pep8-naming
-flake8-polyfill==1.0.2
-    # via pep8-naming
 gitdb==4.0.9
     # via gitpython
 gitpython==3.1.27
@@ -40,7 +37,9 @@ iniconfig==1.1.1
 isort==5.10.1
     # via -r dev-requirements.in
 mccabe==0.6.1
-    # via flake8
+    # via
+    #   -r dev-requirements.in
+    #   flake8
 mypy==0.961
     # via -r dev-requirements.in
 mypy-extensions==0.4.3
@@ -67,7 +66,7 @@ pluggy==1.0.0
     # via
     #   pytest
     #   tox
-pre-commit==2.19.0
+pre-commit==2.20.0
     # via -r dev-requirements.in
 py==1.11.0
     # via
