@@ -102,7 +102,7 @@ six==1.16.0
     #   virtualenv
 smmap==5.0.0
     # via gitdb
-stevedore==3.5.0
+stevedore==4.0.0
     # via bandit
 toml==0.10.2
     # via
