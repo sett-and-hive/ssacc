@@ -75,7 +75,7 @@ py==1.11.0
     #   tox
 pycodestyle==2.8.0
     # via flake8
-pyfakefs==4.6.2
+pyfakefs==4.6.3
     # via -r dev-requirements.in
 pyflakes==2.4.0
     # via flake8
