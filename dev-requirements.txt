@@ -25,10 +25,7 @@ filelock==3.7.1
 flake8==5.0.3
     # via
     #   -r dev-requirements.in
-    #   flake8-polyfill
     #   pep8-naming
-flake8-polyfill==1.0.2
-    # via pep8-naming
 gitdb==4.0.9
     # via gitpython
 gitpython==3.1.27
