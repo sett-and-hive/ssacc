@@ -54,7 +54,7 @@ jobs:
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@3e7e3b32d0fb8283594bb0a76cc60a00918b0969 # tag=v2
+      uses: github/codeql-action/init@0c670bbf0414f39666df6ce8e718ec5662c21e03 # tag=v2
       with:
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
@@ -65,8 +65,8 @@ jobs:
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
-      uses: github/codeql-action/autobuild@3e7e3b32d0fb8283594bb0a76cc60a00918b0969 # tag=v2
+      uses: github/codeql-action/autobuild@0c670bbf0414f39666df6ce8e718ec5662c21e03 # tag=v2
 
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@8171514c024662790191f63e42524fb2d1f0da61
+      uses: github/codeql-action/analyze@329cb8b61cdb3cacd888f17e11579e36c3513792
