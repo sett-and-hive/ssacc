@@ -4,7 +4,7 @@
 #
 #    pip-compile dev-requirements.in
 #
-attrs==21.4.0
+attrs==22.1.0
     # via pytest
 bandit==1.7.4
     # via -r dev-requirements.in
