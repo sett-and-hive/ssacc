@@ -22,7 +22,7 @@ filelock==3.7.1
     # via
     #   tox
     #   virtualenv
-flake8==4.0.1
+flake8==5.0.4
     # via
     #   -r dev-requirements.in
     #   pep8-naming
