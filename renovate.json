@@ -31,10 +31,6 @@
       "groupName": "dev dependencies (non-major)",
       "groupSlug": "all-dev-minor-patch",
       "automerge": true
-    },
-    {
-      "matchPackageNames": ["mccabe"],
-      "enabled": false
     }
   ],
   "pre-commit": {
