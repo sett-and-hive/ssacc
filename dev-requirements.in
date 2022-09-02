@@ -5,8 +5,8 @@ pytest-cov
 pytest-randomly
 pyfakefs
 mypy
-flake8 >= 3.3.0
-mccabe == 0.6.1
+flake8 >= 5.0.0
+mccabe >= 0.7.0
 pep8-naming >= 0.4.1
 black
 isort
