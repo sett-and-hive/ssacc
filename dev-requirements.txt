@@ -30,7 +30,7 @@ gitdb==4.0.9
     # via gitpython
 gitpython==3.1.27
     # via bandit
-identify==2.5.4
+identify==2.5.5
     # via pre-commit
 iniconfig==1.1.1
     # via pytest
