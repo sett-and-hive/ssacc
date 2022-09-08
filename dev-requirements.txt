@@ -117,7 +117,7 @@ tox==3.25.1
     # via -r dev-requirements.in
 typing-extensions==4.3.0
     # via mypy
-virtualenv==20.16.4
+virtualenv==20.16.5
     # via
     #   pre-commit
     #   tox
