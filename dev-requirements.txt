@@ -40,7 +40,7 @@ mccabe==0.7.0
     # via
     #   -r dev-requirements.in
     #   flake8
-mypy==0.981
+mypy==0.982
     # via -r dev-requirements.in
 mypy-extensions==0.4.3
     # via
