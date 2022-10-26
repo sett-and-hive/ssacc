@@ -112,7 +112,7 @@ tomli==2.0.1
     #   mypy
     #   pytest
     #   tox
-tox==3.26.0
+tox==3.27.0
     # via -r dev-requirements.in
 typing-extensions==4.4.0
     # via mypy
