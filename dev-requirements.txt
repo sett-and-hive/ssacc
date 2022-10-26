@@ -30,7 +30,7 @@ gitdb==4.0.9
     # via gitpython
 gitpython==3.1.29
     # via bandit
-identify==2.5.6
+identify==2.5.7
     # via pre-commit
 iniconfig==1.1.1
     # via pytest
@@ -54,7 +54,7 @@ packaging==21.3
     #   tox
 pathspec==0.10.1
     # via black
-pbr==5.10.0
+pbr==5.11.0
     # via stevedore
 pep8-naming==0.13.2
     # via -r dev-requirements.in
@@ -101,7 +101,7 @@ six==1.16.0
     #   tox
 smmap==5.0.0
     # via gitdb
-stevedore==4.0.1
+stevedore==4.1.0
     # via bandit
 toml==0.10.2
     # via pre-commit
@@ -116,7 +116,7 @@ tox==3.26.0
     # via -r dev-requirements.in
 typing-extensions==4.4.0
     # via mypy
-virtualenv==20.16.5
+virtualenv==20.16.6
     # via
     #   pre-commit
     #   tox
