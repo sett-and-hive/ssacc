@@ -22,11 +22,11 @@ coverage[toml]==6.5.0
     # via pytest-cov
 distlib==0.3.6
     # via virtualenv
-exceptiongroup==1.0.0rc9
+exceptiongroup==1.0.0
     # via pytest
 filelock==3.8.0
     # via virtualenv
-flake8==5.0.0
+flake8==5.0.4
     # via
     #   -r dev-requirements.in
     #   pep8-naming
