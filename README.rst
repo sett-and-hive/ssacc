@@ -144,7 +144,7 @@ To setup the virtual environment locally, as in the ``travis.yml``:
 
     (venv) $ pip install --upgrade virtualenv
 
-    (venv) $ pip install tox
+    (venv) $ pip install nox
 
     (venv) $ pip install codecov
 
@@ -157,15 +157,15 @@ source env/bin/activate
 Testing
 -------
 
-Automated testing is performed using `tox <https://tox.readthedocs.io/en/latest/index.html>`_.
-tox will automatically create virtual environments based on ``tox.ini`` for unit testing,
+Automated testing is performed using `nox <https://readthedocs.org/projects/nox/>`_.
+nox will automatically create virtual environments for unit testing,
 PEP8 style guide checking, and documentation generation.
 
 To run all the tests:
 
 .. code-block:: console
 
-    (venv) $ tox
+    (venv) $ nox
 
 Unit Testing
 ^^^^^^^^^^^^
@@ -213,13 +213,7 @@ To automatically format code, run:
 
 .. code-block:: console
 
-    (venv) $ tox -e fmt
-
-To verify code has been formatted, such as in a CI job:
-
-.. code-block:: console
-
-    (venv) $ tox -e fmt-check
+    (venv) $ nox -s format
 
 Project Structure
 -----------------

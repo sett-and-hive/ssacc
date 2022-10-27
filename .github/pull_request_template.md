@@ -14,7 +14,7 @@ Please check if your PR fulfills the following requirements:
 -  [ ]  Tests for the changes have been added (for bug fixes / features)
 -  [ ]  Docs have been reviewed and added / updated if needed (for bug fixes / features)
 -  [ ]  Build (cli.py) was run locally and any changes were pushed
--  [ ]  Tox tests (`tox`) has passed locally and any fixes were made for failures
+-  [ ]  Nox tests (`nox`) has passed locally and any fixes were made for failures
 -  [ ]  My code follows the code style of this project.
 -  [ ]  All new and existing tests passed.
 

@@ -1,11 +1,10 @@
 -c requirements.txt
-tox
+nox
 pytest
 pytest-cov
 pytest-randomly
-pyfakefs
 mypy
-flake8 >= 5.0.0
+flake8 == 5.0.0
 mccabe >= 0.7.0
 pep8-naming >= 0.4.1
 black
