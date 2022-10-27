@@ -1,0 +1,7 @@
+[flake8]
+# Use the more relaxed max line length permitted in PEP8.
+max-line-length = 99
+max-complexity = 10
+per-file-ignores =
+  # There are multiple `assert`s in tests, we allow them:
+  tests/*.py: S101
