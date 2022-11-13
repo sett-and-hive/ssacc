@@ -58,13 +58,13 @@ packaging==21.3
     # via
     #   nox
     #   pytest
-pathspec==0.10.1
+pathspec==0.10.2
     # via black
 pbr==5.11.0
     # via stevedore
 pep8-naming==0.13.2
     # via -r dev-requirements.in
-platformdirs==2.5.3
+platformdirs==2.5.4
     # via
     #   black
     #   virtualenv
@@ -109,7 +109,7 @@ tomli==2.0.1
     #   pytest
 typing-extensions==4.4.0
     # via mypy
-virtualenv==20.16.6
+virtualenv==20.16.7
     # via
     #   nox
     #   pre-commit
