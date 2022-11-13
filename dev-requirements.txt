@@ -22,7 +22,7 @@ coverage[toml]==6.5.0
     # via pytest-cov
 distlib==0.3.6
     # via virtualenv
-exceptiongroup==1.0.1
+exceptiongroup==1.0.2
     # via pytest
 filelock==3.8.0
     # via virtualenv
