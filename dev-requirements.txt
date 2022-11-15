@@ -22,11 +22,9 @@ coverage[toml]==6.5.0
     # via pytest-cov
 distlib==0.3.6
     # via virtualenv
-exceptiongroup==1.0.4
-    # via pytest
 filelock==3.8.0
     # via virtualenv
-flake8==5.0.4
+flake8==5.0.0
     # via
     #   -r dev-requirements.in
     #   pep8-naming
@@ -44,7 +42,7 @@ mccabe==0.7.0
     # via
     #   -r dev-requirements.in
     #   flake8
-mypy==0.990
+mypy==0.991
     # via -r dev-requirements.in
 mypy-extensions==0.4.3
     # via
@@ -101,12 +99,6 @@ stevedore==4.1.1
     # via bandit
 toml==0.10.2
     # via pre-commit
-tomli==2.0.1
-    # via
-    #   black
-    #   coverage
-    #   mypy
-    #   pytest
 typing-extensions==4.4.0
     # via mypy
 virtualenv==20.16.7
