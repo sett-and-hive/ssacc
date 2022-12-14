@@ -10,7 +10,7 @@ attrs==22.1.0
     # via pytest
 bandit==1.7.4
     # via -r dev-requirements.in
-black==22.10.0
+black==22.12.0
     # via -r dev-requirements.in
 cfgv==3.3.1
     # via pre-commit
@@ -64,7 +64,7 @@ pbr==5.11.0
     # via stevedore
 pep8-naming==0.13.2
     # via -r dev-requirements.in
-platformdirs==2.5.4
+platformdirs==2.6.0
     # via
     #   black
     #   virtualenv
@@ -74,7 +74,7 @@ pre-commit==2.20.0
     # via -r dev-requirements.in
 py==1.11.0
     # via nox
-pycodestyle==2.9.1
+pycodestyle==2.10.0
     # via flake8
 pyflakes==2.5.0
     # via flake8
@@ -109,7 +109,7 @@ tomli==2.0.1
     #   pytest
 typing-extensions==4.4.0
     # via mypy
-virtualenv==20.16.7
+virtualenv==20.17.1
     # via
     #   nox
     #   pre-commit
