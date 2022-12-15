@@ -10,7 +10,7 @@ attrs==22.1.0
     # via pytest
 bandit==1.7.4
     # via -r dev-requirements.in
-black==22.10.0
+black==22.12.0
     # via -r dev-requirements.in
 cfgv==3.3.1
     # via pre-commit
@@ -22,8 +22,6 @@ coverage[toml]==6.5.0
     # via pytest-cov
 distlib==0.3.6
     # via virtualenv
-exceptiongroup==1.0.4
-    # via pytest
 filelock==3.8.2
     # via virtualenv
 flake8==5.0.4
@@ -64,7 +62,7 @@ pbr==5.11.0
     # via stevedore
 pep8-naming==0.13.2
     # via -r dev-requirements.in
-platformdirs==2.5.4
+platformdirs==2.6.0
     # via
     #   black
     #   virtualenv
@@ -80,8 +78,6 @@ pyflakes==2.5.0
     # via flake8
 pygments==2.13.0
     # via -r dev-requirements.in
-pyparsing==3.0.9
-    # via packaging
 pytest==7.2.0
     # via
     #   -r dev-requirements.in
@@ -101,15 +97,9 @@ stevedore==4.1.1
     # via bandit
 toml==0.10.2
     # via pre-commit
-tomli==2.0.1
-    # via
-    #   black
-    #   coverage
-    #   mypy
-    #   pytest
 typing-extensions==4.4.0
     # via mypy
-virtualenv==20.16.7
+virtualenv==20.17.1
     # via
     #   nox
     #   pre-commit
