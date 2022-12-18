@@ -36,7 +36,7 @@ identify==2.5.10
     # via pre-commit
 iniconfig==1.1.1
     # via pytest
-isort==5.10.1
+isort==5.11.2
     # via -r dev-requirements.in
 mccabe==0.7.0
     # via
