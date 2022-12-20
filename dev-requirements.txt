@@ -32,7 +32,7 @@ gitdb==4.0.10
     # via gitpython
 gitpython==3.1.29
     # via bandit
-identify==2.5.10
+identify==2.5.11
     # via pre-commit
 iniconfig==1.1.1
     # via pytest
@@ -60,7 +60,7 @@ pathspec==0.10.3
     # via black
 pbr==5.11.0
     # via stevedore
-pep8-naming==0.13.2
+pep8-naming==0.13.3
     # via -r dev-requirements.in
 platformdirs==2.6.0
     # via
