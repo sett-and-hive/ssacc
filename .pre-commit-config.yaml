@@ -30,7 +30,7 @@ repos:
     -   id: autopep8
 
 -   repo: https://github.com/PyCQA/isort
-    rev: 'v5.11.3'  # Use the revision sha / tag you want to point at
+    rev: '5.11.4'  # Use the revision sha / tag you want to point at
     hooks:
     -   id: isort
 
