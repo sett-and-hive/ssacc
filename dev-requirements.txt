@@ -95,8 +95,6 @@ smmap==5.0.0
     # via gitdb
 stevedore==4.1.1
     # via bandit
-toml==0.10.2
-    # via pre-commit
 typing-extensions==4.4.0
     # via mypy
 virtualenv==20.17.1
