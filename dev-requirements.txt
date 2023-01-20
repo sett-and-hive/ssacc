@@ -24,7 +24,7 @@ distlib==0.3.6
     # via virtualenv
 filelock==3.9.0
     # via virtualenv
-flake8==5.0.4
+flake8==6.0.0
     # via
     #   -r dev-requirements.in
     #   pep8-naming
@@ -71,10 +71,8 @@ pluggy==1.0.0
 pre-commit==2.21.0
     # via -r dev-requirements.in
 pycodestyle==2.10.0
-    # flake8 is currently incompatible with 2.10.0
-    # 2.9.1 is ok
     # via flake8
-pyflakes==2.5.0
+pyflakes==3.0.1
     # via flake8
 pygments==2.14.0
     # via -r dev-requirements.in
@@ -104,4 +102,3 @@ virtualenv==20.17.1
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
-setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
