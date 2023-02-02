@@ -68,7 +68,7 @@ platformdirs==2.6.2
     #   virtualenv
 pluggy==1.0.0
     # via pytest
-pre-commit==3.0.0
+pre-commit==3.0.3
     # via -r dev-requirements.in
 pycodestyle==2.10.0
     # via flake8
@@ -102,4 +102,3 @@ virtualenv==20.17.1
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
-setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
