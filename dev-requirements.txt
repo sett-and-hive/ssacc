@@ -91,7 +91,7 @@ pyyaml==6.0
     #   pre-commit
 smmap==5.0.0
     # via gitdb
-stevedore==4.1.1
+stevedore==5.0.0
     # via bandit
 typing-extensions==4.5.0
     # via mypy
