@@ -54,6 +54,7 @@ nox==2022.11.21
     # via -r dev-requirements.in
 packaging==23.0
     # via
+    #   black
     #   nox
     #   pytest
 pathspec==0.11.0
@@ -68,7 +69,7 @@ platformdirs==3.0.0
     #   virtualenv
 pluggy==1.0.0
     # via pytest
-pre-commit==3.0.4
+pre-commit==3.1.0
     # via -r dev-requirements.in
 pycodestyle==2.10.0
     # via flake8
@@ -102,4 +103,3 @@ virtualenv==20.19.0
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
-setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
