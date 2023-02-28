@@ -25,6 +25,6 @@ jobs:
       - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
 
       - name: Run PyCharm Security # Does SCA with SafetyDB
-        uses: tonybaloney/pycharm-security@e0bcc2887b1c3d6c5dc239eab5ade0533cf4b4b6 # tag=v1.25
+        uses: tonybaloney/pycharm-security@a6e17709e9a052fbf951d241a3950a4dbb1e2c7f # tag=v1.25
         with:
           path: ssacc/
