@@ -4,7 +4,7 @@
 #
 #    pip-compile dev-requirements.in
 #
-argcomplete==2.0.5
+argcomplete==2.0.6
     # via nox
 attrs==22.2.0
     # via pytest
