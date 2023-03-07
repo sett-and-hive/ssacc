@@ -62,7 +62,7 @@ pbr==5.11.1
     # via stevedore
 pep8-naming==0.13.3
     # via -r dev-requirements.in
-platformdirs==3.0.0
+platformdirs==3.1.0
     # via
     #   black
     #   virtualenv
