@@ -38,11 +38,15 @@ iniconfig==2.0.0
     # via pytest
 isort==5.12.0
     # via -r dev-requirements.in
+markdown-it-py==2.2.0
+    # via rich
 mccabe==0.7.0
     # via
     #   -r dev-requirements.in
     #   flake8
-mypy==1.0.1
+mdurl==0.1.2
+    # via markdown-it-py
+mypy==1.1.1
     # via -r dev-requirements.in
 mypy-extensions==1.0.0
     # via
@@ -54,6 +58,7 @@ nox==2022.11.21
     # via -r dev-requirements.in
 packaging==23.0
     # via
+    #   black
     #   nox
     #   pytest
 pathspec==0.11.0
@@ -75,7 +80,9 @@ pycodestyle==2.10.0
 pyflakes==3.0.1
     # via flake8
 pygments==2.14.0
-    # via -r dev-requirements.in
+    # via
+    #   -r dev-requirements.in
+    #   rich
 pytest==7.2.2
     # via
     #   -r dev-requirements.in
@@ -89,6 +96,8 @@ pyyaml==6.0
     # via
     #   bandit
     #   pre-commit
+rich==13.3.2
+    # via bandit
 smmap==5.0.0
     # via gitdb
 stevedore==5.0.0
@@ -102,4 +111,3 @@ virtualenv==20.20.0
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
-setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
