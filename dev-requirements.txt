@@ -95,7 +95,7 @@ stevedore==5.0.0
     # via bandit
 typing-extensions==4.5.0
     # via mypy
-virtualenv==20.22.0
+virtualenv==20.23.0
     # via
     #   nox
     #   pre-commit
