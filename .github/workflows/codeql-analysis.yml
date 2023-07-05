@@ -69,4 +69,4 @@ jobs:
 
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@bcb460dab82ef96f9e4b3253df0235f78f92ed6a
+      uses: github/codeql-action/analyze@e960e482a4be0ee88a309c13ccec00888b92f4ac
