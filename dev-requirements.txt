@@ -56,7 +56,7 @@ packaging==23.1
     # via
     #   nox
     #   pytest
-pathspec==0.11.1
+pathspec==0.11.2
     # via black
 pbr==5.11.1
     # via stevedore
