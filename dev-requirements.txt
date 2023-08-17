@@ -14,7 +14,7 @@ black==23.3.0
     # via -r dev-requirements.in
 cfgv==3.3.1
     # via pre-commit
-click==8.1.6
+click==8.1.7
     # via black
 colorlog==6.7.0
     # via nox
