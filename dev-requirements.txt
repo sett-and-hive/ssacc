@@ -22,7 +22,7 @@ coverage[toml]==7.2.7
     # via pytest-cov
 distlib==0.3.7
     # via virtualenv
-filelock==3.12.2
+filelock==3.12.4
     # via virtualenv
 flake8==6.0.0
     # via
@@ -30,9 +30,9 @@ flake8==6.0.0
     #   pep8-naming
 gitdb==4.0.10
     # via gitpython
-gitpython==3.1.35
+gitpython==3.1.36
     # via bandit
-identify==2.5.27
+identify==2.5.28
     # via pre-commit
 iniconfig==2.0.0
     # via pytest
