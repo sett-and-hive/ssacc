@@ -58,7 +58,7 @@ packaging==23.1
     #   pytest
 pathspec==0.11.2
     # via black
-pbr==5.11.1
+pbr==6.0.0
     # via stevedore
 pep8-naming==0.13.3
     # via -r dev-requirements.in
