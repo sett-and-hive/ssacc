@@ -8,8 +8,7 @@ from ssacc.utils import utils
 def get_zipcodes_filepath():
     """Inject filepath to zipcounty data."""
     project_root = utils.get_project_root()
-    file_path = project_root.joinpath("data", "source", "zipcodes.csv")
-    return file_path
+    return project_root.joinpath("data", "source", "zipcodes.csv")
 
 
 def read_zipcodes_csv():

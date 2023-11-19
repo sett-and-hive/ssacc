@@ -10,6 +10,4 @@ from ssacc.wrappers.timing_wrapper import timing
 def build_ssa_and_fips_county_code_dataframe():
     """Build the ssa cc + fips cc dataframe."""
     get_ssa_fips_cc_df = Factory.get(InjectionKeys.COUNTYRATE_SSA_FIPS_CC)
-    df = get_ssa_fips_cc_df()
-
-    return df
+    return get_ssa_fips_cc_df()
