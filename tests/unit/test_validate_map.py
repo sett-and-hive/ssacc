@@ -82,7 +82,7 @@ def _create_dataframe_for_test_write_csv():
         "fipsstco": [22, 25, 27, 35],
         "fipsstct": [2, 3, 4, 5],
     }
-    df = pd.DataFrame(
+    return pd.DataFrame(
         cars,
         columns=[
             "zip",
@@ -98,7 +98,6 @@ def _create_dataframe_for_test_write_csv():
             "fipsstct",
         ],
     )
-    return df
 
 
 def test_validate_all_zips():
@@ -119,27 +118,26 @@ def test_validate_all_zips_some_zips_missing():
 
 def _create_dataframe_with_known_zipcodes():
     """Create dataframe of some known ZIP codes for test_validate_all_zips."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "Zipcode": ["00705", "00611", "00610", "00612"],
             "ZipType": ["Standard", "PO Box", "Private", "Military"],
         },
         columns=["Zipcode", "ZipType"],
     )
-    return df
 
 
 def _create_dataframe_with_zipcodes_to_test():
     """Create dataframe of sample ZIP codes for test_validate_all_zips."""
-    df = pd.DataFrame({"zip": ["00705", "00610", "00611", "00612"]}, columns=["zip"])
-    return df
+    return pd.DataFrame(
+        {"zip": ["00705", "00610", "00611", "00612"]}, columns=["zip"]
+    )
 
 
 def _create_dataframe_with_empty_zipcodes_to_test():
     """Create dataframe of sample ZIP codes with missing values
     for test_validate_all_zips_some_zips_missing."""
-    df = pd.DataFrame({"zip": ["00705"]}, columns=["zip"])
-    return df
+    return pd.DataFrame({"zip": ["00705"]}, columns=["zip"])
 
 
 def test_validate_all_state_codes():
@@ -151,7 +149,7 @@ def test_validate_all_state_codes():
 
 def _create_dataframe_with_state_codes_to_test():
     """Create dataframe of sample state codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "stabbr": ["WI", "IL", "OH", "AZ"],
             "statecd": ["WI", "IL", "OH", "AZ"],
@@ -159,7 +157,6 @@ def _create_dataframe_with_state_codes_to_test():
         },
         columns=["stabbr", "statecd", "ssacnty"],
     )
-    return df
 
 
 def test_validate_all_state_codes_missing_county():
@@ -171,7 +168,7 @@ def test_validate_all_state_codes_missing_county():
 
 def _create_dataframe_with_state_codes_missing_county_to_test():
     """Create dataframe of sample state codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "stabbr": ["WI", "IL", "OH", "AZ"],
             "statecd": ["WI", "IL", "OH", "AZ"],
@@ -179,7 +176,6 @@ def _create_dataframe_with_state_codes_missing_county_to_test():
         },
         columns=["stabbr", "statecd", "ssacnty"],
     )
-    return df
 
 
 def test_validate_all_fips_state_county_codes():
@@ -191,14 +187,13 @@ def test_validate_all_fips_state_county_codes():
 
 def _create_dataframe_with_fips_codes_to_test():
     """Create dataframe of sample FIPS county codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "fipsstco": ["72001", "72002", "72023", "72127"],
             "fipsstct": ["72001", "72002", "72023", "72127"],
         },
         columns=["fipsstco", "fipsstct"],
     )
-    return df
 
 
 def test_validate_all_fips_state_county_codes_missing_fipsstct():
@@ -210,14 +205,13 @@ def test_validate_all_fips_state_county_codes_missing_fipsstct():
 
 def _create_dataframe_with_missing_fipsstct_to_test():
     """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "fipsstco": ["72001", "72002", "72023", "72127"],
             "fipsstct": ["72001", "", "72023", "72127"],
         },
         columns=["fipsstco", "fipsstct"],
     )
-    return df
 
 
 def test_validate_all_fips_state_county_codes_missing_fipsstco():
@@ -229,14 +223,13 @@ def test_validate_all_fips_state_county_codes_missing_fipsstco():
 
 def _create_dataframe_with_missing_fipsstco_to_test():
     """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "fipsstco": ["72001", "", "72023", "72127"],
             "fipsstct": ["72001", "72002", "72023", "72127"],
         },
         columns=["fipsstco", "fipsstct"],
     )
-    return df
 
 
 def test_validate_all_zips_have_ssacnty():
@@ -248,11 +241,13 @@ def test_validate_all_zips_have_ssacnty():
 
 def _create_dataframe_with_zips_and_ssacnty_to_test():
     """Create dataframe of sample FIPS county codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
-        {"zip": ["72001", "72002", "72023", "72127"], "ssacnty": ["001", "002", "023", "127"]},
+    return pd.DataFrame(
+        {
+            "zip": ["72001", "72002", "72023", "72127"],
+            "ssacnty": ["001", "002", "023", "127"],
+        },
         columns=["zip", "ssacnty"],
     )
-    return df
 
 
 def test_validate_all_zips_have_ssacnty_missing_ssacnty():
@@ -264,11 +259,13 @@ def test_validate_all_zips_have_ssacnty_missing_ssacnty():
 
 def _create_dataframe_with_missing_ssacnty_to_test():
     """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
-        {"zip": ["72001", "72002", "72023", "72127"], "ssacnty": ["001", "", "023", "127"]},
+    return pd.DataFrame(
+        {
+            "zip": ["72001", "72002", "72023", "72127"],
+            "ssacnty": ["001", "", "023", "127"],
+        },
         columns=["zip", "ssacnty"],
     )
-    return df
 
 
 def test_validate_all_county_names():
@@ -280,14 +277,18 @@ def test_validate_all_county_names():
 
 def _create_dataframe_with_county_names_to_test():
     """Create dataframe of sample FIPS county codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
-            "countyname": ["Suffolk", "Aguadilla", "Aguas Buenas", "Milwaukee"],
+            "countyname": [
+                "Suffolk",
+                "Aguadilla",
+                "Aguas Buenas",
+                "Milwaukee",
+            ],
             "county": ["SUFFOLK", "AGUADILLA", "AGUAS BUENAS", "MILWAUKEE"],
         },
         columns=["countyname", "county"],
     )
-    return df
 
 
 def test_validate_all_county_names_missing_ssacnty():
@@ -299,14 +300,18 @@ def test_validate_all_county_names_missing_ssacnty():
 
 def _create_dataframe_with_missing_county_to_test():
     """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
-            "countyname": ["Suffolk", "Aguadilla", "Aguas Buenas", "Milwaukee"],
+            "countyname": [
+                "Suffolk",
+                "Aguadilla",
+                "Aguas Buenas",
+                "Milwaukee",
+            ],
             "county": ["SUFFOLK", "", "AGUAS BUENAS", "MILWAUKEE"],
         },
         columns=["countyname", "county"],
     )
-    return df
 
 
 def test_validate_all_county_names_missing_countyname():
@@ -318,11 +323,10 @@ def test_validate_all_county_names_missing_countyname():
 
 def _create_dataframe_with_missing_countyname_to_test():
     """Create dataframe of sample FIPS codes for test_validate_all_state_codes."""
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "countyname": ["Suffolk", "", "Aguas Buenas", "Milwaukee"],
             "county": ["SUFFOLK", "AGUADILLA", "AGUAS BUENAS", "MILWAUKEE"],
         },
         columns=["countyname", "county"],
     )
-    return df

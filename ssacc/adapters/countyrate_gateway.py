@@ -11,8 +11,7 @@ from ssacc.wrappers.timing_wrapper import timing
 def get_countyrate_filepath():
     """Inject filepath to countyrate data."""
     project_root = utils.get_project_root()
-    file_path = project_root.joinpath("data", "source", "countyrate.csv")
-    return file_path
+    return project_root.joinpath("data", "source", "countyrate.csv")
 
 
 @timing
@@ -26,15 +25,13 @@ def get_ssa_fips_cc_df():
     df1 = clean_ssa_fips_data(df)
     print(df1.head())
     df2 = rename_ssacounty_column(df1)
-    df3 = split_ssacnty_column(df2)
-    return df3
+    return split_ssacnty_column(df2)
 
 
 def read_csv(input_file_path):
     """Read data from CSV file."""
     try:
-        df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
-        return df
+        return pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
     except FileNotFoundError as exception:
         print(f"File {input_file_path} not found.")
         raise exception
