@@ -129,9 +129,7 @@ def _create_dataframe_with_known_zipcodes():
 
 def _create_dataframe_with_zipcodes_to_test():
     """Create dataframe of sample ZIP codes for test_validate_all_zips."""
-    return pd.DataFrame(
-        {"zip": ["00705", "00610", "00611", "00612"]}, columns=["zip"]
-    )
+    return pd.DataFrame({"zip": ["00705", "00610", "00611", "00612"]}, columns=["zip"])
 
 
 def _create_dataframe_with_empty_zipcodes_to_test():
