@@ -30,7 +30,7 @@ flake8==6.0.0
     #   pep8-naming
 gitdb==4.0.11
     # via gitpython
-gitpython==3.1.40
+gitpython==3.1.41
     # via bandit
 identify==2.5.33
     # via pre-commit
