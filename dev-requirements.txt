@@ -8,7 +8,7 @@ argcomplete==2.1.2
     # via nox
 attrs==23.1.0
     # via pytest
-bandit==1.7.6
+bandit==1.7.7
     # via -r dev-requirements.in
 black==23.3.0
     # via -r dev-requirements.in
