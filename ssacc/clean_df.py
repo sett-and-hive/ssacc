@@ -6,7 +6,6 @@ from ssacc.wrappers.timing_wrapper import timing
 
 
 class CleanDF:
-
     """Utilities for cleaning data frames. Data engineering."""
 
     @staticmethod
