@@ -50,7 +50,7 @@ mypy-extensions==1.0.0
     #   mypy
 nodeenv==1.8.0
     # via pre-commit
-nox==2023.4.22
+nox==2024.3.2
     # via -r dev-requirements.in
 packaging==23.1
     # via
