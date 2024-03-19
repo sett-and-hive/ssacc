@@ -52,7 +52,7 @@ nodeenv==1.8.0
     # via pre-commit
 nox==2024.3.2
     # via -r dev-requirements.in
-packaging==23.1
+packaging==24.0
     # via
     #   nox
     #   pytest
