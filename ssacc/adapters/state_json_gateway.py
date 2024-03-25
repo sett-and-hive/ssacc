@@ -3,6 +3,7 @@
 
     Replaces code in __init__() from ZipFips.
     """
+
 import json
 
 from ssacc.factories.factory import Factory, InjectionKeys

@@ -5,7 +5,6 @@ from typing import Dict
 
 
 class InjectionKeys(Enum):
-
     """Enumerator class for factory pattern for DI."""
 
     # Apapters
@@ -32,7 +31,6 @@ class InjectionKeys(Enum):
 
 
 class Factory:
-
     """The factory class for dependency injection (DI)."""
 
     concrete_implementations: Dict = {}
