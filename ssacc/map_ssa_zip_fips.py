@@ -1,4 +1,5 @@
 """Map SSA and FIPS county codes with ZIP Codes."""
+
 from contextlib import suppress
 import os
 
@@ -9,7 +10,6 @@ from ssacc.wrappers.timing_wrapper import timing
 
 
 class MapSsaZipFips:
-
     """Map SSA and FIPS county codes with ZIP Codes."""
 
     @staticmethod

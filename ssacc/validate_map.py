@@ -1,4 +1,5 @@
 """Validate the combined CSV file. Some data engineering."""
+
 from contextlib import suppress
 import os
 from pathlib import Path
@@ -12,7 +13,6 @@ from ssacc.wrappers.timing_wrapper import timing
 
 
 class ValidateMap:
-
     """Validate the data mappings in the filters building up the final output."""
 
     @staticmethod
