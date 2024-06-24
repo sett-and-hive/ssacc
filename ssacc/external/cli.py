@@ -15,7 +15,6 @@ https://github.com/MicrosoftDocs/architecture-center/blob/master/docs/patterns/p
 
 """
 
-
 from ssacc.adapters import (
     countyrate_gateway,
     shell_controller,

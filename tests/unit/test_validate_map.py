@@ -1,4 +1,5 @@
 """Test ValidateMap."""
+
 from contextlib import suppress
 import os
 from pathlib import Path
