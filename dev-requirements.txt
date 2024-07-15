@@ -8,9 +8,9 @@ argcomplete==2.1.2
     # via nox
 attrs==23.1.0
     # via pytest
-bandit==1.7.5
+bandit==1.7.8
     # via -r dev-requirements.in
-black==23.3.0
+black==24.3.0
     # via -r dev-requirements.in
 cfgv==3.3.1
     # via pre-commit
@@ -20,19 +20,19 @@ colorlog==6.7.0
     # via nox
 coverage[toml]==7.2.7
     # via pytest-cov
-distlib==0.3.7
+distlib==0.3.8
     # via virtualenv
-filelock==3.12.2
+filelock==3.12.4
     # via virtualenv
 flake8==6.0.0
     # via
     #   -r dev-requirements.in
     #   pep8-naming
-gitdb==4.0.10
+gitdb==4.0.11
     # via gitpython
-gitpython==3.1.33
+gitpython==3.1.43
     # via bandit
-identify==2.5.27
+identify==2.5.36
     # via pre-commit
 iniconfig==2.0.0
     # via pytest
@@ -50,15 +50,15 @@ mypy-extensions==1.0.0
     #   mypy
 nodeenv==1.8.0
     # via pre-commit
-nox==2023.4.22
+nox==2024.3.2
     # via -r dev-requirements.in
-packaging==23.1
+packaging==24.0
     # via
     #   nox
     #   pytest
 pathspec==0.11.2
     # via black
-pbr==5.11.1
+pbr==6.0.0
     # via stevedore
 pep8-naming==0.13.3
     # via -r dev-requirements.in
@@ -81,7 +81,7 @@ pytest==7.3.2
     #   -r dev-requirements.in
     #   pytest-cov
     #   pytest-randomly
-pytest-cov==4.1.0
+pytest-cov==5.0.0
     # via -r dev-requirements.in
 pytest-randomly==3.12.0
     # via -r dev-requirements.in
@@ -89,7 +89,7 @@ pyyaml==6.0.1
     # via
     #   bandit
     #   pre-commit
-smmap==5.0.0
+smmap==5.0.1
     # via gitdb
 stevedore==5.1.0
     # via bandit
@@ -103,3 +103,4 @@ virtualenv==20.23.1
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
 setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability

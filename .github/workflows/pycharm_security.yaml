@@ -18,11 +18,11 @@ jobs:
     name: Execute the pycharm-security action
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2
+        uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2
         with:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+      - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
 
       - name: Run PyCharm Security # Does SCA with SafetyDB
         uses: tonybaloney/pycharm-security@8a6e367ebf3b068f8b7b5f3414f049a70c50e2ab # tag=v1.25
