@@ -73,7 +73,7 @@ def shell():
         regenerate_zip_fips_county_codes.regerate_zip_fips_county_code_data()
     # create SSA FIPS ZIPS csv
     file_path, df_map_result = create_ssa_fips_zip.create_ssa_fips_zip_csv(df_ssa_fips)
-    if result := ValidateMap.validate(file_path):
+    if _ := ValidateMap.validate(file_path):
         print("Data quality tests pass")  # Print this in green with Colorama
         # Insert refined SSACC data use case that calls gateway here
         print("Writing refined ZIP to SSA County Code CSV")
