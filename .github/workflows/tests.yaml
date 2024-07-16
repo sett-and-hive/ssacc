@@ -24,17 +24,17 @@ jobs:
 
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 #  tag=v1.4
+      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 #  tag=v1.4
       with:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
     - name: "Checkout"
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
       with:
         clean: true
 
     - name: "Set up Python"
-      uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4
+      uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5
       with:
         python-version: "${{ matrix.python-version }}"
         architecture: x64
@@ -47,7 +47,7 @@ jobs:
 
     - name: "Post to codecov.io"
       if: "contains(env.USING_COVERAGE, matrix.python-version)"
-      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3
+      uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed # v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true
