@@ -45,8 +45,7 @@ def get_ssa_zip_fips_file_path():
     This belongs in a gateway.
     """
     project_root = utils.get_project_root()
-    file_path = project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
-    return file_path
+    return project_root.joinpath("data", "temp", "ssa_zip_fips.csv")
 
 
 @timing
@@ -64,9 +63,7 @@ def create_fips_zip_dataframe():
     # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
     # get df_zip_fips from gateway = zip_fips.read_csv(file_path)
     get_fips_zip_df = Factory.get(InjectionKeys.ZIPCOUNTY_READ)
-    df = get_fips_zip_df()
-
-    return df
+    return get_fips_zip_df()
 
 
 @timing
@@ -82,9 +79,7 @@ def create_zip_city_dataframe():
     # file_path = project_root.joinpath("data", "temp", "zipcounty.csv")
     # get df_zip_fips from ateway = zip_fips.read_csv(file_path)
     get_zip_codes_df = Factory.get(InjectionKeys.ZIPCODES_READ)
-    df = get_zip_codes_df()
-
-    return df
+    return get_zip_codes_df()
 
 
 # # Merge DFs to create ZIP SSA table.
