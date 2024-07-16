@@ -29,12 +29,12 @@ jobs:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
     - name: "Checkout"
-      uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       with:
         clean: true
 
     - name: "Set up Python"
-      uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5
+      uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f # v5
       with:
         python-version: "${{ matrix.python-version }}"
         architecture: x64
@@ -47,7 +47,7 @@ jobs:
 
     - name: "Post to codecov.io"
       if: "contains(env.USING_COVERAGE, matrix.python-version)"
-      uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed # v4
+      uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true
