@@ -24,7 +24,7 @@ distlib==0.3.8
     # via virtualenv
 filelock==3.12.4
     # via virtualenv
-flake8==6.0.0
+flake8==7.1.0
     # via
     #   -r dev-requirements.in
     #   pep8-naming
