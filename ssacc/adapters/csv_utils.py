@@ -8,8 +8,7 @@ def create_dataframe_from_csv(input_file_path: str):
     """Read CSV into dataframe."""
     # Consider Humble method to read_csv
     try:
-        df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
-        return df
+        return pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
     except FileNotFoundError:
         print(f"File {input_file_path} not found")
     except ParserError:

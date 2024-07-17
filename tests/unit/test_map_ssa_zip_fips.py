@@ -138,7 +138,7 @@ def _setup_df_for_test_write_csv():
         "fipsstct": [2, 3, 4, 5],
         "ssastco": [12, 13, 14, 15],
     }
-    df = pd.DataFrame(
+    return pd.DataFrame(
         cars,
         columns=[
             "zip",
@@ -155,4 +155,3 @@ def _setup_df_for_test_write_csv():
             "ssastco",
         ],
     )
-    return df

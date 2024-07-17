@@ -26,8 +26,7 @@ from ssacc.wrappers.timing_wrapper import timing
 def get_zipcty_path() -> Path:
     """Inject path to USPS zipcty data."""
     project_root = utils.get_project_root()
-    path = project_root.joinpath("data", "source")
-    return path
+    return project_root.joinpath("data", "source")
 
 
 # TODO clean up path of reading zipcty and assembling that DF
@@ -91,8 +90,7 @@ def read_zip_fips_text_file(input_file_path: Path) -> DataFrame:
     # which does not belong in a gateway to zipcty.
     get_statecodes = Factory.get(InjectionKeys.GET_STATE_JSON)
     statecodes = get_statecodes()
-    df = parse_zip_counties(zip_county_lines, statecodes)
-    return df
+    return parse_zip_counties(zip_county_lines, statecodes)
 
 
 @timing
@@ -122,11 +120,10 @@ def parse_zip_counties(lines: List[str], statecodes: dict):
     #      6          COUNTY NO                  03         26    28
     #      7          COUNTY NAME                25         29    53
     for zip_county_line in lines[1:]:  # skip first line
-        match_result = re.match(
+        if match_result := re.match(
             r"(?P<zip>.{5}).{18}(?P<state>..)(?P<fips>...)(?P<county>[\w. ]+)",
             zip_county_line,
-        )
-        if match_result:
+        ):
             groupdict_result = match_result.groupdict()
             test = str(groupdict_result["zip"]).zfill(5) + str(groupdict_result["fips"]).zfill(3)
             if test not in zip_seen:

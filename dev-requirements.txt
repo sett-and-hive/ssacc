@@ -8,7 +8,7 @@ argcomplete==2.1.2
     # via nox
 attrs==23.1.0
     # via pytest
-bandit==1.7.8
+bandit==1.7.9
     # via -r dev-requirements.in
 black==24.3.0
     # via -r dev-requirements.in
@@ -103,3 +103,4 @@ virtualenv==20.23.1
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
 setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
