@@ -1,4 +1,5 @@
 """Validate the combined CSV file. Some data engineering."""
+
 from contextlib import suppress
 import os
 from pathlib import Path
@@ -12,7 +13,6 @@ from ssacc.wrappers.timing_wrapper import timing
 
 
 class ValidateMap:
-
     """Validate the data mappings in the filters building up the final output."""
 
     @staticmethod
@@ -84,8 +84,7 @@ class ValidateMap:
     def read_csv(input_file_path):
         """Create a dataframe from a csv file."""
         try:
-            df = pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
-            return df
+            return pd.read_csv(filepath_or_buffer=input_file_path, header=0, dtype=str)
         except FileNotFoundError:
             print(f"File {input_file_path} not found")
         except ParserError:
@@ -138,17 +137,15 @@ class ValidateMap:
             # TODO: make sure this use of df.loc is correct
             countyname = dfm.loc[i, "countyname"]
             countytest = "".join(filter(str.isalnum, str(countyname)))
-            countytest = str(countytest).upper()
+            countytest = countytest.upper()
             # TODO: make sure this use of df.loc is correct
             county = dfm.loc[i, "county"]
             county = "".join(filter(str.isalnum, str(county)))
             # print(f"Is {countytest} in {county}")
             try:
-                if (countytest in county) or (county in countytest):
-                    total += 1
-                else:
+                if countytest not in county and county not in countytest:
                     missing += 1
-                    total += 1
+                total += 1
             except IndexError:
                 print("bad county data [{countytest}] [{county}]")
                 missing += 1

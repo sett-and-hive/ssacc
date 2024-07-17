@@ -1,4 +1,5 @@
 """ Test CleanDF."""
+
 import warnings
 
 # suppress spurious "numpy.ufunc size changed" warnings
