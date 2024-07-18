@@ -3,7 +3,7 @@
     "config:base", ":dependencyDashboard", ":rebaseStalePrs"
   ],
   "constraints": {
-    "python": "3.8"
+    "python": "3.10"
   },
   "lockFileMaintenance": {
     "enabled": true,

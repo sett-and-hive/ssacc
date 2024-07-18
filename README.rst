@@ -104,7 +104,7 @@ The column headers are:
 Requirements
 ------------
 
-Python 3.8+.
+Python 3.10+.
 
 
 Windows Support
