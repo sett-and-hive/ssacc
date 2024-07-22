@@ -44,7 +44,7 @@ mccabe==0.7.0
     #   flake8
 mdurl==0.1.2
     # via markdown-it-py
-mypy==1.10.1
+mypy==1.11.0
     # via -r dev-requirements.in
 mypy-extensions==1.0.0
     # via
@@ -81,7 +81,7 @@ pygments==2.18.0
     # via
     #   -r dev-requirements.in
     #   rich
-pytest==8.2.2
+pytest==8.3.1
     # via
     #   -r dev-requirements.in
     #   pytest-cov
