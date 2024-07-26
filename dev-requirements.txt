@@ -30,7 +30,7 @@ flake8==7.1.0
     # via pep8-naming
 identify==2.6.0
     # via pre-commit
-importlib-metadata==8.0.0
+importlib-metadata==8.1.0
     # via pytest-randomly
 iniconfig==2.0.0
     # via pytest
