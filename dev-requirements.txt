@@ -109,7 +109,7 @@ typing-extensions==4.12.2
     # via
     #   black
     #   mypy
-virtualenv==20.26.3
+virtualenv==20.26.4
     # via
     #   nox
     #   pre-commit
