@@ -18,7 +18,7 @@ jobs:
     name: Execute the pycharm-security action
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@446798f8213ac2e75931c1b0769676d927801858 # v2
+        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2
         with:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
