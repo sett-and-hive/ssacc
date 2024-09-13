@@ -113,5 +113,5 @@ virtualenv==20.26.4
     # via
     #   nox
     #   pre-commit
-zipp==3.20.1
+zipp==3.20.2
     # via importlib-metadata
