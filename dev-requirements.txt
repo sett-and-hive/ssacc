@@ -6,7 +6,7 @@
 #
 argcomplete==3.5.0
     # via nox
-bandit==1.7.9
+bandit==1.7.10
     # via -r dev-requirements.in
 black==24.8.0
     # via -r dev-requirements.in
