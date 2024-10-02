@@ -98,7 +98,7 @@ rich==13.7.1
     # via bandit
 stevedore==5.2.0
     # via bandit
-tomli==2.0.1
+tomli==2.0.2
     # via
     #   black
     #   coverage
