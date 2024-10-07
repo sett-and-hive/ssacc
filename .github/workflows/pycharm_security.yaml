@@ -22,7 +22,7 @@ jobs:
         with:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
 
       - name: Run PyCharm Security # Does SCA with SafetyDB
         uses: tonybaloney/pycharm-security@5c1ceeb1fb2a18478fa7076a81f9f47fd450e592 # tag=v1.25
