@@ -46,7 +46,7 @@ jobs:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
     - name: Checkout repository
-      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4
       with:
         # We must fetch at least the immediate parents so that if this is
         # a pull request then we can checkout the head.
