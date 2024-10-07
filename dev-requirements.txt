@@ -4,7 +4,7 @@
 #
 #    pip-compile dev-requirements.in
 #
-argcomplete==3.5.0
+argcomplete==3.5.1
     # via nox
 bandit==1.7.10
     # via -r dev-requirements.in
