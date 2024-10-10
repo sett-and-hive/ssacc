@@ -24,13 +24,13 @@ distlib==0.3.9
     # via virtualenv
 exceptiongroup==1.2.2
     # via pytest
-filelock==3.15.4
+filelock==3.16.1
     # via virtualenv
 flake8==7.1.1
     # via pep8-naming
 identify==2.6.1
     # via pre-commit
-importlib-metadata==8.2.0
+importlib-metadata==8.5.0
     # via pytest-randomly
 iniconfig==2.0.0
     # via pytest
@@ -61,11 +61,11 @@ packaging==24.1
     #   pytest
 pathspec==0.12.1
     # via black
-pbr==6.0.0
+pbr==6.1.0
     # via stevedore
 pep8-naming==0.14.1
     # via -r dev-requirements.in
-platformdirs==4.2.2
+platformdirs==4.3.6
     # via
     #   black
     #   virtualenv
@@ -94,9 +94,9 @@ pyyaml==6.0.2
     # via
     #   bandit
     #   pre-commit
-rich==13.7.1
+rich==13.9.2
     # via bandit
-stevedore==5.2.0
+stevedore==5.3.0
     # via bandit
 tomli==2.0.2
     # via
