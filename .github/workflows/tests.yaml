@@ -47,7 +47,7 @@ jobs:
 
     - name: "Post to codecov.io"
       if: "contains(env.USING_COVERAGE, matrix.python-version)"
-      uses: codecov/codecov-action@015f24e6818733317a2da2edd6290ab26238649a # v5
+      uses: codecov/codecov-action@7f8b4b4bde536c465e797be725718b88c5d95e0e # v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true
