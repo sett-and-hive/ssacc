@@ -16,7 +16,7 @@ click==8.1.7
     # via black
 colorlog==6.8.2
     # via nox
-coverage[toml]==7.6.8
+coverage[toml]==7.6.9
     # via
     #   coverage
     #   pytest-cov
