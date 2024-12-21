@@ -34,7 +34,7 @@ jobs:
         clean: true
 
     - name: "Set up Python"
-      uses: actions/setup-python@f677139bbe7f9c59b41e40162b753c062f5d49a3 # v5
+      uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
       with:
         python-version: "${{ matrix.python-version }}"
         architecture: x64
@@ -47,7 +47,7 @@ jobs:
 
     - name: "Post to codecov.io"
       if: "contains(env.USING_COVERAGE, matrix.python-version)"
-      uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4
+      uses: codecov/codecov-action@1e68e06f1dbfde0e4cefc87efeba9e4643565303 # v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true
