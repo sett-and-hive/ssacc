@@ -1,4 +1,4 @@
-""" Test CleanDF."""
+"""Test CleanDF."""
 
 import warnings
 
