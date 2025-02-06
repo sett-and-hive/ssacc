@@ -34,7 +34,7 @@ importlib-metadata==8.2.0
     # via pytest-randomly
 iniconfig==2.0.0
     # via pytest
-isort==5.13.2
+isort==6.0.0
     # via -r dev-requirements.in
 markdown-it-py==3.0.0
     # via rich
