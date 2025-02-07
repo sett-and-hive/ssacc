@@ -8,7 +8,7 @@ argcomplete==3.5.3
     # via nox
 bandit==1.7.10
     # via -r dev-requirements.in
-black==24.8.0
+black==25.1.0
     # via -r dev-requirements.in
 cfgv==3.4.0
     # via pre-commit
