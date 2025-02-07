@@ -1,13 +1,13 @@
 """
-    Gateway to read USPS ZIP-FIPS county code-mapping flat files.
+Gateway to read USPS ZIP-FIPS county code-mapping flat files.
 
-    These files are from https://wonder.cdc.gov/wonder/sci_data/datasets/zipcty[A|B].zip
-        # use case: regerate Zip Fips CSV (zipcounty.csv)
-        # project_root = Path(__file__).parents[2]  # should be project path?
-        file_path = project_root.joinpath("data", "source")
-        print(f"root file path {file_path}")
-        # two gateways  - 1 to read files, 1 to write new csv
-        zip_fips.files_to_csv(file_path)
+These files are from https://wonder.cdc.gov/wonder/sci_data/datasets/zipcty[A|B].zip
+    # use case: regerate Zip Fips CSV (zipcounty.csv)
+    # project_root = Path(__file__).parents[2]  # should be project path?
+    file_path = project_root.joinpath("data", "source")
+    print(f"root file path {file_path}")
+    # two gateways  - 1 to read files, 1 to write new csv
+    zip_fips.files_to_csv(file_path)
 """
 
 import os
